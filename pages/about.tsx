@@ -6,8 +6,8 @@ const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>About - DA Landing Page</title>
-        <meta name="description" content="Learn more about DA Landing Page" />
+        <title>About - Da Orbit</title>
+        <meta name="description" content="Learn more about Da Orbit - Innovative software development and digital transformation services" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       
@@ -37,15 +37,16 @@ const About: NextPage = () => {
               color: '#555',
               marginBottom: '2rem'
             }}>
-              This is the About page demonstrating Next.js page routing. 
-              DA Landing Page is built with modern web technologies including Next.js, 
-              TypeScript, and CSS Modules for optimal performance and maintainability.
+              At Da Orbit, we specialize in cutting-edge software development, cloud solutions, 
+              and digital transformation services. Our team of expert developers and engineers 
+              work tirelessly to deliver innovative solutions that drive business growth and success.
             </p>
             <p style={{ 
               fontSize: '1.1rem', 
               color: '#666'
             }}>
-              Navigate back to the home page or explore other sections using the navigation menu.
+              From web applications to mobile apps, enterprise software to cloud infrastructure - 
+              we orbit around your success, providing the technology solutions you need to thrive in the digital age.
             </p>
           </div>
         </section>

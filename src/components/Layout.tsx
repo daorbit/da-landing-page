@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <nav>
           <div className="max-w-6xl mx-auto px-8 py-4 flex justify-between items-center">
             <div className="logo">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent m-0">DA</h2>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent m-0">Da Orbit</h2>
             </div>
             <ul className="hidden md:flex list-none m-0 p-0 gap-8">
               <li>
@@ -52,11 +52,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="max-w-6xl mx-auto px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="text-2xl mb-4 bg-gradient-to-r from-red-400 to-yellow-400 bg-clip-text text-transparent">
-                DA Landing Page
+              <h3 className="text-2xl mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                Da Orbit
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                Built with Next.js and TypeScript for optimal performance.
+                Innovative software solutions that propel your business into the future.
               </p>
             </div>
             <div>
@@ -78,7 +78,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
           </div>
           <div className="border-t border-slate-700 pt-8 text-center">
-            <p className="text-gray-400 m-0">&copy; 2025 DA Landing Page. All rights reserved.</p>
+            <p className="text-gray-400 m-0">&copy; 2025 Da Orbit. All rights reserved.</p>
           </div>
         </div>
       </footer>

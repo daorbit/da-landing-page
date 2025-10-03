@@ -2,37 +2,62 @@ import React from 'react'
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-indigo-500 to-purple-600 text-white relative overflow-hidden">
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-10 z-10"></div>
-      
-      <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-16 items-center relative z-20">
-        <div className="animate-fadeInUp text-center lg:text-left">
-          <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6 drop-shadow-lg">
-            Welcome to <span className="bg-gradient-to-r from-red-400 to-yellow-400 bg-clip-text text-transparent">DA Landing Page</span>
+    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+      {/* Background overlay with subtle pattern */}
+      <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+
+      {/* Animated background elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+      </div>
+
+      <div className="relative z-20 max-w-6xl mx-auto px-8 py-20 text-center">
+        <div className="mb-8">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+            Da Orbit
           </h1>
-          <p className="text-xl lg:text-xl leading-relaxed mb-10 opacity-90 max-w-lg mx-auto lg:mx-0">
-            A modern, responsive landing page built with Next.js and TypeScript. 
-            Experience blazing-fast performance with static site generation.
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Revolutionizing software development with cutting-edge solutions.
+            We build the future, one orbit at a time.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-            <button className="bg-gradient-to-r from-red-400 to-yellow-400 text-white border-none px-8 py-4 text-lg font-semibold rounded-full cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl shadow-lg">
-              Get Started
-            </button>
-            <button className="bg-transparent text-white border-2 border-white border-opacity-50 px-8 py-4 text-lg font-semibold rounded-full cursor-pointer transition-all duration-300 backdrop-blur-md hover:border-white hover:bg-white hover:bg-opacity-10 hover:transform hover:-translate-y-1">
-              Learn More
-            </button>
+          <div className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+            Innovative software development, cloud solutions, and digital transformation
+            services that propel your business into the next generation.
           </div>
         </div>
-        
-        <div className="flex justify-center items-center animate-fadeInRight">
-          <div className="w-80 h-80 lg:w-96 lg:h-96 relative flex justify-center items-center">
-            <div className="relative w-full h-full">
-              <div className="absolute top-12 left-12 w-24 h-24 lg:w-30 lg:h-30 bg-gradient-to-br from-pink-300 to-pink-100 rounded-full animate-float"></div>
-              <div className="absolute top-48 right-20 w-20 h-20 lg:w-25 lg:h-25 bg-gradient-to-br from-teal-200 to-pink-200 rounded-2xl transform rotate-12 animate-float-delayed"></div>
-              <div className="absolute bottom-20 left-28 w-0 h-0 border-l-[35px] border-r-[35px] lg:border-l-[50px] lg:border-r-[50px] border-l-transparent border-r-transparent border-b-[61px] lg:border-b-[87px] border-b-yellow-300 animate-float-delayed-2"></div>
-            </div>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
+            Get Started
+          </button>
+          <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
+            Learn More
+          </button>
+        </div>
+
+        {/* Stats or features preview */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+            <div className="text-3xl font-bold text-purple-300 mb-2">500+</div>
+            <div className="text-gray-300">Projects Delivered</div>
           </div>
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+            <div className="text-3xl font-bold text-blue-300 mb-2">50+</div>
+            <div className="text-gray-300">Happy Clients</div>
+          </div>
+          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+            <div className="text-3xl font-bold text-pink-300 mb-2">24/7</div>
+            <div className="text-gray-300">Support Available</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white bg-opacity-50 rounded-full mt-2 animate-bounce"></div>
         </div>
       </div>
     </section>

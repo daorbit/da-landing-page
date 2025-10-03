@@ -7,8 +7,8 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>DA Landing Page</title>
-        <meta name="description" content="Welcome to DA Landing Page - A modern, responsive landing page built with Next.js" />
+        <title>Da Orbit - Innovative Software Solutions</title>
+        <meta name="description" content="Da Orbit - Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
