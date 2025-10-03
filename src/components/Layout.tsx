@@ -52,7 +52,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Footer />
 
       {/* Mobile Drawer Components */}
-      <DrawerBackdrop isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <MobileDrawer
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
