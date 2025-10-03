@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "name": "da-landing-page",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "out"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
+    }
+  ],
+  "trailingSlash": true,
+  "cleanUrls": false,
+  "buildCommand": "npm run build-export"
+}
