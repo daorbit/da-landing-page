@@ -66,7 +66,7 @@ const FeaturesSection: React.FC = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100" id="features">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
           initial="hidden"

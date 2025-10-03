@@ -37,12 +37,12 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white bg-opacity-95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-white bg-opacity-95 backdrop-blur-md shadow-lg text-gray-700'
+          : 'bg-black bg-opacity-30 backdrop-blur-sm text-white'
       }`}
     >
       <nav>
-        <div className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="logo cursor-pointer"
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
                 <button
                   onClick={() => scrollToSection(item.id)}
                   className={`font-medium transition-colors duration-300 hover:text-purple-600 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-600 after:transition-all after:duration-300 hover:after:w-full ${
-                    scrolled ? 'text-gray-700' : 'text-white'
+                    scrolled ? 'text-gray-700' : 'text-white drop-shadow-lg'
                   }`}
                 >
                   {item.label}
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
-              scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white hover:bg-opacity-20'
+              scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white drop-shadow-lg hover:bg-white hover:bg-opacity-20'
             }`}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

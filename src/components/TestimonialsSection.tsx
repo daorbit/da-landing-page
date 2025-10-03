@@ -1,45 +1,59 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Star, Quote } from 'lucide-react'
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const testimonials = [
   {
+    name: 'Pankaj Shukla',
+    role: 'Principal Consultant, KPMG',
+    content: "I've been with this company for some time now and I can honestly say it's been a game-changer for me. With their guidance, I've managed to build a strong portfolio that I feel confident about. What I really appreciate is how clearly they...",
+    rating: 5,
+  },
+  {
     name: 'Sarah Johnson',
     role: 'CEO, TechStart Inc.',
-    content: 'Da Orbit transformed our vision into reality. Their expertise in cloud solutions helped us scale 10x faster than we imagined possible.',
+    content: 'Da Orbit transformed our vision into reality. Their expertise in cloud solutions helped us scale 10x faster than we imagined possible. The team was professional and delivered exceptional results.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b3c5?w=150&h=150&fit=crop&crop=face&q=80'
   },
   {
     name: 'Michael Chen',
     role: 'CTO, Innovation Labs',
-    content: 'The mobile app they developed exceeded all our expectations. The attention to detail and performance optimization is remarkable.',
+    content: 'The mobile app they developed exceeded all our expectations. The attention to detail and performance optimization is remarkable. I would highly recommend their services.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&q=80'
   },
   {
     name: 'Emily Rodriguez',
     role: 'Founder, GrowthHub',
-    content: 'Working with Da Orbit was a game-changer. Their team delivered a robust platform that automated 80% of our workflow.',
+    content: 'Working with Da Orbit was a game-changer. Their team delivered a robust platform that automated 80% of our workflow. Outstanding service and support throughout.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&q=80'
-  },
-  {
-    name: 'David Park',
-    role: 'Director, Digital Ventures',
-    content: 'Exceptional service and technical expertise. They not only delivered on time but provided ongoing support that kept us ahead of the competition.',
-    rating: 5,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&q=80'
   }
 ]
 
 const TestimonialsSection: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   })
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 6000) // Change every 6 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,8 +71,8 @@ const TestimonialsSection: React.FC = () => {
   }
 
   return (
-    <section className="py-20 bg-gray-50" id="testimonials">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="py-20 bg-white" id="testimonials">
+      <div className="max-w-6xl mx-auto px-8">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -70,63 +84,91 @@ const TestimonialsSection: React.FC = () => {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
           >
-            What Our <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Clients Say</span>
+            Client's Testimonials
           </motion.h2>
-          <motion.p 
-            variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
-            Don't just take our word for it. Here's what industry leaders say about working with Da Orbit.
-          </motion.p>
         </motion.div>
 
         <motion.div
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="relative max-w-4xl mx-auto"
         >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden"
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Testimonial Content */}
+          <div className="text-center">
+            {/* Stars */}
+            <motion.div 
+              key={`stars-${currentIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center items-center mb-8"
             >
-              <div className="absolute top-4 left-6 text-purple-200 opacity-50">
-                <Quote className="w-8 h-8" />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                <p className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                  "{testimonial.content}"
-                </p>
-                
-                <div className="flex items-center">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-purple-100"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                <Star key={i} className="w-8 h-8 text-yellow-400 fill-current mx-1" />
+              ))}
             </motion.div>
-          ))}
+
+            {/* Quote */}
+            <motion.p 
+              key={`content-${currentIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-12 italic font-light"
+            >
+              "{testimonials[currentIndex].content}"
+            </motion.p>
+
+            {/* Author Info */}
+            <motion.div 
+              key={`author-${currentIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="space-y-2"
+            >
+              <h4 className="text-xl font-bold text-gray-900">
+                {testimonials[currentIndex].name}
+              </h4>
+              <p className="text-gray-600">
+                {testimonials[currentIndex].role}
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-12 space-x-3">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-purple-600 w-8' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

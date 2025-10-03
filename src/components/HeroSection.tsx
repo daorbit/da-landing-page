@@ -1,18 +1,21 @@
-'use client'
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 
 const HeroSection: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden"
+    >
       {/* Background overlay with subtle pattern */}
       <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
 
@@ -23,7 +26,7 @@ const HeroSection: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-8 py-20 text-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 py-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,8 +47,8 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
           >
-            Revolutionizing software development with cutting-edge solutions.
-            We build the future, one orbit at a time.
+            Revolutionizing software development with cutting-edge solutions. We
+            build the future, one orbit at a time.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -53,8 +56,9 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto"
           >
-            Innovative software development, cloud solutions, and digital transformation
-            services that propel your business into the next generation.
+            Innovative software development, cloud solutions, and digital
+            transformation services that propel your business into the next
+            generation.
           </motion.div>
         </motion.div>
 
@@ -62,25 +66,16 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex justify-center mb-16"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('contact')}
+            onClick={() => scrollToSection("contact")}
             className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center space-x-2 group"
           >
             <span>Get Started</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => scrollToSection('features')}
-            className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center space-x-2 group"
-          >
-            <Play className="w-5 h-5" />
-            <span>Learn More</span>
           </motion.button>
         </motion.div>
 
@@ -93,24 +88,24 @@ const HeroSection: React.FC = () => {
         >
           <motion.div
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+            className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl"
           >
-            <div className="text-4xl font-bold text-purple-300 mb-3">500+</div>
-            <div className="text-gray-300 text-lg">Projects Delivered</div>
+            <div className="text-4xl font-bold text-white mb-3">500+</div>
+            <div className="text-white text-lg">Projects Delivered</div>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+            className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl"
           >
-            <div className="text-4xl font-bold text-blue-300 mb-3">150+</div>
-            <div className="text-gray-300 text-lg">Happy Clients</div>
+            <div className="text-4xl font-bold text-white mb-3">150+</div>
+            <div className="text-white text-lg">Happy Clients</div>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+            className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl"
           >
-            <div className="text-4xl font-bold text-pink-300 mb-3">24/7</div>
-            <div className="text-gray-300 text-lg">Support Available</div>
+            <div className="text-4xl font-bold text-white mb-3">24/7</div>
+            <div className="text-white text-lg">Support Available</div>
           </motion.div>
         </motion.div>
       </div>
@@ -121,7 +116,7 @@ const HeroSection: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer"
-        onClick={() => scrollToSection('features')}
+        onClick={() => scrollToSection("features")}
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -132,7 +127,7 @@ const HeroSection: React.FC = () => {
         </motion.div>
       </motion.div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
