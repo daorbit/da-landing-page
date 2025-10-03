@@ -40,8 +40,8 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <motion.div

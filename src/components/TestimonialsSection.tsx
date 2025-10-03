@@ -71,18 +71,18 @@ const TestimonialsSection: React.FC = () => {
   }
 
   return (
-    <section className="py-12 md:py-20 bg-white" id="testimonials">
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
+    <section className="py-12 sm:py-16 md:py-20 bg-white" id="testimonials">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-8 md:mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
           >
             Client's Testimonials
           </motion.h2>
@@ -112,7 +112,7 @@ const TestimonialsSection: React.FC = () => {
           </button>
 
           {/* Testimonial Content */}
-          <div className="text-center min-h-[300px] md:min-h-[400px] flex flex-col justify-center px-4 md:px-0">
+          <div className="text-center min-h-[250px] sm:min-h-[300px] md:min-h-[400px] flex flex-col justify-center px-2 sm:px-4 md:px-0">
             {/* Stars */}
             <motion.div 
               key={`stars-${currentIndex}`}

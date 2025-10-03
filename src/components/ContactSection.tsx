@@ -70,38 +70,38 @@ const ContactSection: React.FC = () => {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white" id="contact">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white" id="contact">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white px-4 sm:px-0"
           >
             Ready to Start Your <span className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">Journey?</span>
           </motion.h2>
           <motion.p 
             variants={itemVariants}
-            className="text-xl text-gray-100 max-w-3xl mx-auto"
+            className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto px-4 sm:px-0"
           >
             Let's discuss how we can help transform your business with innovative technology solutions
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
-            className=" bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20"
+            className="bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white border-opacity-20"
           >
-            <h3 className="text-2xl font-semibold mb-6">Send us a message</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Send us a message</h3>
             
             {isSubmitted ? (
               <motion.div
@@ -114,8 +114,8 @@ const ContactSection: React.FC = () => {
                 <p className="text-gray-300">We'll get back to you within 24 hours.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
                       Name *
