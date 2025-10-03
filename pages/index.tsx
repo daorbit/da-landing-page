@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <title>Da Orbit - Innovative Software Solutions</title>
         <meta name="description" content="Da Orbit - Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.png" />
         <meta property="og:title" content="Da Orbit - Innovative Software Solutions" />
         <meta property="og:description" content="Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time." />
         <meta property="og:type" content="website" />

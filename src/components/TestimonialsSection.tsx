@@ -71,18 +71,18 @@ const TestimonialsSection: React.FC = () => {
   }
 
   return (
-    <section className="py-20 bg-white" id="testimonials">
-      <div className="max-w-6xl mx-auto px-8">
+    <section className="py-12 md:py-20 bg-white" id="testimonials">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
           >
             Client's Testimonials
           </motion.h2>
@@ -94,10 +94,10 @@ const TestimonialsSection: React.FC = () => {
           variants={containerVariants}
           className="relative max-w-4xl mx-auto"
         >
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile */}
           <button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -105,24 +105,24 @@ const TestimonialsSection: React.FC = () => {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Testimonial Content */}
-          <div className="text-center min-h-[400px] flex flex-col justify-center">
+          <div className="text-center min-h-[300px] md:min-h-[400px] flex flex-col justify-center px-4 md:px-0">
             {/* Stars */}
             <motion.div 
               key={`stars-${currentIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex justify-center items-center mb-8 h-12"
+              className="flex justify-center items-center mb-6 md:mb-8 h-8 md:h-12"
             >
               {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                <Star key={i} className="w-8 h-8 text-yellow-400 fill-current mx-1" />
+                <Star key={i} className="w-6 h-6 md:w-8 md:h-8 text-yellow-400 fill-current mx-0.5 md:mx-1" />
               ))}
             </motion.div>
 
@@ -132,9 +132,9 @@ const TestimonialsSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-12 min-h-[200px] flex items-center justify-center"
+              className="mb-8 md:mb-12 min-h-[120px] md:min-h-[200px] flex items-center justify-center"
             >
-              <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed italic font-light max-w-4xl">
+              <p className="text-lg md:text-2xl lg:text-3xl text-gray-700 leading-relaxed italic font-light max-w-4xl px-4 md:px-0">
                 "{testimonials[currentIndex].content}"
               </p>
             </motion.div>
@@ -145,27 +145,27 @@ const TestimonialsSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-2 h-16 flex flex-col justify-center"
+              className="space-y-1 md:space-y-2 h-12 md:h-16 flex flex-col justify-center"
             >
-              <h4 className="text-xl font-bold text-gray-900">
+              <h4 className="text-lg md:text-xl font-bold text-gray-900">
                 {testimonials[currentIndex].name}
               </h4>
-              <p className="text-gray-600">
+              <p className="text-sm md:text-base text-gray-600">
                 {testimonials[currentIndex].role}
               </p>
             </motion.div>
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-12 space-x-3">
+          <div className="flex justify-center mt-8 md:mt-12 space-x-2 md:space-x-3">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`rounded-full transition-all duration-300 touch-manipulation ${
                   index === currentIndex 
-                    ? 'bg-purple-600 w-8' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-purple-600 w-8 md:w-8 h-3' 
+                    : 'bg-gray-300 hover:bg-gray-400 w-3 h-3'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
