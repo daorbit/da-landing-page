@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
                     className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-300"
                   >
                     <item.icon className="w-4 h-4" />
-                    <a href={item.href} className="text-sm">
+                    <a href={item.href} className="text-sm cursor-pointer">
                       {item.text}
                     </a>
                   </motion.div>
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1 }}
-                    className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-purple-600 transition-all duration-300"
+                    className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-purple-600 transition-all duration-300 cursor-pointer"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left"
+                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left"
+                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left cursor-pointer"
                   >
                     {link.name}
                   </button>

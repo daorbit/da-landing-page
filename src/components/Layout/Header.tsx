@@ -67,7 +67,7 @@ const Header: React.FC = () => {
               >
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`font-medium transition-colors duration-300 hover:text-purple-600 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-600 after:transition-all after:duration-300 hover:after:w-full ${
+                  className={`font-medium transition-colors duration-300 hover:text-purple-600 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-600 after:transition-all after:duration-300 hover:after:w-full ${
                     scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
                   }`}
                 >
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
+            className={`md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer ${
               scrolled
                 ? "text-gray-700 hover:bg-gray-100"
                 : "text-white drop-shadow-lg hover:bg-white hover:bg-opacity-20"
@@ -123,7 +123,7 @@ const Header: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left py-2 text-gray-700 font-medium hover:text-purple-600 transition-colors duration-300"
+                className="block w-full text-left py-2 text-gray-700 font-medium hover:text-purple-600 transition-colors duration-300 cursor-pointer"
               >
                 {item.label}
               </button>

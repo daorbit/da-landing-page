@@ -181,7 +181,7 @@ const ContactSection: React.FC = () => {
                 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>
@@ -213,7 +213,7 @@ const ContactSection: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="flex items-center space-x-4 p-4  bg-opacity-15 backdrop-blur-sm rounded-lg border border-white border-opacity-30 hover:bg-opacity-25 transition-all duration-300 group shadow-lg"
+                  className="flex items-center space-x-4 p-4  bg-opacity-15 backdrop-blur-sm rounded-lg border border-white border-opacity-30 hover:bg-opacity-25 transition-all duration-300 group shadow-lg cursor-pointer"
                 >
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <info.icon className="w-6 h-6 text-white" />

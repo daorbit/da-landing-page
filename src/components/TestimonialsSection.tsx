@@ -97,7 +97,7 @@ const TestimonialsSection: React.FC = () => {
           {/* Navigation Arrows - Hidden on mobile */}
           <button
             onClick={goToPrevious}
-            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600 cursor-pointer"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -105,7 +105,7 @@ const TestimonialsSection: React.FC = () => {
 
           <button
             onClick={goToNext}
-            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600"
+            className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-gray-600 hover:text-purple-600 cursor-pointer"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6" />
