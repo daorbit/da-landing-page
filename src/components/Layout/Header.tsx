@@ -48,13 +48,11 @@ const Header: React.FC = () => {
             className="logo cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <h2
-              className={`text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent m-0 ${
-                !scrolled ? "text-white" : ""
-              }`}
-            >
-              DA Orbit
-            </h2>
+            <img
+              src="/favicon.png"
+              alt="DA Orbit Logo"
+              className={`h-14 w-14 ${!scrolled ? "filter invert" : ""}`}
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
