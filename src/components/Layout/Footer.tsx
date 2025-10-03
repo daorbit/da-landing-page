@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
   ]
 
   const contactInfo = [
-    { icon: Mail, text: 'hello@daorbit.com', href: 'mailto:hello@daorbit.com' },
-    { icon: Phone, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
-    { icon: MapPin, text: 'San Francisco, CA', href: '#' }
+    { icon: Mail, text: 'daorbit2k25@gmail.com', href: 'mailto:daorbit2k25@gmail.com' },
+    // { icon: Phone, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
+    { icon: MapPin, text: 'Delhi, India', href: '#' }
   ]
 
   return (
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
               <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Da Orbit
               </h3>
-              <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+              <p className="text-gray-200 mb-6 max-w-md leading-relaxed">
                 Revolutionizing software development with cutting-edge solutions. 
                 We build the future, one orbit at a time.
               </p>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300"
+                    className="flex items-center space-x-3 text-gray-200 hover:text-white transition-colors duration-300"
                   >
                     <item.icon className="w-4 h-4" />
                     <a href={item.href} className="text-sm">
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1 }}
-                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600 transition-all duration-300"
+                    className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-gray-200 hover:text-white hover:bg-purple-600 transition-all duration-300"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-gray-400 hover:text-purple-400 transition-colors duration-300 text-left"
+                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left"
                   >
                     {link.name}
                   </button>
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
                 <li key={index}>
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-gray-400 hover:text-purple-400 transition-colors duration-300 text-left"
+                    className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left"
                   >
                     {link.name}
                   </button>
@@ -152,10 +152,10 @@ const Footer: React.FC = () => {
           className="border-t border-gray-800 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-200 text-sm">
               © 2025 Da Orbit. All rights reserved.
             </p>
-            <div className="flex items-center space-x-1 text-gray-400 text-sm">
+            <div className="flex items-center space-x-1 text-gray-200 text-sm">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
               <span>by Da Orbit Team</span>

@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent"
           >
-            Da Orbit
+            DA Orbit
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}

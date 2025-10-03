@@ -51,7 +51,7 @@ const Header: React.FC = () => {
             <h2 className={`text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent m-0 ${
               !scrolled ? 'text-white' : ''
             }`}>
-              Da Orbit
+              DA Orbit
             </h2>
           </motion.div>
 

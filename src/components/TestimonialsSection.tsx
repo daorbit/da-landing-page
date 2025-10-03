@@ -112,14 +112,14 @@ const TestimonialsSection: React.FC = () => {
           </button>
 
           {/* Testimonial Content */}
-          <div className="text-center">
+          <div className="text-center min-h-[400px] flex flex-col justify-center">
             {/* Stars */}
             <motion.div 
               key={`stars-${currentIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex justify-center items-center mb-8"
+              className="flex justify-center items-center mb-8 h-12"
             >
               {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                 <Star key={i} className="w-8 h-8 text-yellow-400 fill-current mx-1" />
@@ -127,15 +127,17 @@ const TestimonialsSection: React.FC = () => {
             </motion.div>
 
             {/* Quote */}
-            <motion.p 
+            <motion.div 
               key={`content-${currentIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-12 italic font-light"
+              className="mb-12 min-h-[200px] flex items-center justify-center"
             >
-              "{testimonials[currentIndex].content}"
-            </motion.p>
+              <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed italic font-light max-w-4xl">
+                "{testimonials[currentIndex].content}"
+              </p>
+            </motion.div>
 
             {/* Author Info */}
             <motion.div 
@@ -143,7 +145,7 @@ const TestimonialsSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-2"
+              className="space-y-2 h-16 flex flex-col justify-center"
             >
               <h4 className="text-xl font-bold text-gray-900">
                 {testimonials[currentIndex].name}
