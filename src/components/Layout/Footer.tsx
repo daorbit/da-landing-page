@@ -1,39 +1,167 @@
+'use client'
 import React from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin, Github, Twitter, Linkedin, Heart } from 'lucide-react'
 
 const Footer: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const footerLinks = {
+    services: [
+      { name: 'Web Development', href: '#features' },
+      { name: 'Mobile Apps', href: '#features' },
+      { name: 'Cloud Solutions', href: '#features' },
+      { name: 'Consulting', href: '#contact' }
+    ],
+    company: [
+      { name: 'About', href: '#about' },
+      { name: 'Testimonials', href: '#testimonials' },
+      { name: 'Contact', href: '#contact' },
+      { name: 'Blog', href: '#' }
+    ]
+  }
+
+  const socialLinks = [
+    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' }
+  ]
+
+  const contactInfo = [
+    { icon: Mail, text: 'hello@daorbit.com', href: 'mailto:hello@daorbit.com' },
+    { icon: Phone, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
+    { icon: MapPin, text: 'San Francisco, CA', href: '#' }
+  ]
+
   return (
-    <footer className="bg-slate-800 text-white mt-auto">
-      <div className="max-w-6xl mx-auto px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h3 className="text-2xl mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              Da Orbit
-            </h3>
-            <p className="text-gray-300 leading-relaxed">
-              Innovative software solutions that propel your business into the future.
+    <footer className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Company Info */}
+          <div className="lg:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Da Orbit
+              </h3>
+              <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+                Revolutionizing software development with cutting-edge solutions. 
+                We build the future, one orbit at a time.
+              </p>
+              
+              {/* Contact Info */}
+              <div className="space-y-3 mb-6">
+                {contactInfo.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    <item.icon className="w-4 h-4" />
+                    <a href={item.href} className="text-sm">
+                      {item.text}
+                    </a>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.1 }}
+                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-purple-600 transition-all duration-300"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* Services */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-6 text-white">Services</h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => scrollToSection(link.href.replace('#', ''))}
+                    className="text-gray-400 hover:text-purple-400 transition-colors duration-300 text-left"
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+          
+          {/* Company */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-6 text-white">Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => scrollToSection(link.href.replace('#', ''))}
+                    className="text-gray-400 hover:text-purple-400 transition-colors duration-300 text-left"
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+        
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="border-t border-gray-800 mt-12 pt-8"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © 2025 Da Orbit. All rights reserved.
             </p>
+            <div className="flex items-center space-x-1 text-gray-400 text-sm">
+              <span>Made with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span>by Da Orbit Team</span>
+            </div>
           </div>
-          <div>
-            <h4 className="text-xl mb-4 text-gray-100">Quick Links</h4>
-            <ul className="list-none p-0 m-0 space-y-2">
-              <li><a href="/" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">Home</a></li>
-              <li><a href="/about" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">About</a></li>
-              <li><a href="/services" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">Services</a></li>
-              <li><a href="/contact" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xl mb-4 text-gray-100">Connect</h4>
-            <ul className="list-none p-0 m-0 space-y-2">
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">GitHub</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">LinkedIn</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gray-100 transition-colors duration-300">Twitter</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="border-t border-slate-700 pt-8 text-center">
-          <p className="text-gray-400 m-0">&copy; 2025 Da Orbit. All rights reserved.</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

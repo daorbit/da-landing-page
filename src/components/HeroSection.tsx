@@ -1,8 +1,18 @@
+'use client'
 import React from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Play } from 'lucide-react'
 
 const HeroSection: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
       {/* Background overlay with subtle pattern */}
       <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
 
@@ -13,53 +23,114 @@ const HeroSection: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
       </div>
 
-      <div className="relative z-20 max-w-6xl mx-auto px-8 py-20 text-center">
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+      <div className="relative z-20 max-w-7xl mx-auto px-8 py-20 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent"
+          >
             Da Orbit
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
+          >
             Revolutionizing software development with cutting-edge solutions.
             We build the future, one orbit at a time.
-          </p>
-          <div className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto"
+          >
             Innovative software development, cloud solutions, and digital transformation
             services that propel your business into the next generation.
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
-            Get Started
-          </button>
-          <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
-            Learn More
-          </button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection('contact')}
+            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center space-x-2 group"
+          >
+            <span>Get Started</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection('features')}
+            className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center space-x-2 group"
+          >
+            <Play className="w-5 h-5" />
+            <span>Learn More</span>
+          </motion.button>
+        </motion.div>
 
         {/* Stats or features preview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
-            <div className="text-3xl font-bold text-purple-300 mb-2">500+</div>
-            <div className="text-gray-300">Projects Delivered</div>
-          </div>
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
-            <div className="text-3xl font-bold text-blue-300 mb-2">50+</div>
-            <div className="text-gray-300">Happy Clients</div>
-          </div>
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
-            <div className="text-3xl font-bold text-pink-300 mb-2">24/7</div>
-            <div className="text-gray-300">Support Available</div>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+          >
+            <div className="text-4xl font-bold text-purple-300 mb-3">500+</div>
+            <div className="text-gray-300 text-lg">Projects Delivered</div>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+          >
+            <div className="text-4xl font-bold text-blue-300 mb-3">150+</div>
+            <div className="text-gray-300 text-lg">Happy Clients</div>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300"
+          >
+            <div className="text-4xl font-bold text-pink-300 mb-3">24/7</div>
+            <div className="text-gray-300 text-lg">Support Available</div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white bg-opacity-50 rounded-full mt-2 animate-bounce"></div>
-        </div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer"
+        onClick={() => scrollToSection('features')}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center hover:border-opacity-100 transition-all duration-300"
+        >
+          <div className="w-1 h-3 bg-white bg-opacity-50 rounded-full mt-2"></div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
