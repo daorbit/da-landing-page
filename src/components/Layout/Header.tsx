@@ -49,9 +49,10 @@ const Header: React.FC = () => {
             onClick={() => scrollToSection("hero")}
           >
             <img
-              src="/favicon.png"
+              // src="/favicon.png"
+              src={!scrolled ? "/darkFavicon.png" : "/favicon.png"}
               alt="DA Orbit Logo"
-              className={`h-14 w-14 ${!scrolled ? "filter invert" : ""}`}
+              className={`h-14 w-14`}
             />
           </motion.div>
 
