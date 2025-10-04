@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
       { name: 'About', href: '#about' },
       { name: 'Testimonials', href: '#testimonials' },
       { name: 'Contact', href: '#contact' },
-      { name: 'Blog', href: '#' }
+      // { name: 'Blog', href: '#' }
     ]
   }
 
