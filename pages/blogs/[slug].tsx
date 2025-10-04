@@ -168,7 +168,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Layout>
         <main className="min-h-screen bg-black bg-opacity-30">
           {/* Content Section */}
-          <section className="py-8 sm:py-16 md:py-24 bg-black bg-opacity-30">
+          <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-16 md:pb-24 bg-black bg-opacity-30">
             <div className="max-w-7xl mx-auto">
               <BlogContent post={post} />
             </div>

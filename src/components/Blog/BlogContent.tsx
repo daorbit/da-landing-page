@@ -15,18 +15,18 @@ export default function BlogContent({ post }: BlogContentProps) {
   };
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
-      <nav className="mb-8" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-1 sm:space-x-2 text-sm text-gray-400 overflow-hidden">
+      <nav className="mb-6 sm:mb-8" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2 text-sm sm:text-base text-gray-400 overflow-hidden">
           <li className="flex-shrink-0">
-            <Link href="/" className="hover:text-blue-400 transition-colors">
+            <Link href="/" className="hover:text-blue-400 transition-colors font-medium">
               Home
             </Link>
           </li>
           <li className="flex items-center flex-shrink-0">
             <svg
-              className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2"
+              className="w-4 h-4 mx-2"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -38,14 +38,14 @@ export default function BlogContent({ post }: BlogContentProps) {
             </svg>
             <Link
               href="/blogs"
-              className="hover:text-blue-400 transition-colors"
+              className="hover:text-blue-400 transition-colors font-medium min-h-[0px]"
             >
               Blog
             </Link>
           </li>
           <li className="flex items-center min-w-0 flex-1">
             <svg
-              className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2 flex-shrink-0"
+              className="w-4 h-4 mx-2 flex-shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -55,7 +55,7 @@ export default function BlogContent({ post }: BlogContentProps) {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-white truncate" title={post.title}>
+            <span className="text-white truncate font-medium" title={post.title}>
               {post.title}
             </span>
           </li>

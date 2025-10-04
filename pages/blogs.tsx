@@ -99,7 +99,7 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
       <Layout>
         <main className="min-h-screen bg-gray-950">
           {/* Hero Section */}
-          <section className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-16 mt-15 md:py-24 border-b border-gray-800">
+          <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white py-16 mt-15 md:py-24 border-b border-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 ">
