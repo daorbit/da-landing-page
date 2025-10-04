@@ -17,9 +17,9 @@ const AboutSection: React.FC = () => {
   })
 
   const stats = [
-    { key: 'projects', end: 500, label: 'Projects Completed', suffix: '+' },
-    { key: 'clients', end: 150, label: 'Happy Clients', suffix: '+' },
-    { key: 'experience', end: 8, label: 'Years Experience', suffix: '' },
+    { key: 'projects', end: 50, label: 'Projects Completed', suffix: '+' },
+    { key: 'clients', end: 60, label: 'Happy Clients', suffix: '+' },
+    { key: 'experience', end: 5, label: 'Years Experience', suffix: '' },
     { key: 'satisfaction', end: 99, label: 'Client Satisfaction', suffix: '%' }
   ]
 

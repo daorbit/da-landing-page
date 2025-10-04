@@ -7,8 +7,8 @@ import { Code, Smartphone, Cloud, Shield, Zap, Users } from 'lucide-react'
 const features = [
   {
     icon: Code,
-    title: 'Custom Development',
-    description: 'Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.',
+    title: 'MERN Development',
+    description: 'Full-stack web applications using MongoDB, Express.js, React, and Node.js for scalable and efficient solutions.',
     color: 'from-purple-500 to-indigo-600'
   },
   {
@@ -19,14 +19,14 @@ const features = [
   },
   {
     icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Scalable cloud infrastructure and migration services to accelerate your digital transformation.',
+    title: 'SEO Solutions',
+    description: 'Comprehensive SEO strategies to enhance your online visibility and drive organic traffic.',
     color: 'from-teal-500 to-green-600'
   },
   {
     icon: Shield,
-    title: 'Security First',
-    description: 'Enterprise-grade security implementations to protect your data and ensure compliance.',
+    title: 'Custom Development',
+    description: 'Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.',
     color: 'from-orange-500 to-red-600'
   },
   {

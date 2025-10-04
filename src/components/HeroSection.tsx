@@ -90,14 +90,14 @@ const HeroSection: React.FC = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl"
           >
-            <div className="text-4xl font-bold text-white mb-3">500+</div>
+            <div className="text-4xl font-bold text-white mb-3">50+</div>
             <div className="text-white text-lg">Projects Delivered</div>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05, y: -5 }}
             className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl"
           >
-            <div className="text-4xl font-bold text-white mb-3">150+</div>
+            <div className="text-4xl font-bold text-white mb-3">60+</div>
             <div className="text-white text-lg">Happy Clients</div>
           </motion.div>
           <motion.div
