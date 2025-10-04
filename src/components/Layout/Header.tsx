@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -10,6 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +22,24 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    // If we're not on the home page, navigate to home first
+    if (router.pathname !== '/') {
+      router.push('/#' + sectionId);
+      setIsMenuOpen(false);
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
+
+  const handleNavigation = (item: any) => {
+    if (item.id) {
+      scrollToSection(item.id);
+    } else {
       setIsMenuOpen(false);
     }
   };
@@ -31,14 +48,13 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
     { label: "Home", id: "hero" },
     { label: "Features", id: "features" },
     { label: "About", id: "about" },
+    { label: "Blog", href: "/blogs" },
     { label: "Testimonials", id: "testimonials" },
     { label: "Contact", id: "contact" },
   ];
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
         scrolled
           ? "bg-white bg-opacity-95 backdrop-blur-md shadow-lg text-gray-700"
@@ -51,10 +67,15 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
     >
       <nav>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="logo cursor-pointer"
-            onClick={() => scrollToSection("hero")}
+          <div
+            className="logo cursor-pointer hover:scale-105 transition-transform duration-200"
+            onClick={() => {
+              if (router.pathname !== '/') {
+                router.push('/');
+              } else {
+                scrollToSection("hero");
+              }
+            }}
           >
             <img
               // src="/favicon.png"
@@ -62,26 +83,32 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
               alt="DA Orbit Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14"
             />
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex list-none m-0 p-0 gap-8">
             {navItems.map((item, index) => (
-              <motion.li
-                key={item.id}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`font-medium transition-colors duration-300 hover:text-purple-600 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-purple-500 after:to-blue-600 after:transition-all after:duration-300 hover:after:w-full ${
-                    scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </motion.li>
+              <li key={item.href || item.id}>
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className={`font-medium transition-colors duration-300 hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
+                      scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => handleNavigation(item)}
+                    className={`font-medium transition-colors duration-300 hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
+                      scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </li>
             ))}
           </ul>
 
@@ -99,7 +126,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           </button>
         </div>
       </nav>
-    </motion.header>
+    </header>
   );
 };
 

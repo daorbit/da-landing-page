@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Header from './Layout/Header'
 import Footer from './Layout/Footer'
 import MobileDrawer from './MobileDrawer'
@@ -10,6 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   // Prevent body scroll when drawer is open
   useEffect(() => {
@@ -33,10 +35,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   };
 
+  const handleNavigation = (item: { label: string; id?: string; href?: string }) => {
+    if (item.id) {
+      scrollToSection(item.id);
+    }
+    // For href items, Link component in drawer handles navigation
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
     { label: "Home", id: "hero" },
     { label: "Features", id: "features" },
     { label: "About", id: "about" },
+    { label: "Blog", href: "/blogs" },
     { label: "Testimonials", id: "testimonials" },
     { label: "Contact", id: "contact" },
   ];
@@ -56,7 +67,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         navItems={navItems}
-        onNavigate={scrollToSection}
+        onNavigate={handleNavigation}
       />
     </div>
   )

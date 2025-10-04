@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 import { X } from 'lucide-react';
 
 interface MobileDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  navItems: Array<{ label: string; id: string }>;
-  onNavigate: (sectionId: string) => void;
+  navItems: Array<{ label: string; id?: string; href?: string }>;
+  onNavigate: (item: { label: string; id?: string; href?: string }) => void;
 }
 
 const MobileDrawer: React.FC<MobileDrawerProps> = ({
@@ -37,13 +38,24 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
       {/* Drawer Navigation Items */}
       <div className="px-4 py-2">
         {navItems.map((item, index) => (
-          <button
-            key={item.id}
-            onClick={() => onNavigate(item.id)}
-            className="block w-full text-left py-3 px-2 text-gray-700 font-medium hover:text-purple-600 hover:bg-gray-50 rounded-md transition-colors duration-200 cursor-pointer"
-          >
-            {item.label}
-          </button>
+          item.href ? (
+            <Link
+              key={item.href || item.id}
+              href={item.href}
+              onClick={() => onNavigate(item)}
+              className="block w-full text-left py-3 px-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 cursor-pointer"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <button
+              key={item.href || item.id}
+              onClick={() => onNavigate(item)}
+              className="block w-full text-left py-3 px-2 text-gray-700 font-medium hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors duration-200 cursor-pointer"
+            >
+              {item.label}
+            </button>
+          )
         ))}
       </div>
     </div>
