@@ -1,4 +1,3 @@
-'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -18,19 +17,75 @@ const ContactSection: React.FC = () => {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState<any[]>([])
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 3000)
+    
+    // Clear previous errors
+    setErrors([])
+    setErrorMessage('')
+    setIsSubmitting(true)
+    
+    try {
+      const apiUrl = 'https://da-backend-ochre.vercel.app'
+      const response = await fetch(`${apiUrl}/api/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        })
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        // Handle validation errors
+        if (data.errors && Array.isArray(data.errors)) {
+          setErrors(data.errors)
+        }
+        setErrorMessage(data.message || 'Failed to submit form')
+        console.error('Form submission failed:', data.message, data.errors)
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setErrorMessage('Network error. Please check your internet connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     })
+    
+    // Clear errors for this field when user starts typing
+    if (errors.length > 0) {
+      setErrors(errors.filter(error => error.path !== name))
+    }
+    if (errorMessage) {
+      setErrorMessage('')
+    }
+  }
+
+  // Helper function to get error message for a specific field
+  const getFieldError = (fieldName: string) => {
+    const error = errors.find(err => err.path === fieldName)
+    return error ? error.msg : null
   }
 
   const contactInfo = [
@@ -103,6 +158,13 @@ const ContactSection: React.FC = () => {
           >
             <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Send us a message</h3>
             
+            {/* Error Message Display */}
+            {errorMessage && (
+              <div className="mb-4 p-3 bg-red-500 bg-opacity-20 border border-red-500 border-opacity-30 rounded-lg">
+                <p className="text-red-300 text-sm">{errorMessage}</p>
+              </div>
+            )}
+            
             {isSubmitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -127,9 +189,16 @@ const ContactSection: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white bg-opacity-90 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-gray-900 placeholder-gray-500 shadow-sm"
+                      className={`w-full px-4 py-3 bg-white bg-opacity-90 border-2 rounded-lg focus:outline-none focus:ring-2 text-gray-900 placeholder-gray-500 shadow-sm transition-colors ${
+                        getFieldError('name') 
+                          ? 'border-red-400 focus:ring-red-500 focus:border-red-500' 
+                          : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+                      }`}
                       placeholder="Your Name"
                     />
+                    {getFieldError('name') && (
+                      <p className="mt-1 text-sm text-red-300">{getFieldError('name')}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">
@@ -142,9 +211,16 @@ const ContactSection: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white bg-opacity-90 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-gray-900 placeholder-gray-500 shadow-sm"
+                      className={`w-full px-4 py-3 bg-white bg-opacity-90 border-2 rounded-lg focus:outline-none focus:ring-2 text-gray-900 placeholder-gray-500 shadow-sm transition-colors ${
+                        getFieldError('email') 
+                          ? 'border-red-400 focus:ring-red-500 focus:border-red-500' 
+                          : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+                      }`}
                       placeholder="your@email.com"
                     />
+                    {getFieldError('email') && (
+                      <p className="mt-1 text-sm text-red-300">{getFieldError('email')}</p>
+                    )}
                   </div>
                 </div>
                 
@@ -158,14 +234,21 @@ const ContactSection: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white bg-opacity-90 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-gray-900 placeholder-gray-500 shadow-sm"
+                    className={`w-full px-4 py-3 bg-white bg-opacity-90 border-2 rounded-lg focus:outline-none focus:ring-2 text-gray-900 placeholder-gray-500 shadow-sm transition-colors ${
+                      getFieldError('company') 
+                        ? 'border-red-400 focus:ring-red-500 focus:border-red-500' 
+                        : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+                    }`}
                     placeholder="Your Company"
                   />
+                  {getFieldError('company') && (
+                    <p className="mt-1 text-sm text-red-300">{getFieldError('company')}</p>
+                  )}
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">
-                    Message *
+                    Message * <span className="text-gray-300 font-normal">(minimum 10 characters)</span>
                   </label>
                   <textarea
                     id="message"
@@ -174,17 +257,48 @@ const ContactSection: React.FC = () => {
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white bg-opacity-90 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-gray-900 placeholder-gray-500 resize-none shadow-sm"
-                    placeholder="Tell us about your project..."
+                    className={`w-full px-4 py-3 bg-white bg-opacity-90 border-2 rounded-lg focus:outline-none focus:ring-2 text-gray-900 placeholder-gray-500 resize-none shadow-sm transition-colors ${
+                      getFieldError('message') 
+                        ? 'border-red-400 focus:ring-red-500 focus:border-red-500' 
+                        : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
+                    }`}
+                    placeholder="Tell us about your project... (Please write at least 10 characters)"
                   />
+                  <div className="mt-1 flex justify-between items-center">
+                    {getFieldError('message') ? (
+                      <p className="text-sm text-red-300">{getFieldError('message')}</p>
+                    ) : (
+                      <p className={`text-xs ${
+                        formData.message.length < 10 
+                          ? 'text-yellow-300' 
+                          : 'text-gray-400'
+                      }`}>
+                        {formData.message.length}/1000 characters
+                      </p>
+                    )}
+                  </div>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                  disabled={isSubmitting}
+                  className={`w-full px-8 py-4 font-semibold rounded-lg shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 ${
+                    isSubmitting
+                      ? 'bg-gray-500 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white hover:shadow-xl transform hover:scale-105 cursor-pointer'
+                  }`}
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
