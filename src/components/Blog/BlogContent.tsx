@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { BlogPost } from '../../types/blog';
+import Link from "next/link";
+import { BlogPost } from "../../types/blog";
 
 interface BlogContentProps {
   post: BlogPost;
@@ -7,10 +7,10 @@ interface BlogContentProps {
 
 export default function BlogContent({ post }: BlogContentProps) {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -25,16 +25,35 @@ export default function BlogContent({ post }: BlogContentProps) {
             </Link>
           </li>
           <li className="flex items-center flex-shrink-0">
-            <svg className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            <svg
+              className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
-            <Link href="/blogs" className="hover:text-blue-400 transition-colors">
+            <Link
+              href="/blogs"
+              className="hover:text-blue-400 transition-colors"
+            >
               Blog
             </Link>
           </li>
           <li className="flex items-center min-w-0 flex-1">
-            <svg className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            <svg
+              className="w-3 h-3 sm:w-4 sm:h-4 mx-1 sm:mx-2 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
             <span className="text-white truncate" title={post.title}>
               {post.title}
@@ -76,20 +95,20 @@ export default function BlogContent({ post }: BlogContentProps) {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-gray-700 gap-4">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-blue-600/20 border border-blue-600/30 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-medium text-blue-400">
-                {post.author.name.charAt(0)}
-              </span>
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                className="w-12 h-12 rounded-full object-cover"
+              />
             </div>
             <div className="min-w-0">
-              <p className="font-medium text-white">
-                {post.author.name}
-              </p>
+              <p className="font-medium text-white">{post.author.name}</p>
               <p className="text-sm text-gray-400">
                 {formatDate(post.publishedAt)}
               </p>
             </div>
           </div>
-          
+
           <div className="text-sm text-gray-400 sm:flex-shrink-0">
             {post.readTime} min read
           </div>
@@ -99,59 +118,75 @@ export default function BlogContent({ post }: BlogContentProps) {
       {/* Article Content */}
       <div className="prose prose-lg prose-violet max-w-none">
         <div className="whitespace-pre-line leading-relaxed">
-          {post.content.split('\n').map((paragraph, index) => {
-            if (paragraph.trim() === '') return <br key={index} />;
-            
-            if (paragraph.startsWith('# ')) {
+          {post.content.split("\n").map((paragraph, index) => {
+            if (paragraph.trim() === "") return <br key={index} />;
+
+            if (paragraph.startsWith("# ")) {
               return (
-                <h1 key={index} className="text-2xl sm:text-3xl font-bold mt-8 mb-4 text-white break-words">
+                <h1
+                  key={index}
+                  className="text-2xl sm:text-3xl font-bold mt-8 mb-4 text-white break-words"
+                >
                   {paragraph.substring(2)}
                 </h1>
               );
             }
-            
-            if (paragraph.startsWith('## ')) {
+
+            if (paragraph.startsWith("## ")) {
               return (
-                <h2 key={index} className="text-xl sm:text-2xl font-bold mt-6 mb-3 text-white break-words">
+                <h2
+                  key={index}
+                  className="text-xl sm:text-2xl font-bold mt-6 mb-3 text-white break-words"
+                >
                   {paragraph.substring(3)}
                 </h2>
               );
             }
-            
-            if (paragraph.startsWith('### ')) {
+
+            if (paragraph.startsWith("### ")) {
               return (
-                <h3 key={index} className="text-lg sm:text-xl font-bold mt-4 mb-2 text-white break-words">
+                <h3
+                  key={index}
+                  className="text-lg sm:text-xl font-bold mt-4 mb-2 text-white break-words"
+                >
                   {paragraph.substring(4)}
                 </h3>
               );
             }
-            
-            if (paragraph.startsWith('- ')) {
+
+            if (paragraph.startsWith("- ")) {
               return (
-                <li key={index} className="ml-4 mb-2 text-gray-300 leading-relaxed break-words">
+                <li
+                  key={index}
+                  className="ml-4 mb-2 text-gray-300 leading-relaxed break-words"
+                >
                   {paragraph.substring(2)}
                 </li>
               );
             }
-            
+
             if (paragraph.match(/^\d+\./)) {
               return (
-                <li key={index} className="ml-4 mb-2 text-gray-300 leading-relaxed break-words">
-                  {paragraph.replace(/^\d+\.\s*/, '')}
+                <li
+                  key={index}
+                  className="ml-4 mb-2 text-gray-300 leading-relaxed break-words"
+                >
+                  {paragraph.replace(/^\d+\.\s*/, "")}
                 </li>
               );
             }
-            
+
             return (
-              <p key={index} className="mb-4 text-gray-300 leading-relaxed break-words">
+              <p
+                key={index}
+                className="mb-4 text-gray-300 leading-relaxed break-words"
+              >
                 {paragraph}
               </p>
             );
           })}
         </div>
       </div>
-
-     
     </article>
   );
 }
