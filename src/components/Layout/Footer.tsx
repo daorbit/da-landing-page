@@ -50,8 +50,8 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Da Orbit
+              <h3 className="text-3xl font-bold mb-4 ">
+                DA Orbit
               </h3>
               <p className="text-gray-200 mb-6 max-w-md leading-relaxed">
                 Revolutionizing software development with cutting-edge solutions. 

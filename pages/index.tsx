@@ -1,13 +1,20 @@
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
-import Layout from '@/components/Layout'
-import HeroSection from '@/components/HeroSection'
-import FeaturesSection from '@/components/FeaturesSection'
-import AboutSection from '@/components/AboutSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
-import ContactSection from '@/components/ContactSection'
+import Layout from '../src/components/Layout'
+import HeroSection from '../src/components/HeroSection'
+import FeaturesSection from '../src/components/FeaturesSection'
+import AboutSection from '../src/components/AboutSection'
+import BlogCarousel from '../src/components/BlogCarousel'
+import TestimonialsSection from '../src/components/TestimonialsSection'
+import ContactSection from '../src/components/ContactSection'
+import { BlogPost } from '../src/types/blog'
+import { getAllPosts } from '../src/data/blogData'
 
-const Home: NextPage = () => {
+interface HomeProps {
+  posts: BlogPost[];
+}
+
+const Home: NextPage<HomeProps> = ({ posts }) => {
   const siteUrl = 'https://www.daorbit.in'
   const title = 'Da Orbit - Innovative Software Solutions & Digital Transformation'
   const description = 'Revolutionizing software development with cutting-edge solutions. Custom web development, mobile apps, cloud solutions, and digital transformation services. We build the future, one orbit at a time.'
@@ -182,11 +189,22 @@ const Home: NextPage = () => {
         <HeroSection />
         <FeaturesSection />
         <AboutSection />
+        <BlogCarousel posts={posts} />
         <TestimonialsSection />
         <ContactSection />
       </Layout>
     </>
   )
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = getAllPosts();
+  
+  return {
+    props: {
+      posts,
+    },
+  };
+};
 
 export default Home
