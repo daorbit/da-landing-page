@@ -58,16 +58,25 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(', ')} />
         <meta name="author" content={post.author.name} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* Open Graph */}
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="Da Orbit" />
         <meta property="og:title" content={`${post.title} - Da Orbit Blog`} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://daorbit.com/blogs/${post.slug}`} />
+        {post.image && <meta property="og:image" content={post.image} />}
+        {post.image && <meta property="og:image:width" content="1200" />}
+        {post.image && <meta property="og:image:height" content="630" />}
+        {post.image && <meta property="og:image:alt" content={post.title} />}
         
         {/* Article meta */}
         <meta property="article:author" content={post.author.name} />
         <meta property="article:published_time" content={formatDate(post.publishedAt)} />
+        <meta property="article:modified_time" content={formatDate(post.publishedAt)} />
         <meta property="article:section" content="Technology" />
         {post.tags.map((tag) => (
           <meta key={tag} property="article:tag" content={tag} />
@@ -75,8 +84,16 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@daorbit" />
+        <meta name="twitter:creator" content="@daorbit" />
         <meta name="twitter:title" content={`${post.title} - Da Orbit Blog`} />
         <meta name="twitter:description" content={post.excerpt} />
+        {post.image && <meta name="twitter:image" content={post.image} />}
+        {post.image && <meta name="twitter:image:alt" content={post.title} />}
+        
+        {/* Additional SEO meta tags */}
+        <meta name="theme-color" content="#1f2937" />
+        <meta name="format-detection" content="telephone=no" />
         
         {/* Canonical URL */}
         <link rel="canonical" href={`https://daorbit.com/blogs/${post.slug}`} />
@@ -90,16 +107,21 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
               "@type": "BlogPosting",
               "headline": post.title,
               "description": post.excerpt,
+              "image": post.image || "https://daorbit.com/images/favicon.png",
               "author": {
                 "@type": "Person",
-                "name": post.author.name
+                "name": post.author.name,
+                "url": "https://daorbit.com"
               },
               "publisher": {
                 "@type": "Organization",
                 "name": "Da Orbit",
+                "url": "https://daorbit.com",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://daorbit.com/favicon.png"
+                  "url": "https://daorbit.com/images/favicon.png",
+                  "width": 60,
+                  "height": 60
                 }
               },
               "datePublished": formatDate(post.publishedAt),
@@ -107,6 +129,20 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
               "mainEntityOfPage": {
                 "@type": "WebPage",
                 "@id": `https://daorbit.com/blogs/${post.slug}`
+              },
+              "keywords": post.tags.join(", "),
+              "articleSection": "Technology",
+              "inLanguage": "en-US",
+              "isPartOf": {
+                "@type": "Blog",
+                "@id": "https://daorbit.com/blogs",
+                "name": "Da Orbit Blog"
+              },
+              "wordCount": Math.round(post.content.split(' ').length),
+              "timeRequired": `PT${post.readTime}M`,
+              "about": {
+                "@type": "Thing",
+                "name": "Technology and Innovation"
               }
             })
           }}
@@ -116,31 +152,13 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Layout>
         <main className="min-h-screen bg-black bg-opacity-30">
           {/* Content Section */}
-          <section className="py-16 md:py-24 bg-black bg-opacity-30">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="py-8 sm:py-16 md:py-24 bg-black bg-opacity-30">
+            <div className="max-w-7xl mx-auto">
               <BlogContent post={post} />
             </div>
           </section>
 
-          {/* Related Posts Section */}
-          <section className="bg-gray-900 py-16 border-t border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-white mb-8">
-                  Continue Reading
-                </h2>
-                <p className="text-lg text-gray-300 mb-8">
-                  Explore more insights and perspectives from our blog.
-                </p>
-                <button
-                  onClick={() => router.push('/blogs')}
-                  className="px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  View All Posts
-                </button>
-              </div>
-            </div>
-          </section>
+          
         </main>
       </Layout>
     </>

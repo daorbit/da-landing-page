@@ -63,11 +63,11 @@ Whether you're building complex software, analyzing financial data, conducting l
     `,
     author: {
       name: 'DA Orbit',
-      avatar: '/images/authors/alex-chen.jpg'
+      avatar: '/images/favicon.png'
     },
     publishedAt: '2025-10-01T10:00:00Z',
     readTime: 8,
-    tags: ['AI', 'Claude', 'Technology', 'Machine Learning'],
+    tags: ['AI', 'Claude', 'Technology'],
     featured: true
   },
   {
@@ -195,7 +195,7 @@ As data continues to grow exponentially and computational power increases, machi
     `,
     author: {
       name: 'DA Orbit',
-      avatar: '/images/authors/sarah-kumar.jpg'
+      avatar: '/images/favicon.png'
     },
     publishedAt: '2025-09-28T14:30:00Z',
     readTime: 12,
@@ -314,7 +314,7 @@ Follow these steps to get your MERN application running on Vercel with minimal c
     `,
     author: {
       name: 'DA Orbit',
-      avatar: '/images/authors/da-orbit.jpg'
+      avatar: '/images/favicon.png'
     },
     publishedAt: '2025-09-25T09:15:00Z',
     readTime: 15,
