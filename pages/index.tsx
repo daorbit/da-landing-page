@@ -16,7 +16,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
   const siteUrl = 'https://www.daorbit.in'
-  const title = 'Da Orbit - Innovative Software Solutions & Digital Transformation'
+  const title = 'DA Orbit - Innovative Software Solutions & Digital Transformation'
   const description = 'Revolutionizing software development with cutting-edge solutions. Custom web development, mobile apps, cloud solutions, and digital transformation services. We build the future, one orbit at a time.'
   const image = `${siteUrl}/images/og-image.png`
 
