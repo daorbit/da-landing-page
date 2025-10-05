@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Layout from '../src/components/Layout'
 import HeroSection from '../src/components/HeroSection'
 import FeaturesSection from '../src/components/FeaturesSection'
+import SnappixySection from '../src/components/SnappixySection'
 import AboutSection from '../src/components/AboutSection'
 import BlogCarousel from '../src/components/BlogCarousel'
 import TestimonialsSection from '../src/components/TestimonialsSection'
@@ -188,6 +189,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
       <Layout>
         <HeroSection />
         <FeaturesSection />
+        <SnappixySection />
         <AboutSection />
         <BlogCarousel posts={posts} />
         <TestimonialsSection />
