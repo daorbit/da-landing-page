@@ -6,8 +6,8 @@ const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>About - Da Orbit</title>
-        <meta name="description" content="Learn more about Da Orbit - Innovative software development and digital transformation services" />
+        <title>About - DA Orbit</title>
+        <meta name="description" content="Learn more about DA Orbit - Innovative software development and digital transformation services" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       

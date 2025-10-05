@@ -345,7 +345,7 @@ const ContactSection: React.FC = () => {
             </div>
 
             <div className=" bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-30 shadow-lg">
-              <h4 className="font-semibold text-white mb-3">Why choose Da Orbit?</h4>
+              <h4 className="font-semibold text-white mb-3">Why choose DA Orbit?</h4>
               <ul className="space-y-2 text-gray-100">
                 <li className="flex items-center space-x-2">
                   <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
