@@ -1,15 +1,29 @@
 'use client'
 import React from 'react'
+import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Github, Twitter, Linkedin, Heart } from 'lucide-react'
 
 const Footer: React.FC = () => {
+  const router = useRouter();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
+
+  const handleFooterNavigation = (href: string) => {
+    const sectionId = href.replace('#', '');
+    if (router.pathname.startsWith('/blogs')) {
+      // On blog pages, navigate to home page with hash
+      router.push(`/#${sectionId}`);
+    } else {
+      // On home page, scroll to section
+      scrollToSection(sectionId);
+    }
+  };
 
   const footerLinks = {
     services: [
@@ -110,7 +124,7 @@ const Footer: React.FC = () => {
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
                   <button
-                    onClick={() => scrollToSection(link.href.replace('#', ''))}
+                    onClick={() => handleFooterNavigation(link.href)}
                     className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left cursor-pointer"
                   >
                     {link.name}
@@ -132,7 +146,7 @@ const Footer: React.FC = () => {
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   <button
-                    onClick={() => scrollToSection(link.href.replace('#', ''))}
+                    onClick={() => handleFooterNavigation(link.href)}
                     className="text-gray-200 hover:text-purple-300 transition-colors duration-300 text-left cursor-pointer"
                   >
                     {link.name}

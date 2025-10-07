@@ -38,12 +38,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const handleNavigation = (item: { label: string; id?: string; href?: string }) => {
     if (item.id) {
       scrollToSection(item.id);
+    } else if (item.href) {
+      router.push(item.href);
     }
-    // For href items, Link component in drawer handles navigation
     setIsMenuOpen(false);
   };
 
-  const navItems = [
+  const navItems = router.pathname.startsWith('/blogs') ? [
+    { label: "Home", href: "/#hero" },
+    { label: "Features", href: "/#features" },
+    { label: "About", href: "/#about" },
+    { label: "Blog", href: "/blogs" },
+    { label: "Testimonials", href: "/#testimonials" },
+    { label: "Contact", href: "/#contact" },
+  ] : [
     { label: "Home", id: "hero" },
     { label: "Features", id: "features" },
     { label: "About", id: "about" },
