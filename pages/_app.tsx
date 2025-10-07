@@ -1,8 +1,9 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import '../src/styles/globals.css'
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import CookieConsentBanner from "../src/components/CookieConsentBanner";
+import "../src/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
 
         <script
           type="application/ld+json"
@@ -28,41 +33,45 @@ export default function App({ Component, pageProps }: AppProps) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Da Orbit",
-              "url": "https://www.daorbit.in",
-              "logo": "https://www.daorbit.in/favicon.png",
-              "description": "Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time.",
-              "foundingDate": "2025",
-              "address": {
+              name: "Da Orbit",
+              url: "https://www.daorbit.in",
+              logo: "https://www.daorbit.in/favicon.png",
+              description:
+                "Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time.",
+              foundingDate: "2025",
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Delhi",
-                "addressCountry": "India"
+                addressLocality: "Delhi",
+                addressCountry: "India",
               },
-              "contactPoint": {
+              contactPoint: {
                 "@type": "ContactPoint",
-                "email": "daorbit2k25@gmail.com",
-                "contactType": "customer service"
+                email: "daorbit2k25@gmail.com",
+                contactType: "customer service",
               },
-              "sameAs": [
+              sameAs: [
                 "https://github.com/daorbit",
-                "https://linkedin.com/company/daorbit"
-              ]
-            })
+                "https://linkedin.com/company/daorbit",
+              ],
+            }),
           }}
         />
 
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
             /* Prevent flash of unstyled content */
             .min-h-screen {
               min-height: 100vh;
             }
-          `
-        }} />
+          `,
+          }}
+        />
       </Head>
       <Component {...pageProps} />
+      <CookieConsentBanner />
       <Analytics />
       <SpeedInsights />
     </>
-  )
+  );
 }
