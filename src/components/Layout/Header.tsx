@@ -92,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`font-medium transition-colors duration-300 hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
+                    className={`font-medium  hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
                       scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
                     }`}
                   >
