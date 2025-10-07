@@ -85,7 +85,7 @@ const SnappixySection: React.FC = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <a
-                  href="https://staging-image-builder.vercel.app/"
+                  href="https://snappixy.daorbit.in/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "#fff" }}
