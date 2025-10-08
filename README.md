@@ -1,6 +1,6 @@
-# Da Orbit - Landing Page 
+# DA Orbit - Landing Page 
 
-A modern, responsive landing page for Da Orbit - Innovative Software Solutions built with Next.js 14, TypeScript, and Tailwind CSS.
+A modern, responsive landing page for DA Orbit - Innovative Software Solutions built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 

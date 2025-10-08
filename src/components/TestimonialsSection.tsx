@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'CEO, TechStart Inc.',
-    content: 'Da Orbit transformed our vision into reality. Their expertise in cloud solutions helped us scale 10x faster than we imagined possible. The team was professional and delivered exceptional results.',
+    content: 'DA Orbit transformed our vision into reality. Their expertise in cloud solutions helped us scale 10x faster than we imagined possible. The team was professional and delivered exceptional results.',
     rating: 5,
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
   {
     name: 'Emily Rodriguez',
     role: 'Founder, GrowthHub',
-    content: 'Working with Da Orbit was a game-changer. Their team delivered a robust platform that automated 80% of our workflow. Outstanding service and support throughout.',
+    content: 'Working with DA Orbit was a game-changer. Their team delivered a robust platform that automated 80% of our workflow. Outstanding service and support throughout.',
     rating: 5,
   }
 ]

@@ -58,7 +58,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
   return (
     <>
       <Head>
-        <title>{post.title} - Da Orbit Blog</title>
+        <title>{post.title} - DA Orbit Blog</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(", ")} />
         <meta name="author" content={post.author.name} />
@@ -70,8 +70,8 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
         {/* Open Graph */}
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="Da Orbit" />
-        <meta property="og:title" content={`${post.title} - Da Orbit Blog`} />
+        <meta property="og:site_name" content="DA Orbit" />
+        <meta property="og:title" content={`${post.title} - DA Orbit Blog`} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
         <meta
@@ -102,7 +102,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@daorbit" />
         <meta name="twitter:creator" content="@daorbit" />
-        <meta name="twitter:title" content={`${post.title} - Da Orbit Blog`} />
+        <meta name="twitter:title" content={`${post.title} - DA Orbit Blog`} />
         <meta name="twitter:description" content={post.excerpt} />
         {post.image && <meta name="twitter:image" content={post.image} />}
         {post.image && <meta name="twitter:image:alt" content={post.title} />}
@@ -131,7 +131,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
               },
               publisher: {
                 "@type": "Organization",
-                name: "Da Orbit",
+                name: "DA Orbit",
                 url: "https://daorbit.com",
                 logo: {
                   "@type": "ImageObject",
@@ -152,7 +152,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
               isPartOf: {
                 "@type": "Blog",
                 "@id": "https://daorbit.com/blogs",
-                name: "Da Orbit Blog",
+                name: "DA Orbit Blog",
               },
               wordCount: Math.round(post.content.split(" ").length),
               timeRequired: `PT${post.readTime}M`,

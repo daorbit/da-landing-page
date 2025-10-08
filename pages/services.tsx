@@ -45,8 +45,8 @@ const Services: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Services - Da Orbit</title>
-        <meta name="description" content="Explore our comprehensive software development services at Da Orbit. From web development to cloud solutions, we deliver innovative technology solutions." />
+        <title>Services - DA Orbit</title>
+        <meta name="description" content="Explore our comprehensive software development services at DA Orbit. From web development to cloud solutions, we deliver innovative technology solutions." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 

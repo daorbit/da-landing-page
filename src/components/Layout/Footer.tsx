@@ -167,12 +167,12 @@ const Footer: React.FC = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-200 text-sm">
-              © 2025 Da Orbit. All rights reserved.
+              © 2025 DA Orbit. All rights reserved.
             </p>
             <div className="flex items-center space-x-1 text-gray-200 text-sm">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>by Da Orbit Team</span>
+              <span>by DA Orbit Team</span>
             </div>
           </div>
         </motion.div>

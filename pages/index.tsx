@@ -30,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <meta name="title" content={title} />
         <meta name="description" content={description} />
         <meta name="keywords" content="software development, web development, mobile apps, cloud solutions, digital transformation, custom software, technology consulting, Delhi, India" />
-        <meta name="author" content="Da Orbit" />
+        <meta name="author" content="DA Orbit" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
@@ -46,8 +46,8 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <meta property="og:image" content={image} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Da Orbit - Innovative Software Solutions" />
-        <meta property="og:site_name" content="Da Orbit" />
+        <meta property="og:image:alt" content="DA Orbit - Innovative Software Solutions" />
+        <meta property="og:site_name" content="DA Orbit" />
         <meta property="og:locale" content="en_US" />
 
         {/* Twitter */}
@@ -56,12 +56,12 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={image} />
-        <meta property="twitter:image:alt" content="Da Orbit - Innovative Software Solutions" />
+        <meta property="twitter:image:alt" content="DA Orbit - Innovative Software Solutions" />
 
         {/* Additional SEO Tags */}
         <meta name="theme-color" content="#7c3aed" />
         <meta name="msapplication-TileColor" content="#7c3aed" />
-        <meta name="application-name" content="Da Orbit" />
+        <meta name="application-name" content="DA Orbit" />
 
         {/* Structured Data for Local Business */}
         <script
@@ -70,7 +70,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "Da Orbit",
+              "name": "DA Orbit",
               "image": `${siteUrl}/favicon.png`,
               "description": description,
               "url": siteUrl,

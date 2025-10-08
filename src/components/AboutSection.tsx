@@ -55,7 +55,7 @@ const AboutSection: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-              About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Da Orbit</span>
+              About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">DA Orbit</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 sm:mb-6 leading-relaxed">
               We are a passionate team of developers, designers, and innovators committed to 
@@ -63,7 +63,7 @@ const AboutSection: React.FC = () => {
             </p>
             <p className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 leading-relaxed">
               Founded with the vision to bridge the gap between complex technology and business success, 
-              Da Orbit has been at the forefront of digital transformation, delivering solutions that 
+              DA Orbit has been at the forefront of digital transformation, delivering solutions that 
               not only meet today's challenges but anticipate tomorrow's opportunities.
             </p>
             <motion.div

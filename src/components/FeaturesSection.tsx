@@ -78,7 +78,7 @@ const FeaturesSection: React.FC = () => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
           >
-            Why Choose <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Da Orbit</span>
+            Why Choose <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">DA Orbit</span>
           </motion.h2>
           <motion.p 
             variants={itemVariants}

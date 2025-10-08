@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#7c3aed" />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
-        <meta name="author" content="Da Orbit" />
+        <meta name="author" content="DA Orbit" />
 
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Da Orbit",
+              name: "DA Orbit",
               url: "https://www.daorbit.in",
               logo: "https://www.daorbit.in/favicon.png",
               description:

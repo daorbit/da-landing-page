@@ -37,7 +37,7 @@ const About: NextPage = () => {
               color: '#555',
               marginBottom: '2rem'
             }}>
-              At Da Orbit, we specialize in cutting-edge software development, cloud solutions, 
+              At DA Orbit, we specialize in cutting-edge software development, cloud solutions, 
               and digital transformation services. Our team of expert developers and engineers 
               work tirelessly to deliver innovative solutions that drive business growth and success.
             </p>

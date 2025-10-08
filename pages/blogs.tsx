@@ -13,39 +13,39 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
   return (
     <>
       <Head>
-        <title>Blog - Da Orbit | Latest Insights & Updates</title>
+        <title>Blog - DA Orbit | Latest Insights & Updates</title>
         <meta 
           name="description" 
-          content="Stay updated with the latest insights, trends, and updates from Da Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
+          content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
         />
-        <meta name="keywords" content="blog, insights, technology, business, innovation, digital transformation, Da Orbit, AI, software development" />
-        <meta name="author" content="Da Orbit" />
+        <meta name="keywords" content="blog, insights, technology, business, innovation, digital transformation, DA Orbit, AI, software development" />
+        <meta name="author" content="DA Orbit" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* Open Graph */}
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="Da Orbit" />
-        <meta property="og:title" content="Blog - Da Orbit | Latest Insights & Updates" />
+        <meta property="og:site_name" content="DA Orbit" />
+        <meta property="og:title" content="Blog - DA Orbit | Latest Insights & Updates" />
         <meta 
           property="og:description" 
-          content="Stay updated with the latest insights, trends, and updates from Da Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
+          content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://daorbit.com/blogs" />
         <meta property="og:image" content="https://daorbit.com/images/favicon.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Da Orbit Blog - Latest Insights & Updates" />
+        <meta property="og:image:alt" content="DA Orbit Blog - Latest Insights & Updates" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@daorbit" />
         <meta name="twitter:creator" content="@daorbit" />
-        <meta name="twitter:title" content="Blog - Da Orbit | Latest Insights & Updates" />
-        <meta name="twitter:description" content="Stay updated with the latest insights, trends, and updates from Da Orbit. Explore our blog for expert perspectives on technology, business, and innovation." />
+        <meta name="twitter:title" content="Blog - DA Orbit | Latest Insights & Updates" />
+        <meta name="twitter:description" content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." />
         <meta name="twitter:image" content="https://daorbit.com/images/favicon.png" />
-        <meta name="twitter:image:alt" content="Da Orbit Blog" />
+        <meta name="twitter:image:alt" content="DA Orbit Blog" />
         
         {/* Additional SEO meta tags */}
         <meta name="theme-color" content="#1f2937" />
@@ -60,12 +60,12 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Blog",
-              "name": "Da Orbit Blog",
-              "description": "Stay updated with the latest insights, trends, and updates from Da Orbit. Expert perspectives on technology, business, and innovation.",
+              "name": "DA Orbit Blog",
+              "description": "Stay updated with the latest insights, trends, and updates from DA Orbit. Expert perspectives on technology, business, and innovation.",
               "url": "https://daorbit.com/blogs",
               "publisher": {
                 "@type": "Organization",
-                "name": "Da Orbit",
+                "name": "DA Orbit",
                 "url": "https://daorbit.com",
                 "logo": {
                   "@type": "ImageObject",

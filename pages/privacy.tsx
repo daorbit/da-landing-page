@@ -6,8 +6,8 @@ const PrivacyPolicy: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Privacy Policy - Da Orbit</title>
-        <meta name="description" content="Privacy Policy for Da Orbit - Learn how we collect, use, and protect your personal information." />
+        <title>Privacy Policy - DA Orbit</title>
+        <meta name="description" content="Privacy Policy for DA Orbit - Learn how we collect, use, and protect your personal information." />
         <meta name="robots" content="index, follow" />
       </Head>
       
