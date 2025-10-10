@@ -14,6 +14,14 @@ export default function BlogContent({ post }: BlogContentProps) {
     });
   };
 
+  const sanitizeContent = (html: string) => {
+    const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    if (bodyMatch) {
+      return bodyMatch[1];
+    }
+    return html;
+  };
+
   return (
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
@@ -116,76 +124,11 @@ export default function BlogContent({ post }: BlogContentProps) {
       </header>
 
       {/* Article Content */}
-      <div className="prose prose-lg prose-violet max-w-none">
-        <div className="whitespace-pre-line leading-relaxed">
-          {post.content.split("\n").map((paragraph, index) => {
-            if (paragraph.trim() === "") return <br key={index} />;
-
-            if (paragraph.startsWith("# ")) {
-              return (
-                <h1
-                  key={index}
-                  className="text-2xl sm:text-3xl font-bold mt-8 mb-4 text-white break-words"
-                >
-                  {paragraph.substring(2)}
-                </h1>
-              );
-            }
-
-            if (paragraph.startsWith("## ")) {
-              return (
-                <h2
-                  key={index}
-                  className="text-xl sm:text-2xl font-bold mt-6 mb-3 text-white break-words"
-                >
-                  {paragraph.substring(3)}
-                </h2>
-              );
-            }
-
-            if (paragraph.startsWith("### ")) {
-              return (
-                <h3
-                  key={index}
-                  className="text-lg sm:text-xl font-bold mt-4 mb-2 text-white break-words"
-                >
-                  {paragraph.substring(4)}
-                </h3>
-              );
-            }
-
-            if (paragraph.startsWith("- ")) {
-              return (
-                <li
-                  key={index}
-                  className="ml-4 mb-2 text-gray-300 leading-relaxed break-words"
-                >
-                  {paragraph.substring(2)}
-                </li>
-              );
-            }
-
-            if (paragraph.match(/^\d+\./)) {
-              return (
-                <li
-                  key={index}
-                  className="ml-4 mb-2 text-gray-300 leading-relaxed break-words"
-                >
-                  {paragraph.replace(/^\d+\.\s*/, "")}
-                </li>
-              );
-            }
-
-            return (
-              <p
-                key={index}
-                className="mb-4 text-gray-300 leading-relaxed break-words"
-              >
-                {paragraph}
-              </p>
-            );
-          })}
-        </div>
+      <div className="prose prose-lg prose-violet max-w-none m-0">
+        <div 
+          className="text-gray-300 leading-relaxed break-words m-0"
+          dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content) }}
+        />
       </div>
     </article>
   );

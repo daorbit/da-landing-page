@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "../../src/components/Layout";
 import BlogContent from "../../src/components/Blog/BlogContent";
 import { BlogPost } from "../../src/types/blog";
-import { getAllPosts, getPostBySlug } from "../../src/data/blogData";
+import { getAllPosts, getPostBySlug } from '../../src/data/blogData';
 
 interface BlogPostPageProps {
   post: BlogPost | null;
@@ -180,7 +180,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   const paths = posts.map((post) => ({
     params: { slug: post.slug },
@@ -194,7 +194,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params?.slug as string;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
