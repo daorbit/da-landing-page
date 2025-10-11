@@ -183,4 +183,7 @@ img {
     transform: translateZ(0);
   }
 }
- 
+
+.blog-content * {
+  all: revert !important;
+}

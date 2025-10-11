@@ -14,14 +14,6 @@ export default function BlogContent({ post }: BlogContentProps) {
     });
   };
 
-  const sanitizeContent = (html: string) => {
-    const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-    if (bodyMatch) {
-      return bodyMatch[1];
-    }
-    return html;
-  };
-
   return (
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
@@ -124,10 +116,11 @@ export default function BlogContent({ post }: BlogContentProps) {
       </header>
 
       {/* Article Content */}
-      <div className="prose prose-lg prose-violet max-w-none m-0">
+      <div className="max-w-none m-0">
         <div 
-          className="text-gray-300 leading-relaxed break-words m-0"
-          dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content) }}
+          className="blog-content"
+          style={{ all: 'unset',color:"#fff" }}
+          dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>
     </article>
