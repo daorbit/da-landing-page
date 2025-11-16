@@ -6,10 +6,10 @@ import FeaturesSection from "../src/components/FeaturesSection";
 import SnappixySection from "../src/components/SnappixySection";
 import TheTechodioSection from "../src/components/TheTechodioSection";
 import OptivueSection from "../src/components/OptivueSection";
-import Draft2DevSection from "../src/components/Draft2DevSection";
+// import Draft2DevSection from "../src/components/Draft2DevSection";
 import AboutSection from "../src/components/AboutSection";
 import BlogCarousel from "../src/components/BlogCarousel";
-import TestimonialsSection from "../src/components/TestimonialsSection";
+// import TestimonialsSection from "../src/components/TestimonialsSection";
 import ContactSection from "../src/components/ContactSection";
 import { BlogPost } from "../src/types/blog";
 import { getAllPosts } from "../src/data/blogData";
@@ -220,7 +220,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         {/* <Draft2DevSection /> */}
         <AboutSection />
         <BlogCarousel posts={posts} />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         <ContactSection />
       </Layout>
     </>

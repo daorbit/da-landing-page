@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
 
   const socialLinks = [
     // { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Twitter, href: 'https://x.com/daorbit2k25', label: 'Twitter' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' }
   ]
 
