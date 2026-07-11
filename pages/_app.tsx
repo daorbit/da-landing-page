@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
           <script
         src="https://real-ana-be.vercel.app/tracker.js"
-        data-site="natsWntQqgKCnkqT"
+        data-site="UUuaEUIA0gJpWKvi"
         // strategy="afterInteractive"
       />
 
