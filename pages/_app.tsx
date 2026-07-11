@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import CookieConsentBanner from "../src/components/CookieConsentBanner";
 import "../src/styles/globals.css";
-import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -27,10 +26,10 @@ export default function App({ Component, pageProps }: AppProps) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-          <Script
+          <script
         src="https://real-ana-be.vercel.app/tracker.js"
         data-site="UUuaEUIA0gJpWKvi"
-        strategy="afterInteractive"
+        // strategy="afterInteractive"
       />
 
         <script

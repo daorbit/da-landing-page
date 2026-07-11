@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
     { label: "About", id: "about" },
     { label: "Blog", href: "/blogs" },
     { label: "Testimonials", id: "testimonials" },
-    { label: "Contact", id: "contact" },
+    { label: "Contacts", id: "contact" },
   ];
 
   return (
