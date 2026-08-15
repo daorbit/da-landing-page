@@ -16,12 +16,6 @@ const ContactSection: React.FC = () => {
       content: 'daorbit2k25@gmail.com',
       link: 'mailto:daorbit2k25@gmail.com'
     },
-    // {
-    //   icon: Phone,
-    //   title: 'Call Us',
-    //   content: '+1 (555) 123-4567',
-    //   link: 'tel:+15551234567'
-    // },
     {
       icon: MapPin,
       title: 'Visit Us',
@@ -46,24 +40,24 @@ const ContactSection: React.FC = () => {
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white" id="contact">
+    <section className="py-16 sm:py-20 md:py-24 bg-white" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-10 sm:mb-12 md:mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white px-4 sm:px-0"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4"
           >
-            Ready to Start Your <span className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">Journey?</span>
+            Ready to start your journey?
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto px-4 sm:px-0"
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             Let's discuss how we can help transform your business with innovative technology solutions
           </motion.p>
@@ -76,14 +70,6 @@ const ContactSection: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-4">Get in touch</h3>
-              <p className="text-gray-100 text-lg leading-relaxed">
-                Ready to take your business to the next level? We're here to help you navigate
-                the digital landscape and create solutions that drive real results.
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {contactInfo.map((info, index) => (
                 <motion.a
@@ -92,16 +78,16 @@ const ContactSection: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="flex items-center space-x-4 p-4 bg-opacity-15 backdrop-blur-sm rounded-lg border border-white border-opacity-30 hover:bg-opacity-25 transition-all duration-300 group shadow-lg cursor-pointer"
+                  className="flex items-center space-x-4 p-4 rounded-lg border border-gray-200 hover:border-indigo-200 hover:shadow-sm transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <info.icon className="w-6 h-6 text-white" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center">
+                    <info.icon className="w-6 h-6 text-indigo-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white group-hover:text-purple-300 transition-colors duration-300">
+                    <h4 className="font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
                       {info.title}
                     </h4>
-                    <p className="text-gray-100">
+                    <p className="text-gray-600 text-sm">
                       {info.content}
                     </p>
                   </div>
@@ -109,23 +95,23 @@ const ContactSection: React.FC = () => {
               ))}
             </div>
 
-            <div className="bg-opacity-15 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-30 shadow-lg">
-              <h4 className="font-semibold text-white mb-3">Why choose DA Orbit?</h4>
-              <ul className="space-y-2 text-gray-100">
+            <div className="rounded-lg p-6 border border-gray-200 bg-gray-50">
+              <h4 className="font-semibold text-gray-900 mb-3">Why choose DA Orbit?</h4>
+              <ul className="space-y-2 text-gray-600 text-sm">
                 <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
                   <span>Free consultation & project estimate</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
                   <span>Agile development process</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
                   <span>Post-launch support & maintenance</span>
                 </li>
                 <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
                   <span>Dedicated project manager</span>
                 </li>
               </ul>
