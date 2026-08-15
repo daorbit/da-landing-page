@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
-const OptivueSection: React.FC = () => {
+const QuantalogSection: React.FC = () => {
   const features = [
-    "Meta campaigns performance analysis",
-    "Ad spend optimization insights",
-    "SEO performance tracking",
-    // "Real-time analytics dashboard",
-    "AI-powered suggestion system to improve SEO",
+    "Real-time visitor and pageview dashboards",
+    "Cookieless tracking, no consent banner required",
+    "Built-in SEO audits with Core Web Vitals scoring",
+    "Custom events, funnels, and conversion goals",
+    "Embeddable API for white-label analytics",
   ];
 
   return (
@@ -17,11 +17,11 @@ const OptivueSection: React.FC = () => {
           {/* Left Column - Image */}
           <div className="order-2 lg:order-1">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl transform rotate-3 opacity-30"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl transform rotate-3 opacity-30"></div>
               <div className="relative bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
                 <Image
-                  src="/optivue-logo.png"
-                  alt="Optivue - Analytics Data Analysis"
+                  src="/quantalog-logo.png"
+                  alt="Quantalog - Real-time Web Analytics"
                   width={500}
                   height={300}
                   className="w-full h-auto rounded-lg shadow-lg"
@@ -36,19 +36,19 @@ const OptivueSection: React.FC = () => {
             <div className="space-y-6">
               {/* Title */}
               <h2 className="text-4xl lg:text-5xl font-bold text-white">
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  Optivue
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                  Quantalog
                 </span>
               </h2>
 
               {/* Subtitle */}
               <p className="text-xl text-gray-300 font-medium">
-                Analytics Data Analysis
+                Real-time analytics you can embed
               </p>
 
               {/* Description */}
               <p className="text-lg text-gray-300 leading-relaxed">
-                Unlock the power of your data with Optivue's comprehensive analytics platform. Analyze Meta campaigns, track ad performance, and optimize your SEO strategy with real-time insights and actionable recommendations.
+                A privacy-first analytics platform with real-time dashboards, built-in SEO audits, and a multi-tenant API. See who visits, find what's holding your pages back, and ship it all to your own users.
               </p>
 
               {/* Features List */}
@@ -59,7 +59,7 @@ const OptivueSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mt-0.5 shadow-md">
+                      <div className="flex-shrink-0 w-5 h-5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mt-0.5 shadow-md">
                         <svg
                           className="w-3 h-3 text-white"
                           fill="currentColor"
@@ -81,13 +81,13 @@ const OptivueSection: React.FC = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <a
-                  href="https://optivue.daorbit.in/"
+                  href="https://quantalog.daorbit.in"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "#fff" }}
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-blue-600 text-base font-medium rounded-lg hover:border-cyan-600 transform transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-emerald-600 text-base font-medium rounded-lg hover:border-teal-600 transform transition-all duration-200 shadow-lg hover:shadow-emerald-500/25"
                 >
-                  Explore Optivue
+                  Explore Quantalog
                   <svg
                     className="ml-2 -mr-1 w-5 h-5"
                     fill="currentColor"
@@ -109,4 +109,4 @@ const OptivueSection: React.FC = () => {
   );
 };
 
-export default OptivueSection;
+export default QuantalogSection;

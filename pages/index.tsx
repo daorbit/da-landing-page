@@ -5,7 +5,7 @@ import HeroSection from "../src/components/HeroSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import SnappixySection from "../src/components/SnappixySection";
 import TheTechodioSection from "../src/components/TheTechodioSection";
-import OptivueSection from "../src/components/OptivueSection";
+import QuantalogSection from "../src/components/QuantalogSection";
 // import Draft2DevSection from "../src/components/Draft2DevSection";
 import AboutSection from "../src/components/AboutSection";
 import BlogCarousel from "../src/components/BlogCarousel";
@@ -216,7 +216,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <FeaturesSection />
         <SnappixySection />
         <TheTechodioSection />
-        <OptivueSection />
+        <QuantalogSection />
         {/* <Draft2DevSection /> */}
         <AboutSection />
         <BlogCarousel posts={posts} />
