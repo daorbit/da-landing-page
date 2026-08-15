@@ -27,18 +27,21 @@ body {
   max-width: 100vw;
 }
 
-/* Reset default button styles */
-button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-}
+/* Reset default button/link styles. Wrapped in @layer base so Tailwind
+   utility classes (e.g. text-white on a CTA button) still win the cascade —
+   unlayered plain CSS otherwise beats utilities in Tailwind v4. */
+@layer base {
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
 
-/* Reset default link styles */
-a {
-  color: inherit;
-  text-decoration: none;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* Ensure images are responsive */
@@ -186,4 +189,102 @@ img {
 
 .blog-content * {
   all: revert !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Motion & surface primitives (ported from the Quantalog landing page)
+   --------------------------------------------------------------------------- */
+
+:root {
+  --ease-out-q: cubic-bezier(0.22, 1, 0.36, 1);
+  --grid-line: rgba(15, 23, 42, 0.05);
+  --glow: rgba(79, 70, 229, 0.1);
+  --ring: rgba(79, 70, 229, 0.35);
+}
+
+/* Faint blueprint grid, used behind the hero. */
+.grid-bg {
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* One slowly rotating conic sweep behind the hero — reads as ambient light. */
+@keyframes aurora-spin {
+  to { transform: rotate(1turn); }
+}
+.aurora {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    color-mix(in srgb, #4f46e5 20%, transparent) 18%,
+    transparent 38%,
+    color-mix(in srgb, #4f46e5 12%, transparent) 62%,
+    transparent 82%
+  );
+  animation: aurora-spin 28s linear infinite;
+  filter: blur(64px);
+}
+
+/* Headline words rising in sequence, each word its own inline-block. */
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(0.4em); }
+  to { opacity: 1; transform: none; }
+}
+.word-rise > span {
+  display: inline-block;
+  animation: word-in 0.7s var(--ease-out-q) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* Pointer-tracked highlight for feature/product cards. */
+.glow-card {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.3s var(--ease-out-q), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.glow-card > .glow-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    18rem circle at var(--mx, 50%) var(--my, 50%),
+    rgba(79, 70, 229, 0.12),
+    transparent 60%
+  );
+}
+.glow-card:hover > .glow-layer {
+  opacity: 1;
+}
+.glow-card:hover {
+  transform: translateY(-3px);
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.1);
+}
+
+/* Live status dot, used on the hero eyebrow badge. */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+.live-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .word-rise > span {
+    animation: none;
+  }
+  .word-rise > span {
+    opacity: 1;
+    transform: none;
+  }
+  .glow-card:hover {
+    transform: none;
+  }
 }

@@ -2,6 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import Layout from "../src/components/Layout";
 import HeroSection from "../src/components/HeroSection";
+import TrustSection from "../src/components/TrustSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import SnappixySection from "../src/components/SnappixySection";
 import TheTechodioSection from "../src/components/TheTechodioSection";
@@ -213,6 +214,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
       <Layout>
         <HeroSection />
+        <TrustSection />
         <FeaturesSection />
         <SnappixySection />
         <TheTechodioSection />

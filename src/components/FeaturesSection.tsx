@@ -3,6 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Code, Smartphone, Cloud, Shield, Zap, Users } from 'lucide-react'
+import GlowCard from './GlowCard'
 
 const features = [
   {
@@ -89,20 +90,18 @@ const FeaturesSection: React.FC = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group rounded-xl p-6 sm:p-7 border border-gray-200 hover:border-indigo-200 hover:shadow-md transition-all duration-200"
-            >
-              <div className="inline-flex p-2.5 rounded-lg bg-indigo-50 mb-5">
-                <feature.icon className="w-5 h-5 text-indigo-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
+            <motion.div key={index} variants={itemVariants}>
+              <GlowCard className="group rounded-xl p-6 sm:p-7 border border-gray-200 h-full">
+                <div className="inline-flex p-2.5 rounded-lg bg-indigo-50 mb-5">
+                  <feature.icon className="w-5 h-5 text-indigo-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </GlowCard>
             </motion.div>
           ))}
         </motion.div>

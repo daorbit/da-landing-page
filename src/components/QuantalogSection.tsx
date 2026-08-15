@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const QuantalogSection: React.FC = () => {
   const features = [
@@ -15,7 +16,13 @@ const QuantalogSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Image */}
-          <div className="order-2 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="order-2 lg:order-1"
+          >
             <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-6">
               <Image
                 src="/quantalog-logo.png"
@@ -26,10 +33,16 @@ const QuantalogSection: React.FC = () => {
                 priority
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Content */}
-          <div className="order-1 lg:order-2">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="order-1 lg:order-2"
+          >
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900">
                 Quantalog
@@ -91,7 +104,7 @@ const QuantalogSection: React.FC = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
