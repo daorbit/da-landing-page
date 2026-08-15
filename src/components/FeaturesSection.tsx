@@ -9,37 +9,31 @@ const features = [
     icon: Code,
     title: 'MERN Development',
     description: 'Full-stack web applications using MongoDB, Express.js, React, and Node.js for scalable and efficient solutions.',
-    color: 'from-purple-500 to-indigo-600'
   },
   {
     icon: Smartphone,
     title: 'Mobile Applications',
     description: 'Native and cross-platform mobile apps that deliver exceptional user experiences across all devices.',
-    color: 'from-blue-500 to-cyan-600'
   },
   {
     icon: Cloud,
     title: 'SEO Solutions',
     description: 'Comprehensive SEO strategies to enhance your online visibility and drive organic traffic.',
-    color: 'from-teal-500 to-green-600'
   },
   {
     icon: Shield,
     title: 'Custom Development',
     description: 'Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.',
-    color: 'from-orange-500 to-red-600'
   },
   {
     icon: Zap,
     title: 'Performance',
     description: 'Lightning-fast applications optimized for speed, efficiency, and exceptional user experience.',
-    color: 'from-yellow-500 to-orange-600'
   },
   {
     icon: Users,
     title: '24/7 Support',
     description: 'Round-the-clock support and maintenance to ensure your systems run smoothly.',
-    color: 'from-pink-500 to-purple-600'
   }
 ]
 
@@ -54,35 +48,35 @@ const FeaturesSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-gray-100" id="features">
+    <section className="py-16 sm:py-20 md:py-24 bg-white" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           ref={ref}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="text-center mb-10 sm:mb-12 md:mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4"
           >
-            Why Choose <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">DA Orbit</span>
+            Why choose DA Orbit
           </motion.h2>
-          <motion.p 
+          <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0"
+            className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
             We deliver innovative solutions that drive digital transformation and business growth
           </motion.p>
@@ -92,24 +86,23 @@ const FeaturesSection: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
+              className="group rounded-xl p-6 sm:p-7 border border-gray-200 hover:border-indigo-200 hover:shadow-md transition-all duration-200"
             >
-              <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${feature.color} mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className="w-6 h-6 text-white" />
+              <div className="inline-flex p-2.5 rounded-lg bg-indigo-50 mb-5">
+                <feature.icon className="w-5 h-5 text-indigo-600" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-purple-600 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-blue-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
           ))}
         </motion.div>

@@ -55,10 +55,8 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
-        scrolled
-          ? "bg-white bg-opacity-95 backdrop-blur-md shadow-lg text-gray-700"
-          : "bg-black bg-opacity-30 backdrop-blur-sm text-white"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform bg-white/95 backdrop-blur-md text-gray-900 ${
+        scrolled ? "shadow-sm border-b border-gray-200" : "border-b border-transparent"
       }`}
       style={{
         WebkitTransform: 'translate3d(0, 0, 0)',
@@ -68,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
       <nav>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <div
-            className="logo cursor-pointer hover:scale-105 transition-transform duration-200"
+            className="logo cursor-pointer flex items-center gap-2"
             onClick={() => {
               if (router.pathname !== '/') {
                 router.push('/');
@@ -78,11 +76,11 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             }}
           >
             <img
-              // src="/favicon.png"
-              src={!scrolled ? "/darkFavicon.png" : "/favicon.png"}
+              src="/favicon.png"
               alt="DA Orbit Logo"
-              className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14"
+              className="h-9 w-9 sm:h-10 sm:w-10"
             />
+            <span className="text-lg font-semibold tracking-tight text-gray-900">DA Orbit</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -92,18 +90,14 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className={`font-medium  hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
-                      scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
-                    }`}
+                    className="font-medium text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     onClick={() => handleNavigation(item)}
-                    className={`font-medium transition-colors duration-300 hover:text-blue-400 cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-500 after:to-cyan-400 after:transition-all after:duration-300 hover:after:w-full ${
-                      scrolled ? "text-gray-700" : "text-white drop-shadow-lg"
-                    }`}
+                    className="font-medium text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -115,11 +109,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer touch-manipulation ${
-              scrolled
-                ? "text-gray-700 hover:bg-gray-100"
-                : "text-white drop-shadow-lg hover:bg-white hover:bg-opacity-20"
-            }`}
+            className="md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer touch-manipulation text-gray-700 hover:bg-gray-100"
             aria-label="Toggle mobile menu"
           >
             <Menu className="w-6 h-6" />

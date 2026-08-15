@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const HeroSection: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -13,68 +13,52 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden"
+      className="relative overflow-hidden bg-white pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
-      {/* Background overlay with subtle pattern */}
-      <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[560px] bg-[radial-gradient(ellipse_at_top,_rgba(79,70,229,0.08),_transparent_65%)]"
+        aria-hidden="true"
+      />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-600">
+          Software solutions & digital transformation
+        </span>
 
-      {/* Animated background elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-      </div>
+        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-tight">
+          We build the future,
+          <br className="hidden sm:block" /> one orbit at a time.
+        </h1>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
-        <div className="mb-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight">
-            DA Orbit
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4 sm:px-0">
-            Revolutionizing software development with cutting-edge solutions. We
-            build the future, one orbit at a time.
-          </p>
-          <div className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4 sm:px-0">
-            Innovative software development, cloud solutions, and digital
-            transformation services that propel your business into the next
-            generation.
-          </div>
-        </div>
+        <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          DA Orbit designs and ships custom web platforms, mobile apps, and
+          cloud infrastructure for teams that need to move fast and scale
+          without rework.
+        </p>
 
-        <div className="flex justify-center mb-16">
+        <div className="mt-10 flex justify-center">
           <button
-            onClick={() => scrollToSection("contact")}
-            className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center space-x-2 group cursor-pointer touch-manipulation"
+            onClick={() => scrollToSection("features")}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-sm transition-colors duration-200 cursor-pointer"
           >
-            <span>Get Started</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <span>Explore our work</span>
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Stats or features preview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl">
-            <div className="text-4xl font-bold text-white mb-3">50+</div>
-            <div className="text-white text-lg">Projects Delivered</div>
+        {/* Stats */}
+        <div className="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto border-t border-gray-100 pt-10">
+          <div>
+            <div className="text-3xl font-semibold text-gray-900">50+</div>
+            <div className="mt-1 text-sm text-gray-500">Projects delivered</div>
           </div>
-          <div className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl">
-            <div className="text-4xl font-bold text-white mb-3">60+</div>
-            <div className="text-white text-lg">Happy Clients</div>
+          <div>
+            <div className="text-3xl font-semibold text-gray-900">60+</div>
+            <div className="mt-1 text-sm text-gray-500">Happy clients</div>
           </div>
-          <div className=" bg-opacity-25 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-40 hover:bg-opacity-35 transition-all duration-300 shadow-xl">
-            <div className="text-4xl font-bold text-white mb-3">24/7</div>
-            <div className="text-white text-lg">Support Available</div>
+          <div>
+            <div className="text-3xl font-semibold text-gray-900">24/7</div>
+            <div className="mt-1 text-sm text-gray-500">Support available</div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer"
-        onClick={() => scrollToSection("features")}
-      >
-        <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center hover:border-opacity-100 transition-all duration-300">
-          <div className="w-1 h-3 bg-white bg-opacity-50 rounded-full mt-2"></div>
         </div>
       </div>
     </section>
