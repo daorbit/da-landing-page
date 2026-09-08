@@ -1,5 +1,87 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Light is the default; `.dark` on <html> swaps the palette.
+   Every surface/text/border colour in the app resolves through these so the
+   two themes stay in sync from one place.
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-elevated: #ffffff;
+  --bg-inset: #f1f5f9;
+
+  --fg: #0b1120;
+  --fg-muted: #475569;
+  --fg-subtle: #64748b;
+  --fg-faint: #94a3b8;
+
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-fg: #ffffff;
+  --accent-soft: #eef2ff;
+  --accent-border: #c7d2fe;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+  --shadow-lift: 0 18px 40px -18px rgba(15, 23, 42, 0.25);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0a0d14;
+  --bg-subtle: #0f131c;
+  --bg-elevated: #141926;
+  --bg-inset: #1a2030;
+
+  --fg: #f1f5f9;
+  --fg-muted: #b2bdcd;
+  --fg-subtle: #94a3b8;
+  --fg-faint: #6b7688;
+
+  --border: #232b3b;
+  --border-strong: #333d52;
+
+  --accent: #818cf8;
+  --accent-hover: #a5b4fc;
+  --accent-fg: #0a0d14;
+  --accent-soft: rgba(129, 140, 248, 0.12);
+  --accent-border: rgba(129, 140, 248, 0.35);
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+}
+
+/* Expose the tokens as Tailwind colour utilities: bg-surface, text-fg-muted,
+   border-border, bg-accent, … */
+@theme inline {
+  --color-surface: var(--bg);
+  --color-surface-subtle: var(--bg-subtle);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-surface-inset: var(--bg-inset);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-faint: var(--fg-faint);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -13,8 +95,10 @@ body {
   overflow-x: hidden;
   position: relative;
   max-width: 100vw;
-      margin: 0 !important;
-
+  margin: 0 !important;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Prevent horizontal overflow on all elements */
@@ -92,16 +176,16 @@ img {
   }
 
   ::-webkit-scrollbar-track {
-    background: #000;
+    background: var(--bg-subtle);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+    background: var(--accent);
     border-radius: 0px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #7c3aed, #2563eb);
+    background: var(--accent-hover);
   }
 }
 
@@ -119,8 +203,8 @@ img {
 
 /* Selection color */
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: #1f2937;
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: var(--fg);
 }
 
 /* Loading animation for images */
@@ -202,6 +286,12 @@ img {
   --ring: rgba(79, 70, 229, 0.35);
 }
 
+.dark {
+  --grid-line: rgba(148, 163, 184, 0.07);
+  --glow: rgba(129, 140, 248, 0.16);
+  --ring: rgba(129, 140, 248, 0.45);
+}
+
 /* Faint blueprint grid, used behind the hero. */
 .grid-bg {
   background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -218,13 +308,23 @@ img {
   background: conic-gradient(
     from 0deg,
     transparent 0%,
-    color-mix(in srgb, #4f46e5 20%, transparent) 18%,
+    color-mix(in srgb, var(--accent) 20%, transparent) 18%,
     transparent 38%,
-    color-mix(in srgb, #4f46e5 12%, transparent) 62%,
+    color-mix(in srgb, var(--accent) 12%, transparent) 62%,
     transparent 82%
   );
   animation: aurora-spin 28s linear infinite;
   filter: blur(64px);
+}
+.dark .aurora {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent) 34%, transparent) 18%,
+    transparent 38%,
+    color-mix(in srgb, #22d3ee 22%, transparent) 62%,
+    transparent 82%
+  );
 }
 
 /* Headline words rising in sequence, each word its own inline-block. */
@@ -253,7 +353,7 @@ img {
   pointer-events: none;
   background: radial-gradient(
     18rem circle at var(--mx, 50%) var(--my, 50%),
-    rgba(79, 70, 229, 0.12),
+    var(--glow),
     transparent 60%
   );
 }
@@ -262,8 +362,54 @@ img {
 }
 .glow-card:hover {
   transform: translateY(-3px);
-  border-color: #c7d2fe;
-  box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.1);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Gradient text used on headline accents. */
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--fg) 0%,
+    var(--accent) 55%,
+    var(--fg) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin gradient hairline used to separate major sections. */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-strong) 20%,
+    var(--border-strong) 80%,
+    transparent
+  );
+}
+
+/* Frosted surface for the sticky header and floating controls. */
+.frosted {
+  background-color: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+}
+
+/* Soft radial spotlight behind section headings. */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    var(--glow),
+    transparent 70%
+  );
 }
 
 /* Live status dot, used on the hero eyebrow badge. */

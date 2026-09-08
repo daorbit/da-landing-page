@@ -12,40 +12,18 @@ const About: NextPage = () => {
       </Head>
       
       <Layout>
-        <section style={{ 
-          minHeight: '80vh', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center',
-          padding: '4rem 2rem',
-          background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
-        }}>
-          <div style={{ textAlign: 'center', maxWidth: '600px' }}>
-            <h1 style={{ 
-              fontSize: '3rem', 
-              marginBottom: '2rem',
-              background: 'linear-gradient(45deg, #667eea, #764ba2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
+        <section className="spotlight relative flex min-h-[80vh] items-center justify-center bg-surface px-6 pt-32 pb-20">
+          <div className="relative mx-auto max-w-2xl text-center">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-[-0.03em] text-fg mb-8">
               About Us
             </h1>
-            <p style={{ 
-              fontSize: '1.2rem', 
-              lineHeight: '1.8',
-              color: '#555',
-              marginBottom: '2rem'
-            }}>
-              At DA Orbit, we specialize in cutting-edge software development, cloud solutions, 
-              and digital transformation services. Our team of expert developers and engineers 
+            <p className="text-lg text-fg-muted leading-relaxed mb-6">
+              At DA Orbit, we specialize in cutting-edge software development, cloud solutions,
+              and digital transformation services. Our team of expert developers and engineers
               work tirelessly to deliver innovative solutions that drive business growth and success.
             </p>
-            <p style={{ 
-              fontSize: '1.1rem', 
-              color: '#666'
-            }}>
-              From web applications to mobile apps, enterprise software to cloud infrastructure - 
+            <p className="text-base text-fg-subtle leading-relaxed">
+              From web applications to mobile apps, enterprise software to cloud infrastructure —
               we orbit around your success, providing the technology solutions you need to thrive in the digital age.
             </p>
           </div>

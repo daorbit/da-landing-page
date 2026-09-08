@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-white pt-32 pb-20 sm:pt-40 sm:pb-28"
+      className="relative overflow-hidden bg-surface pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
@@ -30,23 +30,25 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-xs font-medium text-gray-600"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-subtle px-4 py-1.5 text-xs font-medium text-fg-muted"
         >
-          <span className="live-dot h-1.5 w-1.5 rounded-full bg-indigo-600" aria-hidden="true" />
-          Software solutions & digital transformation
+          <span className="live-dot h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+          Software solutions &amp; digital transformation
         </motion.span>
 
-        <h1 className="word-rise mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-tight">
+        <h1 className="word-rise mt-6 text-[2.6rem] sm:text-6xl md:text-7xl font-semibold tracking-[-0.03em] text-fg leading-[1.05]">
           <Words text="We build the future," />
           <br className="hidden sm:block" />{" "}
-          <Words text="one orbit at a time." offset={4} />
+          <span className="text-gradient">
+            <Words text="one orbit at a time." offset={4} />
+          </span>
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+          className="mt-6 text-lg sm:text-xl text-fg-muted max-w-2xl mx-auto leading-relaxed"
         >
           DA Orbit designs and ships custom web platforms, mobile apps, and
           cloud infrastructure for teams that need to move fast and scale
@@ -57,14 +59,20 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-10 flex justify-center"
+          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
         >
           <button
             onClick={() => scrollToSection("features")}
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-accent-fg font-medium rounded-xl shadow-[var(--shadow-card)] transition-all duration-200 cursor-pointer"
           >
             <span>Explore our work</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-surface-elevated text-fg font-medium hover:border-accent-border hover:text-accent transition-all duration-200 cursor-pointer"
+          >
+            Talk to us
           </button>
         </motion.div>
 
@@ -73,20 +81,20 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto border-t border-gray-100 pt-10"
+          className="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto border-t border-border pt-10"
         >
-          <div>
-            <div className="text-3xl font-semibold text-gray-900">50+</div>
-            <div className="mt-1 text-sm text-gray-500">Projects delivered</div>
-          </div>
-          <div>
-            <div className="text-3xl font-semibold text-gray-900">60+</div>
-            <div className="mt-1 text-sm text-gray-500">Happy clients</div>
-          </div>
-          <div>
-            <div className="text-3xl font-semibold text-gray-900">24/7</div>
-            <div className="mt-1 text-sm text-gray-500">Support available</div>
-          </div>
+          {[
+            { value: "50+", label: "Projects delivered" },
+            { value: "60+", label: "Happy clients" },
+            { value: "24/7", label: "Support available" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <div className="text-3xl font-semibold tracking-tight text-fg">
+                {stat.value}
+              </div>
+              <div className="mt-1 text-sm text-fg-subtle">{stat.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

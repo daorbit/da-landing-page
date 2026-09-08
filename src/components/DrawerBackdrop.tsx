@@ -29,7 +29,7 @@ const DrawerBackdrop: React.FC<DrawerBackdropProps> = ({ isOpen, onClose }) => {
           },
         },
       }}
-      className="md:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[45]"
+      className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[45]"
       onClick={onClose}
     />
   );

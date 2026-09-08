@@ -60,8 +60,11 @@ const FeaturesSection: React.FC = () => {
   }
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white" id="features">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section
+      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface"
+      id="features"
+    >
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -69,15 +72,21 @@ const FeaturesSection: React.FC = () => {
           variants={containerVariants}
           className="text-center mb-12 sm:mb-16"
         >
+          <motion.p
+            variants={itemVariants}
+            className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4"
+          >
+            What we do
+          </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-4"
           >
             Why choose DA Orbit
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-fg-muted max-w-2xl mx-auto"
           >
             We deliver innovative solutions that drive digital transformation and business growth
           </motion.p>
@@ -91,14 +100,14 @@ const FeaturesSection: React.FC = () => {
         >
           {features.map((feature, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <GlowCard className="group rounded-xl p-6 sm:p-7 border border-gray-200 h-full">
-                <div className="inline-flex p-2.5 rounded-lg bg-indigo-50 mb-5">
-                  <feature.icon className="w-5 h-5 text-indigo-600" />
+              <GlowCard className="group rounded-2xl p-6 sm:p-7 border border-border bg-surface-elevated h-full">
+                <div className="inline-flex p-2.5 rounded-xl bg-accent-soft border border-accent-border/50 mb-5">
+                  <feature.icon className="w-5 h-5 text-accent" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-fg mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-fg-muted leading-relaxed">
                   {feature.description}
                 </p>
               </GlowCard>

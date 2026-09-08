@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 text-gray-900">
+    <footer className="bg-surface border-t border-border text-fg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Company Info */}
@@ -59,10 +59,10 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="text-2xl font-semibold tracking-tight mb-4">
                 DA Orbit
               </h3>
-              <p className="text-gray-600 mb-6 max-w-md leading-relaxed text-sm">
+              <p className="text-fg-muted mb-6 max-w-md leading-relaxed text-sm">
                 Revolutionizing software development with cutting-edge solutions.
                 We build the future, one orbit at a time.
               </p>
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 text-gray-600 hover:text-indigo-600 transition-colors duration-300"
+                    className="flex items-center space-x-3 text-fg-muted hover:text-accent transition-colors duration-300"
                   >
                     <item.icon className="w-4 h-4" />
                     <a href={item.href} className="text-sm cursor-pointer">
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                   <a
                     key={index}
                     href={social.href}
-                    className="w-9 h-9 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:border-indigo-200 transition-all duration-300 cursor-pointer"
+                    className="w-9 h-9 bg-surface-elevated border border-border rounded-full flex items-center justify-center text-fg-subtle hover:text-accent hover:border-accent-border transition-all duration-300 cursor-pointer"
                     aria-label={social.label}
                   >
                     <social.icon className="w-4 h-4" />
@@ -100,13 +100,13 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-5">Services</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-fg-faint mb-5">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleFooterNavigation(link.href)}
-                    className="text-gray-600 hover:text-indigo-600 transition-colors duration-300 text-sm text-left cursor-pointer"
+                    className="text-fg-muted hover:text-accent transition-colors duration-300 text-sm text-left cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -117,13 +117,13 @@ const Footer: React.FC = () => {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-5">Company</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-fg-faint mb-5">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleFooterNavigation(link.href)}
-                    className="text-gray-600 hover:text-indigo-600 transition-colors duration-300 text-sm text-left cursor-pointer"
+                    className="text-fg-muted hover:text-accent transition-colors duration-300 text-sm text-left cursor-pointer"
                   >
                     {link.name}
                   </button>
@@ -134,9 +134,9 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200 mt-12 pt-8">
+        <div className="border-t border-border mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-500 text-sm">
+            <p className="text-fg-subtle text-sm">
               © 2025 DA Orbit. All rights reserved.
             </p>
           </div>

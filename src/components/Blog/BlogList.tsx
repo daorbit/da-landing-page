@@ -20,9 +20,9 @@ export default function BlogList({
   if (posts.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="w-24 h-24 mx-auto mb-4 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700">
-          <svg 
-            className="w-12 h-12 text-gray-400" 
+        <div className="w-24 h-24 mx-auto mb-4 bg-surface-subtle rounded-full flex items-center justify-center border border-border">
+          <svg
+            className="w-12 h-12 text-fg-faint"
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
@@ -35,8 +35,8 @@ export default function BlogList({
             />
           </svg>
         </div>
-        <h3 className="text-lg font-medium text-white mb-2">No blog posts found</h3>
-        <p className="text-gray-400">Check back later for new content!</p>
+        <h3 className="text-lg font-medium text-fg mb-2">No blog posts found</h3>
+        <p className="text-fg-muted">Check back later for new content!</p>
       </div>
     );
   }
@@ -47,12 +47,12 @@ export default function BlogList({
       {(title || description) && (
         <div className="text-center mb-12">
           {title && (
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
               {title}
             </h2>
           )}
           {description && (
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-fg-muted max-w-2xl mx-auto">
               {description}
             </p>
           )}

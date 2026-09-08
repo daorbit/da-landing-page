@@ -22,19 +22,18 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
     });
   };
 
-  // Debug logging
-  console.log("BlogCarousel posts:", posts);
-  console.log("Posts length:", posts?.length);
-
   if (!posts || posts.length === 0) {
     return (
-      <section id="blog" className="py-16 md:py-24 bg-gray-50">
+      <section
+        id="blog"
+        className="py-16 md:py-24 bg-surface border-t border-border"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
               Latest from Our Blog
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-fg-muted">
               No blog posts available at the moment.
             </p>
           </div>
@@ -44,14 +43,20 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
   }
 
   return (
-    <section id="blog" className="py-16 md:py-24 bg-gray-50">
+    <section
+      id="blog"
+      className="py-16 md:py-24 bg-surface border-t border-border"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">
+            Insights
+          </p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
             Latest from Our Blog
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-fg-muted max-w-3xl mx-auto">
             Stay updated with the latest insights, trends, and expert
             perspectives on technology, business innovation, and digital
             transformation.
@@ -95,18 +100,18 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
             {posts?.slice(0, 6).map((post) => (
               <SwiperSlide key={post.id}>
                 <Link href={`/blogs/${post.slug}`}>
-                  <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer border border-gray-200">
+                  <div className="group h-full bg-surface-elevated rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-lift)] hover:border-accent-border transition-all duration-300 cursor-pointer border border-border">
                     {/* Blog Image */}
                     {post.image && (
                       <div className="relative h-48 overflow-hidden">
                         <img
                           src={post.image}
                           alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         {post.featured && (
                           <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1 text-xs font-medium bg-indigo-600 text-white rounded-full">
+                            <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-fg rounded-full">
                               Featured
                             </span>
                           </div>
@@ -121,7 +126,7 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
                         {post.tags.slice(0, 2).map((tag) => (
                           <span
                             key={tag}
-                            className="px-2 py-1 text-xs font-medium bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-md"
+                            className="px-2 py-1 text-xs font-medium bg-accent-soft text-accent border border-accent-border/50 rounded-md"
                           >
                             {tag}
                           </span>
@@ -129,20 +134,20 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
+                      <h3 className="text-lg font-semibold text-fg mb-3 line-clamp-2 group-hover:text-accent transition-colors">
                         {post.title}
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
+                      <p className="text-fg-muted mb-4 line-clamp-3 text-sm leading-relaxed">
                         {post.excerpt}
                       </p>
 
                       {/* Meta Info */}
-                      <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <div className="flex items-center justify-between text-sm text-fg-subtle mb-4">
                         <div className="flex items-center space-x-2">
-                          <div className="w-6 h-6 bg-indigo-50 border border-indigo-100 rounded-full flex items-center justify-center">
-                            <span className="text-xs font-medium text-indigo-600">
+                          <div className="w-6 h-6 bg-accent-soft border border-accent-border/50 rounded-full flex items-center justify-center">
+                            <span className="text-xs font-medium text-accent">
                               {post.author.name.charAt(0)}
                             </span>
                           </div>
@@ -167,14 +172,14 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
         .blog-swiper-pagination .swiper-pagination-bullet {
           width: 8px;
           height: 8px;
-          background: rgba(79, 70, 229, 0.25);
+          background: var(--border-strong);
           opacity: 1;
           margin: 0 5px;
           transition: all 0.3s ease;
         }
 
         .blog-swiper-pagination .swiper-pagination-bullet-active {
-          background: #4f46e5;
+          background: var(--accent);
           transform: scale(1.2);
         }
 

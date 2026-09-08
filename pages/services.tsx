@@ -52,30 +52,30 @@ const Services: NextPage = () => {
 
       <Layout>
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white py-20">
-          <div className="max-w-6xl mx-auto px-8 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-              Our Services
+        <section className="spotlight relative bg-surface-subtle text-fg pt-32 pb-20 border-b border-border">
+          <div className="relative max-w-6xl mx-auto px-8 text-center">
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-[-0.03em] mb-6">
+              Our <span className="text-gradient">Services</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-fg-muted mb-8 max-w-3xl mx-auto">
               Comprehensive software development solutions that drive innovation and accelerate your business growth.
             </p>
           </div>
         </section>
 
         {/* Services Grid */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-surface">
           <div className="max-w-6xl mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-purple-200">
+                <div key={index} className="bg-surface-elevated rounded-2xl shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-lift)] transition-all duration-300 p-8 border border-border hover:border-accent-border">
                   <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl font-semibold tracking-tight text-fg mb-4">{service.title}</h3>
+                  <p className="text-sm text-fg-muted mb-6 leading-relaxed">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-gray-700">
-                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-3 flex-shrink-0"></span>
+                      <li key={featureIndex} className="flex items-center text-sm text-fg-muted">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></span>
                         {feature}
                       </li>
                     ))}
@@ -87,33 +87,39 @@ const Services: NextPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <section className="py-20 bg-surface-subtle border-y border-border">
           <div className="max-w-4xl mx-auto px-8 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-6">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-purple-100 mb-8">
+            <p className="text-lg text-fg-muted mb-8">
               Let's discuss how we can help transform your ideas into reality.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-purple-600 hover:bg-gray-100 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="/#contact"
+                className="px-6 py-3 bg-accent text-accent-fg hover:bg-accent-hover font-medium rounded-xl shadow-[var(--shadow-card)] transition-colors duration-200"
+              >
                 Get Free Consultation
-              </button>
-              <button className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              </a>
+              <a
+                href="/#features"
+                className="px-6 py-3 border border-border bg-surface-elevated text-fg hover:border-accent-border hover:text-accent font-medium rounded-xl transition-colors duration-200"
+              >
                 View Our Work
-              </button>
+              </a>
             </div>
           </div>
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-surface">
           <div className="max-w-6xl mx-auto px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-6">
                 Our Process
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg text-fg-muted max-w-3xl mx-auto">
                 We follow a proven methodology to ensure successful project delivery and client satisfaction.
               </p>
             </div>
@@ -126,11 +132,11 @@ const Services: NextPage = () => {
                 { step: '04', title: 'Launch', description: 'We deploy your solution and provide ongoing support and maintenance.' }
               ].map((process, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+                  <div className="w-14 h-14 bg-accent-soft border border-accent-border rounded-full flex items-center justify-center text-accent font-semibold text-lg mx-auto mb-4">
                     {process.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
-                  <p className="text-gray-600">{process.description}</p>
+                  <h3 className="text-lg font-semibold text-fg mb-3">{process.title}</h3>
+                  <p className="text-sm text-fg-muted leading-relaxed">{process.description}</p>
                 </div>
               ))}
             </div>

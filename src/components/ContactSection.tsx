@@ -24,6 +24,13 @@ const ContactSection: React.FC = () => {
     }
   ]
 
+  const reasons = [
+    'Free consultation & project estimate',
+    'Agile development process',
+    'Post-launch support & maintenance',
+    'Dedicated project manager'
+  ]
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,8 +47,11 @@ const ContactSection: React.FC = () => {
   }
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white" id="contact">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+    <section
+      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface-subtle border-t border-border"
+      id="contact"
+    >
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -51,13 +61,13 @@ const ContactSection: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-4"
           >
             Ready to start your journey?
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-lg text-fg-muted max-w-2xl mx-auto"
           >
             Let's discuss how we can help transform your business with innovative technology solutions
           </motion.p>
@@ -78,16 +88,16 @@ const ContactSection: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="flex items-center space-x-4 p-4 rounded-lg border border-gray-200 hover:border-indigo-200 hover:shadow-sm transition-all duration-300 group cursor-pointer"
+                  className="flex items-center space-x-4 p-4 rounded-2xl border border-border bg-surface-elevated hover:border-accent-border hover:shadow-[var(--shadow-card)] transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center">
-                    <info.icon className="w-6 h-6 text-indigo-600" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent-soft border border-accent-border/50 rounded-xl flex items-center justify-center">
+                    <info.icon className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
+                    <h4 className="font-semibold text-fg group-hover:text-accent transition-colors duration-300">
                       {info.title}
                     </h4>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-fg-muted text-sm">
                       {info.content}
                     </p>
                   </div>
@@ -95,25 +105,15 @@ const ContactSection: React.FC = () => {
               ))}
             </div>
 
-            <div className="rounded-lg p-6 border border-gray-200 bg-gray-50">
-              <h4 className="font-semibold text-gray-900 mb-3">Why choose DA Orbit?</h4>
-              <ul className="space-y-2 text-gray-600 text-sm">
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                  <span>Free consultation & project estimate</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                  <span>Agile development process</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                  <span>Post-launch support & maintenance</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                  <span>Dedicated project manager</span>
-                </li>
+            <div className="rounded-2xl p-6 border border-border bg-surface-elevated">
+              <h4 className="font-semibold text-fg mb-3">Why choose DA Orbit?</h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-fg-muted text-sm">
+                {reasons.map((reason) => (
+                  <li key={reason} className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                    <span>{reason}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>

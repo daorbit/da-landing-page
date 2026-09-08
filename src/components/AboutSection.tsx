@@ -16,6 +16,13 @@ const AboutSection: React.FC = () => {
     satisfaction: 0
   })
 
+  const highlights = [
+    'Agile Development Methodology',
+    '24/7 Support & Maintenance',
+    'Scalable & Secure Solutions',
+    'Continuous Innovation'
+  ]
+
   const stats = [
     { key: 'projects', end: 50, label: 'Projects Completed', suffix: '+' },
     { key: 'clients', end: 60, label: 'Happy Clients', suffix: '+' },
@@ -44,7 +51,7 @@ const AboutSection: React.FC = () => {
   }, [inView])
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white" id="about">
+    <section className="py-16 sm:py-20 md:py-28 bg-surface" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* About Content */}
@@ -54,35 +61,28 @@ const AboutSection: React.FC = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">
+              Who we are
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-6">
               About DA Orbit
             </h2>
-            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+            <p className="text-lg text-fg-muted mb-4 leading-relaxed">
               We are a passionate team of developers, designers, and innovators committed to
               transforming businesses through cutting-edge technology solutions.
             </p>
-            <p className="text-base text-gray-500 mb-8 leading-relaxed">
+            <p className="text-base text-fg-subtle mb-8 leading-relaxed">
               Founded with the vision to bridge the gap between complex technology and business success,
               DA Orbit has been at the forefront of digital transformation, delivering solutions that
               not only meet today's challenges but anticipate tomorrow's opportunities.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                <span className="text-gray-600 text-sm">Agile Development Methodology</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                <span className="text-gray-600 text-sm">24/7 Support & Maintenance</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                <span className="text-gray-600 text-sm">Scalable & Secure Solutions</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-1.5 h-1.5 bg-indigo-600 rounded-full"></div>
-                <span className="text-gray-600 text-sm">Continuous Innovation</span>
-              </div>
+              {highlights.map((highlight) => (
+                <div key={highlight} className="flex items-center space-x-3">
+                  <div className="w-1.5 h-1.5 bg-accent rounded-full" />
+                  <span className="text-fg-muted text-sm">{highlight}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -96,12 +96,12 @@ const AboutSection: React.FC = () => {
             {stats.map((stat, index) => (
               <div
                 key={stat.key}
-                className="rounded-xl p-6 sm:p-8 text-center border border-gray-200 bg-gray-50"
+                className="rounded-2xl p-6 sm:p-8 text-center border border-border bg-surface-subtle transition-colors duration-300 hover:border-accent-border"
               >
-                <div className="text-3xl sm:text-4xl font-semibold text-gray-900">
+                <div className="text-3xl sm:text-4xl font-semibold tracking-tight text-fg">
                   {counts[stat.key as keyof typeof counts]}{stat.suffix}
                 </div>
-                <div className="mt-2 text-sm text-gray-500">
+                <div className="mt-2 text-sm text-fg-subtle">
                   {stat.label}
                 </div>
               </div>

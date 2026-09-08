@@ -48,7 +48,6 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
         <meta name="twitter:image:alt" content="DA Orbit Blog" />
         
         {/* Additional SEO meta tags */}
-        <meta name="theme-color" content="#1f2937" />
         <meta name="format-detection" content="telephone=no" />
         
         <link rel="canonical" href="https://daorbit.com/blogs" />
@@ -97,16 +96,19 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
       </Head>
 
       <Layout>
-        <main className="min-h-screen bg-gray-950">
+        <main className="min-h-screen bg-surface">
           {/* Hero Section */}
-          <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white py-16 mt-15 md:py-24 border-b border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="spotlight relative bg-surface-subtle text-fg pt-32 pb-16 md:pt-40 md:pb-24 border-b border-border">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 ">
+                <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">
+                  Insights
+                </p>
+                <h1 className="text-4xl md:text-6xl font-semibold tracking-[-0.03em] mb-6">
                   Our Blog
                 </h1>
-                <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                  Discover insights, trends, and expert perspectives on technology, 
+                <p className="text-lg md:text-xl text-fg-muted max-w-3xl mx-auto">
+                  Discover insights, trends, and expert perspectives on technology,
                   business innovation, and digital transformation.
                 </p>
               </div>
@@ -114,7 +116,7 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
           </section>
 
           {/* Blog Posts Section */}
-          <section className="py-16 md:py-24 bg-gray-950">
+          <section className="py-16 md:py-24 bg-surface">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <BlogList 
                 posts={posts} 

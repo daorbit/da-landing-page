@@ -61,7 +61,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-surface text-fg">
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
       <main className="flex-1 relative">
@@ -71,6 +71,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Footer />
 
       {/* Mobile Drawer Components */}
+      <DrawerBackdrop isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <MobileDrawer
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}

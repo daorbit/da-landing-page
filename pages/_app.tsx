@@ -3,15 +3,25 @@ import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import CookieConsentBanner from "../src/components/CookieConsentBanner";
+import { ThemeProvider } from "../src/components/ThemeProvider";
 import "../src/styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#7c3aed" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#ffffff"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#0a0d14"
+        />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
         <meta name="author" content="DA Orbit" />
@@ -104,6 +114,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <CookieConsentBanner />
       <Analytics />
       <SpeedInsights />
-    </>
+    </ThemeProvider>
   );
 }

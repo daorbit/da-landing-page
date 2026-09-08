@@ -69,7 +69,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-2xl rounded-t-[26px]"
+          className="fixed bottom-0 left-0 right-0 bg-surface-elevated border-t border-border shadow-2xl rounded-t-2xl"
         >
           <div className="max-w-7xl mx-auto p-4 sm:p-6">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -91,10 +91,10 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg font-semibold text-fg mb-2">
                       We value your privacy
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-sm text-fg-muted leading-relaxed">
                       We use cookies to enhance your browsing experience, serve
                       personalized content, and analyze our traffic. By clicking
                       "Accept All", you consent to our use of cookies. You can
@@ -102,7 +102,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
                       practices in our{" "}
                       <a
                         href="/privacy"
-                        className="text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300 underline font-medium"
+                        className="text-accent hover:text-accent-hover underline font-medium"
                       >
                         Privacy Policy
                       </a>
@@ -115,16 +115,14 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:flex-shrink-0">
                 <button
-                  style={{ color: "#fff" }}
                   onClick={handleDeclineAll}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200 border border-gray-300 dark:border-gray-600"
+                  className="px-4 py-2 text-sm font-medium text-fg-muted bg-surface-subtle hover:text-fg rounded-lg transition-colors duration-200 border border-border cursor-pointer"
                 >
                   Decline
                 </button>
                 <button
                   onClick={handleAcceptAll}
-                  style={{ color: "#fff" }}
-                  className="px-6 py-2 text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                  className="px-6 py-2 text-sm font-medium text-accent-fg bg-accent hover:bg-accent-hover rounded-lg transition-colors duration-200 shadow-[var(--shadow-card)] cursor-pointer"
                 >
                   Accept All
                 </button>

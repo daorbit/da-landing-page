@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ThemeToggle from "../ThemeToggle";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -55,18 +56,20 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform bg-white/95 backdrop-blur-md text-gray-900 ${
-        scrolled ? "shadow-sm border-b border-gray-200" : "border-b border-transparent"
+      className={`frosted fixed top-0 left-0 right-0 z-50 text-fg transition-all duration-300 will-change-transform ${
+        scrolled
+          ? "border-b border-border shadow-[var(--shadow-card)]"
+          : "border-b border-transparent"
       }`}
       style={{
-        WebkitTransform: 'translate3d(0, 0, 0)',
-        transform: 'translate3d(0, 0, 0)'
+        WebkitTransform: "translate3d(0, 0, 0)",
+        transform: "translate3d(0, 0, 0)",
       }}
     >
       <nav>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-4">
           <div
-            className="logo cursor-pointer flex items-center gap-2"
+            className="logo cursor-pointer flex items-center gap-2.5"
             onClick={() => {
               if (router.pathname !== '/') {
                 router.push('/');
@@ -80,24 +83,27 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
               alt="DA Orbit Logo"
               className="h-9 w-9 sm:h-10 sm:w-10"
             />
-            <span className="text-lg font-semibold tracking-tight text-gray-900">DA Orbit</span>
+            <span className="text-lg font-semibold tracking-tight text-fg">
+              DA Orbit
+            </span>
           </div>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex list-none m-0 p-0 gap-8">
-            {navItems.map((item, index) => (
+          {/* Desktop Navigation — a single inset pill keeps the bar visually
+              anchored instead of floating free-standing links. */}
+          <ul className="hidden md:flex list-none m-0 p-1 gap-1 rounded-full border border-border bg-surface-subtle">
+            {navItems.map((item) => (
               <li key={item.href || item.id}>
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="font-medium text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
+                    className="block rounded-full px-4 py-1.5 font-medium text-sm text-fg-muted hover:bg-surface-elevated hover:text-fg transition-colors duration-200 cursor-pointer"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button
                     onClick={() => handleNavigation(item)}
-                    className="font-medium text-sm text-gray-600 hover:text-indigo-600 transition-colors duration-200 cursor-pointer"
+                    className="rounded-full px-4 py-1.5 font-medium text-sm text-fg-muted hover:bg-surface-elevated hover:text-fg transition-colors duration-200 cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -106,14 +112,29 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer touch-manipulation text-gray-700 hover:bg-gray-100"
-            aria-label="Toggle mobile menu"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
+              className="hidden md:inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-fg hover:bg-accent-hover transition-colors duration-200 cursor-pointer"
+            >
+              Get in touch
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg-muted hover:border-accent-border hover:text-accent transition-colors duration-200 cursor-pointer touch-manipulation"
+              aria-label="Toggle mobile menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </nav>
     </header>
