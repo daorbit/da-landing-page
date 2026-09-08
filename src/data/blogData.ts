@@ -1,124 +1,155 @@
 import { BlogPost } from '../types/blog';
 
-// API Response Types
-interface ApiBlogPost {
-  _id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  thumbnailUrl: string;
-  groups: string[];
-  editorType: string;
-  slug: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
+/**
+ * CMS client, matching the shape the Quantalog landing page uses:
+ * `/api/workspaces/<id>/pagebyslug` for lists and
+ * `/api/workspaces/<id>/page-details/<slug>` for one page.
+ */
+const API_BASE =
+  process.env.NEXT_PUBLIC_CMS_API_URL ?? 'https://cms.daorbit.in/api';
 
-interface ApiBlogContent {
-  _id: string;
-  title: string;
-  content: string;
-  description: string;
-  imageUrl: string;
-  thumbnailUrl: string;
-  groups: string[];
-  editorType: string;
-  slug: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-}
+const WORKSPACE_ID =
+  process.env.NEXT_PUBLIC_CMS_WORKSPACE_ID ?? '6a9cfdd439090e083196fcac';
 
-interface ApiResponse {
-  success: boolean;
-  data: {
-    pages: ApiBlogPost[];
-    pagination: {
-      currentPage: number;
-      totalPages: number;
-      totalItems: number;
-      itemsPerPage: number;
-    };
+const workspace = () => `${API_BASE}/workspaces/${WORKSPACE_ID}`;
+
+/** A page as the CMS returns it. Fields are present only when requested. */
+export type CmsPage = {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  group: string;
+  tags: string[];
+  heroImage?: { url: string; alt: string };
+  thumbnailImage?: { url: string; alt: string };
+  content?: string;
+  seo?: {
+    title: string;
+    description: string;
+    ogImage: string;
+    noIndex: boolean;
   };
+  author?: { name: string; role: string };
+  readingMinutes?: number;
+  status?: string;
+  publishedAt: string | null;
+  updatedAt: string;
+};
+
+type ListResponse = {
+  items: CmsPage[];
+  total: number;
+  page: number;
+  perPage: number;
+};
+
+/** Fields the list views render. Requesting them keeps post bodies off the wire. */
+const LIST_FIELDS: (keyof CmsPage)[] = [
+  'id',
+  'title',
+  'slug',
+  'description',
+  'group',
+  'tags',
+  'heroImage',
+  'thumbnailImage',
+  'author',
+  'readingMinutes',
+  'publishedAt',
+  'updatedAt',
+];
+
+async function readJson<T>(res: Response, what: string): Promise<T> {
+  const type = res.headers.get('content-type') ?? '';
+  if (!type.includes('json')) {
+    throw new Error(
+      `CMS ${what}: expected JSON from ${res.url} but got "${type}". ` +
+        'Check NEXT_PUBLIC_CMS_API_URL points at the API, not the CMS web app.'
+    );
+  }
+  return (await res.json()) as T;
 }
 
-// API Base URL
-const API_BASE_URL = 'https://da-pages-be.vercel.app/api';
-
-// Convert API response to BlogPost interface
-const mapApiPostToBlogPost = (apiPost: ApiBlogPost, content?: string): BlogPost => ({
-  id: apiPost._id,
-  title: apiPost.title,
-  slug: apiPost.slug,
-  excerpt: apiPost.description,
-  content: content || '', // Will be fetched separately for individual posts
-  image: apiPost.imageUrl,
+const mapCmsPageToBlogPost = (page: CmsPage): BlogPost => ({
+  id: page.id,
+  title: page.title,
+  slug: page.slug,
+  excerpt: page.description ?? '',
+  content: page.content ?? '',
+  image: page.heroImage?.url || page.thumbnailImage?.url,
   author: {
-    name: 'DA Orbit',
-    avatar: '/images/favicon.png'
+    name: page.author?.name || 'DA Orbit',
+    avatar: '/favicon.png',
   },
-  publishedAt: apiPost.createdAt,
-  readTime: Math.ceil(apiPost.description.length / 200), // Rough estimate
-  tags: apiPost.groups,
-  featured: false // Could be determined by some logic later
+  publishedAt: page.publishedAt ?? page.updatedAt,
+  readTime:
+    page.readingMinutes ??
+    Math.max(1, Math.ceil((page.description?.length ?? 0) / 200)),
+  tags: page.tags ?? [],
+  featured: false,
 });
 
-// Fetch all blog posts
-export const fetchAllPosts = async (page = 1, limit = 10): Promise<BlogPost[]> => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/pages?page=${page}&limit=${limit}`);
-    const data: ApiResponse = await response.json();
+/** Lists published pages, newest first. */
+export const fetchAllPosts = async (
+  options: { group?: string; tag?: string; perPage?: number } = {}
+): Promise<BlogPost[]> => {
+  const query = new URLSearchParams();
+  if (options.group) query.set('group', options.group);
+  if (options.tag) query.set('tag', options.tag);
+  query.set('fields', LIST_FIELDS.join(','));
+  query.set('perPage', String(options.perPage ?? 100));
 
-    if (!data.success) {
-      throw new Error('Failed to fetch blog posts');
+  try {
+    const res = await fetch(`${workspace()}/pagebyslug?${query}`);
+    if (!res.ok) {
+      throw new Error(`CMS list failed: ${res.status} ${res.statusText}`);
     }
 
-    return data.data.pages.map(post => mapApiPostToBlogPost(post));
+    const data = await readJson<ListResponse>(res, 'list');
+    return data.items
+      .map(mapCmsPageToBlogPost)
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
   }
 };
 
-// Fetch individual blog post content
+/** One published page by slug, or null when there is no such page. */
 export const fetchPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/pages/${slug}`);
-    const apiResponse = await response.json();
-    
-    if (!apiResponse.success) {
-      throw new Error('Failed to fetch blog post');
+    const res = await fetch(
+      `${workspace()}/page-details/${encodeURIComponent(slug)}`
+    );
+
+    if (res.status === 404) return null;
+    if (!res.ok) {
+      throw new Error(
+        `CMS page "${slug}" failed: ${res.status} ${res.statusText}`
+      );
     }
-    
-    const data = apiResponse.data;
-    return mapApiPostToBlogPost(data, data.content);
+
+    const page = await readJson<CmsPage>(res, `page "${slug}"`);
+    return mapCmsPageToBlogPost(page);
   } catch (error) {
     console.error('Error fetching blog post:', error);
     return null;
   }
 };
 
-// Legacy functions for backward compatibility (now using API)
-export const getAllPosts = async (): Promise<BlogPost[]> => {
-  return await fetchAllPosts();
-};
+export const getAllPosts = async (): Promise<BlogPost[]> => fetchAllPosts();
 
-export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
-  return await fetchPostBySlug(slug);
-};
+export const getPostBySlug = async (slug: string): Promise<BlogPost | null> =>
+  fetchPostBySlug(slug);
 
 export const getFeaturedPosts = async (): Promise<BlogPost[]> => {
   const posts = await fetchAllPosts();
-  // For now, return first 2 posts as featured, or implement logic based on API
   return posts.slice(0, 2);
 };
 
-export const getPostsByTag = async (tag: string): Promise<BlogPost[]> => {
-  const posts = await fetchAllPosts();
-  return posts.filter(post =>
-    post.tags.some(postTag =>
-      postTag.toLowerCase().includes(tag.toLowerCase())
-    )
-  );
-};
+export const getPostsByTag = async (tag: string): Promise<BlogPost[]> =>
+  fetchAllPosts({ tag });

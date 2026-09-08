@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-surface pt-32 pb-20 sm:pt-40 sm:pb-28"
+      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
@@ -30,25 +30,23 @@ const HeroSection: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-subtle px-4 py-1.5 text-xs font-medium text-fg-muted"
+          className="glass edge-lit inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-fg-muted"
         >
           <span className="live-dot h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
           Software solutions &amp; digital transformation
         </motion.span>
 
-        <h1 className="word-rise mt-6 text-[2.6rem] sm:text-6xl md:text-7xl font-semibold tracking-[-0.03em] text-fg leading-[1.05]">
+        <h1 className="word-rise text-gradient mt-7 text-display font-semibold tracking-display leading-[1.04]">
           <Words text="We build the future," />
           <br className="hidden sm:block" />{" "}
-          <span className="text-gradient">
-            <Words text="one orbit at a time." offset={4} />
-          </span>
+          <Words text="one orbit at a time." offset={4} />
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-6 text-lg sm:text-xl text-fg-muted max-w-2xl mx-auto leading-relaxed"
+          className="mt-6 text-lead text-fg-muted max-w-2xl mx-auto leading-relaxed"
         >
           DA Orbit designs and ships custom web platforms, mobile apps, and
           cloud infrastructure for teams that need to move fast and scale
@@ -63,14 +61,14 @@ const HeroSection: React.FC = () => {
         >
           <button
             onClick={() => scrollToSection("features")}
-            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-accent-fg font-medium rounded-xl shadow-[var(--shadow-card)] transition-all duration-200 cursor-pointer"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-cta hover:bg-cta-hover text-cta-fg text-sm font-medium rounded-xl shadow-[var(--shadow-card)] transition-all duration-200"
           >
             <span>Explore our work</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-border bg-surface-elevated text-fg font-medium hover:border-accent-border hover:text-accent transition-all duration-200 cursor-pointer"
+            className="glass edge-lit inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-fg text-sm font-medium hover:border-border-strong transition-all duration-200"
           >
             Talk to us
           </button>

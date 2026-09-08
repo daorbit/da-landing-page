@@ -26,14 +26,14 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
     return (
       <section
         id="blog"
-        className="py-16 md:py-24 bg-surface border-t border-border"
+        className="py-16 md:py-24 border-t border-border"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
+            <h2 className="text-h2 font-semibold tracking-display text-fg mb-4">
               Latest from Our Blog
             </h2>
-            <p className="text-lg text-fg-muted">
+            <p className="text-lead text-fg-muted">
               No blog posts available at the moment.
             </p>
           </div>
@@ -45,18 +45,18 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
   return (
     <section
       id="blog"
-      className="py-16 md:py-24 bg-surface border-t border-border"
+      className="py-16 md:py-24 border-t border-border"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">
+          <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-accent mb-4">
             Insights
           </p>
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
+          <h2 className="text-h2 font-semibold tracking-display text-fg mb-4">
             Latest from Our Blog
           </h2>
-          <p className="text-lg text-fg-muted max-w-3xl mx-auto">
+          <p className="text-lead text-fg-muted max-w-3xl mx-auto">
             Stay updated with the latest insights, trends, and expert
             perspectives on technology, business innovation, and digital
             transformation.
@@ -100,7 +100,7 @@ export default function BlogCarousel({ posts }: BlogCarouselProps) {
             {posts?.slice(0, 6).map((post) => (
               <SwiperSlide key={post.id}>
                 <Link href={`/blogs/${post.slug}`}>
-                  <div className="group h-full bg-surface-elevated rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-lift)] hover:border-accent-border transition-all duration-300 cursor-pointer border border-border">
+                  <div className="glass edge-lit group h-full rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] hover:border-border-strong transition-all duration-300 cursor-pointer">
                     {/* Blog Image */}
                     {post.image && (
                       <div className="relative h-48 overflow-hidden">

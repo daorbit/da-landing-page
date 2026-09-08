@@ -48,7 +48,7 @@ const ContactSection: React.FC = () => {
 
   return (
     <section
-      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface-subtle border-t border-border"
+      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface-subtle/60 border-t border-border"
       id="contact"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -61,13 +61,13 @@ const ContactSection: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-4"
+            className="text-h2 font-semibold tracking-display text-fg mb-4"
           >
             Ready to start your journey?
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-fg-muted max-w-2xl mx-auto"
+            className="text-lead text-fg-muted max-w-2xl mx-auto"
           >
             Let's discuss how we can help transform your business with innovative technology solutions
           </motion.p>
@@ -88,9 +88,9 @@ const ContactSection: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="flex items-center space-x-4 p-4 rounded-2xl border border-border bg-surface-elevated hover:border-accent-border hover:shadow-[var(--shadow-card)] transition-all duration-300 group cursor-pointer"
+                  className="glass edge-lit flex items-center space-x-4 p-4 rounded-2xl hover:border-border-strong hover:shadow-[var(--shadow-card)] transition-all duration-300 group cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent-soft border border-accent-border/50 rounded-xl flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 bg-accent-soft border border-accent-border rounded-xl flex items-center justify-center">
                     <info.icon className="w-6 h-6 text-accent" />
                   </div>
                   <div>
@@ -105,7 +105,7 @@ const ContactSection: React.FC = () => {
               ))}
             </div>
 
-            <div className="rounded-2xl p-6 border border-border bg-surface-elevated">
+            <div className="glass edge-lit rounded-2xl p-6 shadow-[var(--shadow-soft)]">
               <h4 className="font-semibold text-fg mb-3">Why choose DA Orbit?</h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-fg-muted text-sm">
                 {reasons.map((reason) => (

@@ -18,9 +18,9 @@ export default function BlogContent({ post }: BlogContentProps) {
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Breadcrumb */}
       <nav className="mb-6 sm:mb-8" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-2 text-sm sm:text-base text-gray-400 overflow-hidden">
+        <ol className="flex items-center space-x-2 text-sm text-fg-faint overflow-hidden">
           <li className="flex-shrink-0">
-            <Link href="/" className="hover:text-blue-400 transition-colors font-medium">
+            <Link href="/" className="hover:text-accent transition-colors font-medium">
               Home
             </Link>
           </li>
@@ -55,7 +55,7 @@ export default function BlogContent({ post }: BlogContentProps) {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-white truncate font-medium" title={post.title}>
+            <span className="text-fg truncate font-medium" title={post.title}>
               {post.title}
             </span>
           </li>
@@ -69,32 +69,32 @@ export default function BlogContent({ post }: BlogContentProps) {
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 text-sm font-medium bg-blue-600/20 text-blue-400 border border-blue-600/30 rounded-full"
+              className="px-3 py-1 text-xs font-medium bg-accent-soft text-accent border border-accent-border rounded-full"
             >
               {tag}
             </span>
           ))}
           {post.featured && (
-            <span className="px-3 py-1 text-sm font-medium bg-cyan-600/20 text-cyan-400 border border-cyan-600/30 rounded-full">
+            <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-fg rounded-full">
               Featured
             </span>
           )}
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-h2 font-semibold tracking-display text-fg mb-6 leading-tight">
           {post.title}
         </h1>
 
         {/* Excerpt */}
-        <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
+        <p className="text-lead text-fg-muted mb-8 leading-relaxed">
           {post.excerpt}
         </p>
 
         {/* Author and Meta Info */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-gray-700 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-border gap-4">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-blue-600/20 border border-blue-600/30 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-accent-soft border border-accent-border rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
               <img
                 src={post.author.avatar}
                 alt={post.author.name}
@@ -102,26 +102,22 @@ export default function BlogContent({ post }: BlogContentProps) {
               />
             </div>
             <div className="min-w-0">
-              <p className="font-medium text-white">{post.author.name}</p>
-              <p className="text-sm text-gray-400">
+              <p className="font-medium text-fg">{post.author.name}</p>
+              <p className="text-sm text-fg-subtle">
                 {formatDate(post.publishedAt)}
               </p>
             </div>
           </div>
 
-          <div className="text-sm text-gray-400 sm:flex-shrink-0">
+          <div className="text-sm text-fg-subtle sm:flex-shrink-0">
             {post.readTime} min read
           </div>
         </div>
       </header>
 
       {/* Article Content */}
-      <div className="max-w-none m-0">
-        <div 
-          className="blog-content"
-          style={{ all: 'unset',color:"#fff" }}
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+      <div className="prose-q">
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </article>
   );

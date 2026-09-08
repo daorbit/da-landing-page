@@ -19,8 +19,8 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+            <p className="text-fg-muted">Loading...</p>
           </div>
         </div>
       </Layout>
@@ -33,15 +33,15 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-h2 font-semibold tracking-display text-fg mb-4">
               Post Not Found
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-fg-muted mb-8">
               The blog post you're looking for doesn't exist.
             </p>
             <button
               onClick={() => router.back()}
-              className="px-6 py-3 bg-violet-600 text-white font-medium rounded-lg hover:bg-violet-700 transition-colors"
+              className="px-6 py-3 bg-cta text-cta-fg font-medium rounded-xl hover:bg-cta-hover transition-colors"
             >
               Go Back
             </button>
@@ -166,9 +166,9 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       </Head>
 
       <Layout>
-        <main className="min-h-screen bg-black bg-opacity-30">
+        <main className="min-h-screen">
           {/* Content Section */}
-          <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-16 md:pb-24 bg-black bg-opacity-30">
+          <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-16 md:pb-24">
             <div className="max-w-7xl mx-auto">
               <BlogContent post={post} />
             </div>

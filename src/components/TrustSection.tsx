@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const products = [
   { name: "Snappixy", href: "https://snappixy.daorbit.in/" },
@@ -11,27 +10,27 @@ const products = [
 
 const TrustSection: React.FC = () => {
   return (
-    <section className="border-y border-border bg-surface-subtle py-8">
+    <section className="border-y border-border bg-surface-subtle/60 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-fg-faint shrink-0">
-            Products we've built & ship
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-            {products.map((product, i) => (
-              <motion.a
-                key={product.name}
+        <p className="text-center text-[11px] font-medium uppercase tracking-eyebrow text-fg-faint">
+          Products we&apos;ve built &amp; ship
+        </p>
+
+        {/* The list is rendered twice so the -50% translate loops seamlessly. */}
+        <div className="marquee-mask mt-6 overflow-hidden">
+          <div className="marquee-track flex items-center gap-12 pr-12">
+            {[...products, ...products].map((product, i) => (
+              <a
+                key={`${product.name}-${i}`}
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="text-sm font-medium text-fg-subtle hover:text-accent transition-colors duration-200"
+                aria-hidden={i >= products.length}
+                tabIndex={i >= products.length ? -1 : undefined}
+                className="shrink-0 text-base font-medium text-fg-subtle hover:text-fg transition-colors duration-200"
               >
                 {product.name}
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>

@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="bg-surface border-t border-border text-fg">
+    <footer className="bg-surface-subtle/60 border-t border-border text-fg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Company Info */}

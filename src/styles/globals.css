@@ -10,53 +10,102 @@
 :root {
   color-scheme: light;
 
-  --bg: #ffffff;
-  --bg-subtle: #f8fafc;
+  --bg: #fbfcfd;
+  --bg-subtle: #f4f6f8;
   --bg-elevated: #ffffff;
-  --bg-inset: #f1f5f9;
+  --bg-inset: #eef1f4;
+  --hero-top: #eef1f4;
 
-  --fg: #0b1120;
-  --fg-muted: #475569;
-  --fg-subtle: #64748b;
-  --fg-faint: #94a3b8;
+  --fg: #0a0b0d;
+  --fg-muted: #5b6472;
+  --fg-subtle: #6a7280;
+  --fg-faint: #858d99;
 
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
+  --border: #e4e8ec;
+  --border-strong: #cdd3da;
 
-  --accent: #4f46e5;
-  --accent-hover: #4338ca;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
   --accent-fg: #ffffff;
-  --accent-soft: #eef2ff;
-  --accent-border: #c7d2fe;
+  --accent-soft: rgba(13, 148, 136, 0.07);
+  --accent-border: rgba(13, 148, 136, 0.22);
 
-  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
-  --shadow-lift: 0 18px 40px -18px rgba(15, 23, 42, 0.25);
+  /* The primary action is monochrome. The accent is spent on marks, links and
+     data rather than the button, so the one saturated element on a screen is
+     never competing with the CTA. */
+  --cta: #14161a;
+  --cta-hover: #2a2e35;
+  --cta-fg: #ffffff;
+
+  --tint: rgba(13, 148, 136, 0.04);
+  --glow: rgba(13, 148, 136, 0.09);
+  --ring: rgba(13, 148, 136, 0.35);
+  --grid-line: rgba(10, 11, 13, 0.04);
+
+  /* Layered rather than a single cast — a tight contact shadow plus a wide
+     ambient one is what separates a card from the page. */
+  --shadow-soft: 0 1px 2px rgba(11, 12, 15, 0.05), 0 1px 1px rgba(11, 12, 15, 0.03);
+  --shadow-card:
+    0 1px 2px rgba(11, 12, 15, 0.05),
+    0 4px 12px -2px rgba(11, 12, 15, 0.07),
+    0 2px 4px -2px rgba(11, 12, 15, 0.04);
+  --shadow-lift:
+    0 1px 3px rgba(11, 12, 15, 0.05),
+    0 12px 28px -8px rgba(11, 12, 15, 0.1),
+    0 32px 64px -16px rgba(11, 12, 15, 0.14);
+
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(11, 12, 15, 0.08);
+  --glass-blur: 16px;
+  --glass-highlight: rgba(255, 255, 255, 0.9);
 }
 
 .dark {
   color-scheme: dark;
 
-  --bg: #0a0d14;
-  --bg-subtle: #0f131c;
-  --bg-elevated: #141926;
-  --bg-inset: #1a2030;
+  --bg: #0a0b0d;
+  --bg-subtle: #0f1114;
+  --bg-elevated: #141619;
+  --bg-inset: #1a1d21;
+  --hero-top: #12151a;
 
-  --fg: #f1f5f9;
-  --fg-muted: #b2bdcd;
-  --fg-subtle: #94a3b8;
-  --fg-faint: #6b7688;
+  --fg: #f7f8f9;
+  --fg-muted: #9ba1ab;
+  --fg-subtle: #868d99;
+  --fg-faint: #6d747f;
 
-  --border: #232b3b;
-  --border-strong: #333d52;
+  --border: #24272c;
+  --border-strong: #34383f;
 
-  --accent: #818cf8;
-  --accent-hover: #a5b4fc;
-  --accent-fg: #0a0d14;
-  --accent-soft: rgba(129, 140, 248, 0.12);
-  --accent-border: rgba(129, 140, 248, 0.35);
+  --accent: #14b8a6;
+  --accent-hover: #2dd4bf;
+  --accent-fg: #04231f;
+  --accent-soft: rgba(20, 184, 166, 0.1);
+  --accent-border: rgba(20, 184, 166, 0.26);
 
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px -12px rgba(0, 0, 0, 0.7);
-  --shadow-lift: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+  --cta: #ffffff;
+  --cta-hover: rgba(255, 255, 255, 0.88);
+  --cta-fg: #0a0b0d;
+
+  --tint: rgba(20, 184, 166, 0.05);
+  --glow: rgba(20, 184, 166, 0.12);
+  --ring: rgba(20, 184, 166, 0.45);
+  --grid-line: rgba(255, 255, 255, 0.028);
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  --shadow-card:
+    0 2px 4px -1px rgba(0, 0, 0, 0.4),
+    0 8px 24px -6px rgba(0, 0, 0, 0.55);
+  --shadow-lift:
+    0 2px 6px -1px rgba(0, 0, 0, 0.45),
+    0 12px 32px -8px rgba(0, 0, 0, 0.6),
+    0 40px 80px -20px rgba(0, 0, 0, 0.75);
+
+  --glass-bg: rgba(23, 26, 31, 0.55);
+  --glass-bg-strong: rgba(23, 26, 31, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
 }
 
 /* Expose the tokens as Tailwind colour utilities: bg-surface, text-fg-muted,
@@ -80,6 +129,22 @@
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
   --color-accent-border: var(--accent-border);
+
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
+  --color-cta-fg: var(--cta-fg);
+}
+
+/* Fluid type. Large sizes need negative tracking to avoid reading loose; small
+   uppercase needs positive to stay legible. Naming the pairing keeps it
+   consistent instead of re-guessed per component. */
+@theme {
+  --text-display: clamp(2rem, 1.1rem + 3.2vw, 4.25rem);
+  --text-h2: clamp(1.5rem, 1.1rem + 1.5vw, 2.75rem);
+  --text-lead: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
+
+  --tracking-display: -0.035em;
+  --tracking-eyebrow: 0.11em;
 }
 
 html {
@@ -98,7 +163,31 @@ body {
   margin: 0 !important;
   background-color: var(--bg);
   color: var(--fg);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  /* A soft accent bloom at the top of the page plus a cooler band behind the
+     hero — the page reads as lit rather than as a flat fill. */
+  background-image:
+    radial-gradient(
+      64rem 30rem at 50% 4%,
+      color-mix(in srgb, var(--accent) 8%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--hero-top) 0%, var(--bg) 58rem);
+  background-repeat: no-repeat;
+  text-rendering: optimizeLegibility;
+}
+
+:where(button, [role="button"], summary, select):not(:disabled) {
+  cursor: pointer;
+}
+
+:where(a, button, summary, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+section {
+  overflow-x: clip;
 }
 
 /* Prevent horizontal overflow on all elements */
@@ -271,8 +360,88 @@ img {
   }
 }
 
-.blog-content * {
-  all: revert !important;
+/* Article body. CMS content arrives as raw HTML, so the element styles live
+   here rather than on classes the editor would have to know about. */
+.prose-q {
+  color: var(--fg);
+  font-size: 1rem;
+  line-height: 1.72;
+  max-width: 46rem;
+}
+.prose-q > * + *,
+.prose-q > div > * + * {
+  margin-top: 1.25em;
+}
+/* CMS bodies carry inline colours baked for whatever theme the editor was in,
+   which leaves text invisible on the other theme. Override them and let the
+   token decide; links and marks re-assert their own colour below. */
+.prose-q [style*="color"] {
+  color: var(--fg) !important;
+}
+.prose-q a[style*="color"] {
+  color: var(--accent) !important;
+}
+.prose-q [style*="background"] {
+  background-color: transparent !important;
+}
+.prose-q h2 {
+  margin-top: 2.25em;
+  margin-bottom: 0.6em;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.prose-q h3 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+.prose-q a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-q strong { font-weight: 650; color: var(--fg); }
+.prose-q ul, .prose-q ol { padding-left: 1.4em; }
+.prose-q ul { list-style: disc; }
+.prose-q ol { list-style: decimal; }
+.prose-q li::marker { color: var(--fg-muted); }
+.prose-q li + li { margin-top: 0.4em; }
+.prose-q img { border-radius: 0.75rem; }
+.prose-q blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+  color: var(--fg-muted);
+  font-style: italic;
+}
+.prose-q hr { border-color: var(--border); }
+.prose-q table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.prose-q th, .prose-q td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose-q th { background: var(--bg-subtle); font-weight: 600; }
+.prose-q :not(pre) > code {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+}
+.prose-q pre {
+  overflow-x: auto;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 /* ---------------------------------------------------------------------------
@@ -352,8 +521,8 @@ img {
   transition: opacity 0.35s ease;
   pointer-events: none;
   background: radial-gradient(
-    18rem circle at var(--mx, 50%) var(--my, 50%),
-    var(--glow),
+    22rem circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 14%, transparent),
     transparent 60%
   );
 }
@@ -362,22 +531,116 @@ img {
 }
 .glow-card:hover {
   transform: translateY(-3px);
-  border-color: var(--accent-border);
-  box-shadow: var(--shadow-lift);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-card);
 }
 
-/* Gradient text used on headline accents. */
+/* A lit top edge, which is the cheapest thing that makes a card read as a
+   raised surface rather than a filled rectangle. */
+.edge-lit {
+  position: relative;
+}
+.edge-lit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding-top: 1px;
+  background: linear-gradient(to bottom, var(--glass-highlight), transparent 1px);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Translucent surface that picks up whatever sits behind it. */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong {
+    background: var(--bg-elevated);
+  }
+}
+
+/* Headline with a slow sheen drifting across it. */
+@keyframes sheen-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    var(--fg) 0%,
-    var(--accent) 55%,
-    var(--fg) 100%
+    var(--fg) 20%,
+    color-mix(in oklab, var(--fg) 58%, transparent) 42%,
+    var(--fg) 64%
   );
-  background-size: 200% auto;
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: sheen-drift 9s ease-in-out infinite;
+}
+.text-gradient > span {
+  background: inherit;
+  background-size: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: inherit;
+}
+
+/* Scroll-triggered rise. Driven by a scroll timeline where supported, so no
+   observer is needed; the fallback class is toggled from JS. */
+@keyframes enter-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+.v-rise {
+  animation: enter-rise 0.8s var(--ease-out-q) both;
+}
+@supports (animation-timeline: view()) {
+  .v-rise {
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+}
+.v-d1 { animation-delay: 0.05s; }
+.v-d2 { animation-delay: 0.1s; }
+.v-d3 { animation-delay: 0.15s; }
+.v-d4 { animation-delay: 0.2s; }
+.v-d5 { animation-delay: 0.25s; }
+.v-d6 { animation-delay: 0.3s; }
+
+/* Continuous logo/product ribbon. Duplicate the children in markup so the
+   -50% translate loops seamlessly. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 44s linear infinite;
+  width: max-content;
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-mask:hover .marquee-track,
+.marquee-mask:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-mask { overflow-x: auto; mask-image: none; }
+  .marquee-track { animation: none; }
+  .v-rise { animation: none; opacity: 1; transform: none; }
+  .text-gradient { animation: none; }
 }
 
 /* Thin gradient hairline used to separate major sections. */

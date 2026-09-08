@@ -56,9 +56,9 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <header
-      className={`frosted fixed top-0 left-0 right-0 z-50 text-fg transition-all duration-300 will-change-transform ${
+      className={`glass-strong fixed top-0 left-0 right-0 z-50 text-fg transition-all duration-300 will-change-transform backdrop-blur-xl ${
         scrolled
-          ? "border-b border-border shadow-[var(--shadow-card)]"
+          ? "border-b border-border shadow-[var(--shadow-soft)]"
           : "border-b border-transparent"
       }`}
       style={{
@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
           {/* Desktop Navigation — a single inset pill keeps the bar visually
               anchored instead of floating free-standing links. */}
-          <ul className="hidden md:flex list-none m-0 p-1 gap-1 rounded-full border border-border bg-surface-subtle">
+          <ul className="hidden md:flex list-none m-0 p-1 gap-1 rounded-full border border-border bg-surface-inset/70">
             {navItems.map((item) => (
               <li key={item.href || item.id}>
                 {item.href ? (
@@ -121,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 e.preventDefault();
                 scrollToSection("contact");
               }}
-              className="hidden md:inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-fg hover:bg-accent-hover transition-colors duration-200 cursor-pointer"
+              className="hidden md:inline-flex items-center rounded-lg bg-cta px-4 py-2 text-sm font-medium text-cta-fg hover:bg-cta-hover transition-colors duration-200 cursor-pointer"
             >
               Get in touch
             </a>

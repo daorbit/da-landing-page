@@ -61,7 +61,7 @@ const FeaturesSection: React.FC = () => {
 
   return (
     <section
-      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface"
+      className="spotlight relative py-16 sm:py-20 md:py-28"
       id="features"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -74,19 +74,19 @@ const FeaturesSection: React.FC = () => {
         >
           <motion.p
             variants={itemVariants}
-            className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4"
+            className="text-[11px] font-semibold uppercase tracking-eyebrow text-accent mb-4"
           >
             What we do
           </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[-0.025em] text-fg mb-4"
+            className="text-h2 font-semibold tracking-display text-fg mb-4"
           >
             Why choose DA Orbit
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-fg-muted max-w-2xl mx-auto"
+            className="text-lead text-fg-muted max-w-2xl mx-auto"
           >
             We deliver innovative solutions that drive digital transformation and business growth
           </motion.p>
@@ -100,8 +100,8 @@ const FeaturesSection: React.FC = () => {
         >
           {features.map((feature, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <GlowCard className="group rounded-2xl p-6 sm:p-7 border border-border bg-surface-elevated h-full">
-                <div className="inline-flex p-2.5 rounded-xl bg-accent-soft border border-accent-border/50 mb-5">
+              <GlowCard className="glass edge-lit group rounded-2xl p-6 sm:p-7 h-full shadow-[var(--shadow-soft)]">
+                <div className="inline-flex p-2.5 rounded-xl bg-accent-soft border border-accent-border mb-5">
                   <feature.icon className="w-5 h-5 text-accent" />
                 </div>
                 <h3 className="text-lg font-semibold text-fg mb-2">

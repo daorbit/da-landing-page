@@ -32,7 +32,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   return (
     <section
       className={`py-16 lg:py-24 border-t border-border ${
-        surface === "subtle" ? "bg-surface-subtle" : "bg-surface"
+        surface === "subtle" ? "bg-surface-subtle/60" : ""
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
             transition={{ duration: 0.6 }}
             className={`order-2 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}
           >
-            <div className="rounded-2xl border border-border bg-surface-elevated shadow-[var(--shadow-card)] p-6">
+            <div className="glass edge-lit rounded-2xl shadow-[var(--shadow-lift)] p-6">
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -65,10 +65,10 @@ const ProductSection: React.FC<ProductSectionProps> = ({
           >
             <div className="space-y-6">
               <div className="space-y-3">
-                <h2 className="text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-fg">
+                <h2 className="text-h2 font-semibold tracking-display text-fg">
                   {name}
                 </h2>
-                <p className="text-lg text-accent font-medium">{tagline}</p>
+                <p className="text-base text-accent font-medium">{tagline}</p>
               </div>
 
               <p className="text-base text-fg-muted leading-relaxed">
@@ -76,13 +76,13 @@ const ProductSection: React.FC<ProductSectionProps> = ({
               </p>
 
               <div className="space-y-3">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-fg-faint mb-3">
+                <h3 className="text-[11px] font-semibold uppercase tracking-eyebrow text-fg-faint mb-3">
                   Key Features
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {features.map((feature) => (
                     <div key={feature} className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-5 h-5 bg-accent-soft border border-accent-border/50 rounded-full flex items-center justify-center mt-0.5">
+                      <div className="flex-shrink-0 w-5 h-5 bg-accent-soft border border-accent-border rounded-full flex items-center justify-center mt-0.5">
                         <Check className="w-3 h-3 text-accent" />
                       </div>
                       <span className="text-fg-muted text-sm">{feature}</span>
@@ -96,7 +96,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                   href={cta.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-accent-fg text-sm font-medium rounded-xl shadow-[var(--shadow-card)] transition-colors duration-200"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-cta hover:bg-cta-hover text-cta-fg text-sm font-medium rounded-xl shadow-[var(--shadow-card)] transition-colors duration-200"
                 >
                   {cta.label}
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
