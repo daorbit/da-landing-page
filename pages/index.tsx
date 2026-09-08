@@ -2,7 +2,7 @@ import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import Layout from "../src/components/Layout";
 import HeroSection from "../src/components/HeroSection";
-import TrustSection from "../src/components/TrustSection";
+import ShowcaseSection from "../src/components/ShowcaseSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import SnappixySection from "../src/components/SnappixySection";
 import TheTechodioSection from "../src/components/TheTechodioSection";
@@ -10,8 +10,12 @@ import QuantalogSection from "../src/components/QuantalogSection";
 import OpenToolsSection from "../src/components/OpenToolsSection";
 // import Draft2DevSection from "../src/components/Draft2DevSection";
 import AboutSection from "../src/components/AboutSection";
+import ProcessSection from "../src/components/ProcessSection";
+import TestimonialsSection from "../src/components/TestimonialsSection";
+import PricingSection from "../src/components/PricingSection";
 import BlogCarousel from "../src/components/BlogCarousel";
-// import TestimonialsSection from "../src/components/TestimonialsSection";
+import FaqSection from "../src/components/FaqSection";
+import CtaSection from "../src/components/CtaSection";
 import ContactSection from "../src/components/ContactSection";
 import { BlogPost } from "../src/types/blog";
 import { getAllPosts } from "../src/data/blogData";
@@ -215,7 +219,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
       <Layout>
         <HeroSection />
-        <TrustSection />
+        <ShowcaseSection />
         <FeaturesSection />
         <SnappixySection />
         <TheTechodioSection />
@@ -223,8 +227,12 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <OpenToolsSection />
         {/* <Draft2DevSection /> */}
         <AboutSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <PricingSection />
         <BlogCarousel posts={posts} />
-        {/* <TestimonialsSection /> */}
+        <FaqSection />
+        <CtaSection />
         <ContactSection />
       </Layout>
     </>

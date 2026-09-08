@@ -35,30 +35,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   };
 
+ 
   const handleNavigation = (item: { label: string; id?: string; href?: string }) => {
     if (item.id) {
-      scrollToSection(item.id);
-    } else if (item.href) {
-      router.push(item.href);
+      if (router.pathname === '/') {
+        scrollToSection(item.id);
+      } else {
+        router.push(`/#${item.id}`);
+      }
     }
     setIsMenuOpen(false);
   };
-
-  const navItems = router.pathname.startsWith('/blogs') ? [
-    { label: "Home", href: "/#hero" },
-    { label: "Features", href: "/#features" },
-    { label: "About", href: "/#about" },
-    { label: "Blog", href: "/blogs" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "Contact", href: "/#contact" },
-  ] : [
-    { label: "Home", id: "hero" },
-    { label: "Features", id: "features" },
-    { label: "About", id: "about" },
-    { label: "Blog", href: "/blogs" },
-    { label: "Testimonials", id: "testimonials" },
-    { label: "Contact", id: "contact" },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden bg-surface text-fg">
@@ -75,7 +62,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <MobileDrawer
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
-        navItems={navItems}
         onNavigate={handleNavigation}
       />
     </div>

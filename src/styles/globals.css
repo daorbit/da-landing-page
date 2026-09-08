@@ -24,11 +24,11 @@
   --border: #e4e8ec;
   --border-strong: #cdd3da;
 
-  --accent: #0d9488;
-  --accent-hover: #0f766e;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
   --accent-fg: #ffffff;
-  --accent-soft: rgba(13, 148, 136, 0.07);
-  --accent-border: rgba(13, 148, 136, 0.22);
+  --accent-soft: rgba(79, 70, 229, 0.07);
+  --accent-border: rgba(79, 70, 229, 0.22);
 
   /* The primary action is monochrome. The accent is spent on marks, links and
      data rather than the button, so the one saturated element on a screen is
@@ -37,9 +37,9 @@
   --cta-hover: #2a2e35;
   --cta-fg: #ffffff;
 
-  --tint: rgba(13, 148, 136, 0.04);
-  --glow: rgba(13, 148, 136, 0.09);
-  --ring: rgba(13, 148, 136, 0.35);
+  --tint: rgba(79, 70, 229, 0.04);
+  --glow: rgba(79, 70, 229, 0.09);
+  --ring: rgba(79, 70, 229, 0.35);
   --grid-line: rgba(10, 11, 13, 0.04);
 
   /* Layered rather than a single cast — a tight contact shadow plus a wide
@@ -78,19 +78,19 @@
   --border: #24272c;
   --border-strong: #34383f;
 
-  --accent: #14b8a6;
-  --accent-hover: #2dd4bf;
-  --accent-fg: #04231f;
-  --accent-soft: rgba(20, 184, 166, 0.1);
-  --accent-border: rgba(20, 184, 166, 0.26);
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(99, 102, 241, 0.14);
+  --accent-border: rgba(99, 102, 241, 0.3);
 
   --cta: #ffffff;
   --cta-hover: rgba(255, 255, 255, 0.88);
   --cta-fg: #0a0b0d;
 
-  --tint: rgba(20, 184, 166, 0.05);
-  --glow: rgba(20, 184, 166, 0.12);
-  --ring: rgba(20, 184, 166, 0.45);
+  --tint: rgba(99, 102, 241, 0.05);
+  --glow: rgba(99, 102, 241, 0.14);
+  --ring: rgba(99, 102, 241, 0.45);
   --grid-line: rgba(255, 255, 255, 0.028);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(255, 255, 255, 0.02);
@@ -163,16 +163,8 @@ body {
   margin: 0 !important;
   background-color: var(--bg);
   color: var(--fg);
-  /* A soft accent bloom at the top of the page plus a cooler band behind the
-     hero — the page reads as lit rather than as a flat fill. */
-  background-image:
-    radial-gradient(
-      64rem 30rem at 50% 4%,
-      color-mix(in srgb, var(--accent) 8%, transparent),
-      transparent 70%
-    ),
-    linear-gradient(180deg, var(--hero-top) 0%, var(--bg) 58rem);
-  background-repeat: no-repeat;
+  /* The hero owns the gradient at the top of the page (`.hero-wash`), so the
+     body stays a flat fill and the two never stack into muddy banding. */
   text-rendering: optimizeLegibility;
 }
 
@@ -485,6 +477,20 @@ img {
   animation: aurora-spin 28s linear infinite;
   filter: blur(64px);
 }
+/* Soft pastel wash behind the hero — lavender on the left, warm cream on the
+   right, fading out before the content below. */
+.hero-wash {
+  background-image:
+    radial-gradient(ellipse 60% 90% at 0% 0%, rgba(139, 132, 245, 0.42), transparent 62%),
+    radial-gradient(ellipse 60% 90% at 100% 0%, rgba(250, 205, 120, 0.45), transparent 62%),
+    radial-gradient(ellipse 75% 55% at 50% 8%, rgba(255, 255, 255, 0.82), transparent 72%);
+}
+.dark .hero-wash {
+  background-image:
+    radial-gradient(ellipse 55% 80% at 0% 0%, rgba(129, 140, 248, 0.16), transparent 62%),
+    radial-gradient(ellipse 55% 80% at 100% 0%, rgba(234, 179, 8, 0.12), transparent 62%);
+}
+
 .dark .aurora {
   background: conic-gradient(
     from 0deg,

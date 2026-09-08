@@ -28,11 +28,13 @@ const Footer: React.FC = () => {
       { name: 'Web Development', href: '#features' },
       { name: 'Mobile Apps', href: '#features' },
       { name: 'Cloud Solutions', href: '#features' },
-      { name: 'Consulting', href: '#contact' }
+      { name: 'Our Process', href: '#process' },
+      { name: 'Pricing', href: '#pricing' }
     ],
     company: [
       { name: 'About', href: '#about' },
       { name: 'Testimonials', href: '#testimonials' },
+      { name: 'FAQ', href: '#faq' },
       { name: 'Contact', href: '#contact' },
     ]
   }
@@ -48,7 +50,7 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="bg-surface-subtle/60 border-t border-border text-fg">
+    <footer className="bg-[#0a0b0d] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Company Info */}
@@ -59,10 +61,10 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold tracking-tight mb-4">
+              <h3 className="text-2xl font-bold tracking-[-0.02em] mb-4">
                 DA Orbit
               </h3>
-              <p className="text-fg-muted mb-6 max-w-md leading-relaxed text-sm">
+              <p className="text-white/60 mb-6 max-w-md leading-relaxed text-sm">
                 Revolutionizing software development with cutting-edge solutions.
                 We build the future, one orbit at a time.
               </p>
@@ -72,7 +74,7 @@ const Footer: React.FC = () => {
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-3 text-fg-muted hover:text-accent transition-colors duration-300"
+                    className="flex items-center space-x-3 text-white/60 hover:text-white transition-colors duration-300"
                   >
                     <item.icon className="w-4 h-4" />
                     <a href={item.href} className="text-sm cursor-pointer">
@@ -88,7 +90,7 @@ const Footer: React.FC = () => {
                   <a
                     key={index}
                     href={social.href}
-                    className="w-9 h-9 bg-surface-elevated border border-border rounded-full flex items-center justify-center text-fg-subtle hover:text-accent hover:border-accent-border transition-all duration-300 cursor-pointer"
+                    className="w-9 h-9 border border-white/15 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all duration-300 cursor-pointer"
                     aria-label={social.label}
                   >
                     <social.icon className="w-4 h-4" />
