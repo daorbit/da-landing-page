@@ -4,11 +4,6 @@ import Layout from "../src/components/Layout";
 import HeroSection from "../src/components/HeroSection";
 import ShowcaseSection from "../src/components/ShowcaseSection";
 import FeaturesSection from "../src/components/FeaturesSection";
-import SnappixySection from "../src/components/SnappixySection";
-import TheTechodioSection from "../src/components/TheTechodioSection";
-import QuantalogSection from "../src/components/QuantalogSection";
-import OpenToolsSection from "../src/components/OpenToolsSection";
-// import Draft2DevSection from "../src/components/Draft2DevSection";
 import AboutSection from "../src/components/AboutSection";
 import ProcessSection from "../src/components/ProcessSection";
 import TestimonialsSection from "../src/components/TestimonialsSection";
@@ -221,11 +216,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <HeroSection />
         <ShowcaseSection />
         <FeaturesSection />
-        <SnappixySection />
-        <TheTechodioSection />
-        <QuantalogSection />
-        <OpenToolsSection />
-        {/* <Draft2DevSection /> */}
         <AboutSection />
         <ProcessSection />
         <TestimonialsSection />

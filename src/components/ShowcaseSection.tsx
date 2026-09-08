@@ -19,48 +19,49 @@ interface Tab {
 
 const tabs: Tab[] = [
   {
-    id: "snappixy",
-    label: "Snappixy",
-    logo: "/products/snappixy.png",
-    heading: "Snappixy: AI Image Magic",
-    description:
-      "Generate and edit images with AI, then finish them in a drag-and-drop editor. Built for creators and teams who need studio output without a studio.",
-    image: "/snappixy.png",
-    href: "https://snappixy.daorbit.in/",
-    points: [
-      "AI image generation and editing",
-      "Templates, filters, and assets",
-      "Export to PNG, JPG, and SVG",
-    ],
-  },
-  {
-    id: "techodio",
-    label: "The Techodio",
-    logo: "/products/techodio.png",
-    heading: "The Techodio: Audio Intelligence",
-    description:
-      "Curated tech audio with AI-powered recommendations, multi-language support, and a mini player that follows you across the site.",
-    image: "/theTechodio.png",
-    href: "https://techodio.daorbit.in/",
-    points: [
-      "AI content recommendations",
-      "Multi-language audio support",
-      "Persistent mini player",
-    ],
-  },
-  {
     id: "quantalog",
     label: "Quantalog",
     logo: "/products/quantalog.png",
     heading: "Quantalog: Analytics You Can Embed",
     description:
       "Privacy-first, cookieless analytics with real-time dashboards, built-in SEO audits, and a multi-tenant API you can ship to your own users.",
-    image: "/quantalog-logo.png",
+    image: "/products-showcase/quantalog-image.png",
     href: "https://quantalog.daorbit.in",
     points: [
-      "Real-time visitor dashboards",
-      "Cookieless — no consent banner",
-      "SEO audits with Core Web Vitals",
+      "Real-time visitors, pageviews, and sessions",
+      "Cookieless — no consent banner needed",
+      "SEO audits and user-journey tracking",
+    ],
+  },
+  {
+    id: "qr-studio",
+    label: "QR Studio",
+    logo: "/products/qr-studio.png",
+    heading: "QR Studio: Trackable QR Codes",
+    description:
+      "Generate branded QR codes for links, vCards, WiFi, and more — then watch the scans come in with per-country and per-device analytics.",
+    image: "/products-showcase/qr-studio.png",
+    href: "https://qr.daorbit.in/",
+    points: [
+      "URL, vCard, WiFi, email, phone, and SMS",
+      "Custom colours, patterns, and logos",
+      "Scan analytics by location and device",
+    ],
+  },
+  {
+    id: "frame-set",
+    label: "Da Frame Set",
+    logo: "/products/da-frame-set.svg",
+    heading: "Da Frame Set: Build Frames Faster",
+    description:
+      "A visual builder for React layouts — drag pre-built sections onto the canvas, preview them at every breakpoint, and export clean, modular code.",
+    image: "/products-showcase/frame-set.png",
+    href: "https://da-frame-set.daorbit.in/",
+    badge: "FREE",
+    points: [
+      "Pre-built hero, features, and pricing sections",
+      "Responsive preview across devices",
+      "Exports clean, modular React code",
     ],
   },
   {
@@ -70,26 +71,12 @@ const tabs: Tab[] = [
     heading: "Da Text Editor: Rich Text For React",
     description:
       "A drop-in rich-text editing component for React — formatting, structured content, and a clean API, with no editor stack to assemble yourself.",
+    image: "/products-showcase/da-text-editor.png",
     href: "https://da-text-editor.daorbit.in/",
     badge: "FREE",
     points: [
       "Drop-in React component",
       "Structured, serialisable content",
-      "Free and open to use",
-    ],
-  },
-  {
-    id: "frame-set",
-    label: "Da Frame Set",
-    logo: "/products/da-frame-set.svg",
-    heading: "Da Frame Set: Device Mockups",
-    description:
-      "React components that wrap your web content in realistic device frames, so demos and marketing shots present the way they need to.",
-    href: "https://da-frame-set.daorbit.in/",
-    badge: "FREE",
-    points: [
-      "Phone, tablet, and desktop frames",
-      "Wraps live content, not screenshots",
       "Free and open to use",
     ],
   },
@@ -232,14 +219,14 @@ const ShowcaseSection: React.FC = () => {
               </div>
 
               <div className="relative">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
                   {tab.image ? (
                     <Image
                       src={tab.image}
-                      alt={tab.label}
-                      width={560}
-                      height={360}
-                      className="h-auto w-full rounded-xl"
+                      alt={`${tab.label} product screenshot`}
+                      width={1600}
+                      height={1000}
+                      className="h-auto w-full"
                     />
                   ) : (
                     /* Packages have no screenshot to show, so the mark stands
