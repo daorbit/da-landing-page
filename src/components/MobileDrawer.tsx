@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { navEntries, type MenuLink } from './Layout/navMenu';
@@ -20,8 +21,18 @@ const Row: React.FC<{ link: MenuLink; onNavigate: (link: MenuLink) => void }> = 
 }) => {
   const body = (
     <>
-      <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-inset text-fg-muted group-hover:border-accent-border group-hover:text-accent transition-colors">
-        <link.icon className="h-4 w-4" />
+      <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-surface-inset text-fg-muted group-hover:border-accent-border group-hover:text-accent transition-colors">
+        {link.logo ? (
+          <Image
+            src={link.logo}
+            alt=""
+            width={18}
+            height={18}
+            className="h-[18px] w-[18px] object-contain"
+          />
+        ) : link.icon ? (
+          <link.icon className="h-4 w-4" />
+        ) : null}
       </span>
       <span className="min-w-0">
         <span className="flex items-center text-sm font-semibold text-fg">

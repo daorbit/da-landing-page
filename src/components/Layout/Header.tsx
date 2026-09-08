@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           {/* Desktop Navigation. Each entry with columns is a hover/focus group
               that owns its own dropdown panel. */}
           <ul className="hidden md:flex list-none m-0 p-0 gap-2 justify-center">
-            {navEntries.map((entry, index) => (
+            {navEntries.map((entry) => (
               <li
                 key={entry.label}
                 className="group/nav relative flex items-center"
@@ -113,7 +113,6 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                     <MegaMenu
                       columns={entry.columns!}
                       onNavigate={handleMenuNavigate}
-                      align={index === 0 ? "left" : "center"}
                     />
                   </>
                 )}

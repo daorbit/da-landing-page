@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="hero-wash relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-28"
+      className="hero-wash relative overflow-hidden pt-36 pb-32 sm:pt-44 sm:pb-44"
     >
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
         <h1 className="word-rise text-display font-semibold tracking-display leading-[1.08] text-fg">

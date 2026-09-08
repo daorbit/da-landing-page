@@ -21,7 +21,10 @@ export interface MenuLink {
   id?: string;
   href?: string;
   external?: boolean;
-  icon: LucideIcon;
+  /** Lucide mark, used when the row has no product logo of its own. */
+  icon?: LucideIcon;
+  /** Product logo path under /public — takes precedence over `icon`. */
+  logo?: string;
   badge?: string;
 }
 
@@ -49,25 +52,18 @@ export const navEntries: NavEntry[] = [
         heading: "Platforms",
         links: [
           {
-            label: "Snappixy",
-            description: "AI image generation and editing for creators.",
-            href: "https://snappixy.daorbit.in/",
-            external: true,
-            icon: Sparkles,
-          },
-          {
-            label: "The Techodio",
-            description: "AI-powered audio intelligence and tech podcasts.",
-            href: "https://techodio.daorbit.in/",
-            external: true,
-            icon: MonitorSmartphone,
-          },
-          {
             label: "Quantalog",
             description: "Privacy-first analytics you can embed anywhere.",
             href: "https://quantalog.daorbit.in",
             external: true,
-            icon: Search,
+            logo: "/products/quantalog.png",
+          },
+          {
+            label: "QR Studio",
+            description: "Branded, trackable QR codes with scan analytics.",
+            href: "https://qr.daorbit.in/",
+            external: true,
+            logo: "/products/qr-studio.png",
           },
         ],
       },
@@ -75,19 +71,19 @@ export const navEntries: NavEntry[] = [
         heading: "Free developer tools",
         links: [
           {
+            label: "Da Frame Set",
+            description: "Visual builder that exports clean React code.",
+            href: "https://da-frame-set.daorbit.in/",
+            external: true,
+            logo: "/products/da-frame-set.svg",
+            badge: "FREE",
+          },
+          {
             label: "Da Text Editor",
             description: "A drop-in rich-text editor for React apps.",
             href: "https://da-text-editor.daorbit.in/",
             external: true,
-            icon: PenLine,
-            badge: "FREE",
-          },
-          {
-            label: "Da Frame Set",
-            description: "Device mockup frames for React demos.",
-            href: "https://da-frame-set.daorbit.in/",
-            external: true,
-            icon: LayoutTemplate,
+            logo: "/products/da-text-editor.png",
             badge: "FREE",
           },
         ],

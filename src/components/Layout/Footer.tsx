@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-border mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-fg-subtle text-sm">
-              © 2025 DA Orbit. All rights reserved.
+              © {new Date().getFullYear()} DA Orbit. All rights reserved.
             </p>
           </div>
         </div>

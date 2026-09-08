@@ -13,7 +13,6 @@ interface Tab {
   description: string;
   image?: string;
   href: string;
-  badge?: string;
   points: string[];
 }
 
@@ -57,7 +56,6 @@ const tabs: Tab[] = [
       "A visual builder for React layouts — drag pre-built sections onto the canvas, preview them at every breakpoint, and export clean, modular code.",
     image: "/products-showcase/frame-set.png",
     href: "https://da-frame-set.daorbit.in/",
-    badge: "FREE",
     points: [
       "Pre-built hero, features, and pricing sections",
       "Responsive preview across devices",
@@ -73,7 +71,6 @@ const tabs: Tab[] = [
       "A drop-in rich-text editing component for React — formatting, structured content, and a clean API, with no editor stack to assemble yourself.",
     image: "/products-showcase/da-text-editor.png",
     href: "https://da-text-editor.daorbit.in/",
-    badge: "FREE",
     points: [
       "Drop-in React component",
       "Structured, serialisable content",
@@ -98,9 +95,22 @@ const ShowcaseSection: React.FC = () => {
   return (
     <section
       id="showcase"
-      className="relative overflow-hidden bg-[#0a0b0d] py-16 sm:py-20 md:py-24 text-white"
+      /* Lifted, rounded slab rather than a ruled edge — on dark the hero and
+         this band are near-identical blacks, so tone and radius do the
+         separating that a border otherwise would. */
+      className="relative z-10 -mt-10 overflow-hidden rounded-t-[2.5rem] bg-[#131417] py-20 sm:py-24 md:py-28 text-white shadow-[0_-24px_60px_-30px_rgba(0,0,0,0.55)]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Indigo bloom at the top edge, so the slab is lit where it meets the
+          hero instead of reading as a flat black rectangle. */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[28rem]"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 70% 100% at 50% 0%, rgba(99,102,241,0.22), transparent 70%), radial-gradient(ellipse 50% 80% at 12% 0%, rgba(236,72,153,0.10), transparent 65%)",
+        }}
+        aria-hidden="true"
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-h2 font-semibold tracking-display">
             Products we&apos;ve built and ship
@@ -159,7 +169,7 @@ const ShowcaseSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
-            className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-10"
+            className="mt-10 overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0a0b0d] p-6 sm:p-10"
           >
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
               <div>
@@ -173,11 +183,6 @@ const ShowcaseSection: React.FC = () => {
                       className="h-[26px] w-[26px] rounded object-contain"
                     />
                   </span>
-                  {tab.badge && (
-                    <span className="rounded-full border border-accent/40 bg-accent/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-accent">
-                      {tab.badge}
-                    </span>
-                  )}
                 </div>
 
                 <h3 className="mt-5 text-2xl sm:text-3xl font-semibold tracking-display">
