@@ -95,3 +95,8 @@ out
 # Temporary folders
 tmp/
 temp/
+
+# generated at build time by scripts/generate-seo-files.ts
+public/sitemap.xml
+public/robots.txt
+public/llms.txt
