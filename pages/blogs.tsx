@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
+import Seo from '../src/components/Seo';
+import { blog, breadcrumbs, graph } from '../src/utils/schema';
 import Layout from '../src/components/Layout';
-import BlogList from '../src/components/Blog/BlogList';
-import { BlogPost } from '../src/types/blog';
+import BlogList from '../src/components/Blog/BlogList';import { BlogPost } from '../src/types/blog';
 import { getAllPosts } from '../src/data/blogData';
 
 interface BlogsPageProps {
@@ -12,120 +12,32 @@ interface BlogsPageProps {
 export default function BlogsPage({ posts }: BlogsPageProps) {
   return (
     <>
-      <Head>
-        <title>Blog - DA Orbit | Latest Insights & Updates</title>
-        <meta 
-          name="description" 
-          content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
-        />
-        <meta name="keywords" content="blog, insights, technology, business, innovation, digital transformation, DA Orbit, AI, software development" />
-        <meta name="author" content="DA Orbit" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        {/* Open Graph */}
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="DA Orbit" />
-        <meta property="og:title" content="Blog - DA Orbit | Latest Insights & Updates" />
-        <meta 
-          property="og:description" 
-          content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." 
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://daorbit.com/blogs" />
-        <meta property="og:image" content="https://daorbit.com/images/favicon.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="DA Orbit Blog - Latest Insights & Updates" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@daorbit" />
-        <meta name="twitter:creator" content="@daorbit" />
-        <meta name="twitter:title" content="Blog - DA Orbit | Latest Insights & Updates" />
-        <meta name="twitter:description" content="Stay updated with the latest insights, trends, and updates from DA Orbit. Explore our blog for expert perspectives on technology, business, and innovation." />
-        <meta name="twitter:image" content="https://daorbit.com/images/favicon.png" />
-        <meta name="twitter:image:alt" content="DA Orbit Blog" />
-        
-        {/* Additional SEO meta tags */}
-        <meta name="format-detection" content="telephone=no" />
-        
-        <link rel="canonical" href="https://daorbit.com/blogs" />
-        
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Blog",
-              "name": "DA Orbit Blog",
-              "description": "Stay updated with the latest insights, trends, and updates from DA Orbit. Expert perspectives on technology, business, and innovation.",
-              "url": "https://daorbit.com/blogs",
-              "publisher": {
-                "@type": "Organization",
-                "name": "DA Orbit",
-                "url": "https://daorbit.com",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://daorbit.com/images/favicon.png",
-                  "width": 60,
-                  "height": 60
-                }
-              },
-              "inLanguage": "en-US",
-              "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://daorbit.com/blogs"
-              },
-              "blogPost": posts.map(post => ({
-                "@type": "BlogPosting",
-                "headline": post.title,
-                "description": post.excerpt,
-                "url": `https://daorbit.com/blogs/${post.slug}`,
-                "datePublished": new Date(post.publishedAt).toISOString(),
-                "author": {
-                  "@type": "Person",
-                  "name": post.author.name
-                },
-                "keywords": post.tags.join(", ")
-              }))
-            })
-          }}
-        />
-      </Head>
+      <Seo
+        title="Blog — Engineering & Product Insights"
+        description="Practical notes on web development, performance, AI and shipping software from the DA Orbit engineering team."
+        path="/blogs"
+        jsonLd={graph(blog(posts), breadcrumbs([{ name: "Blog", path: "/blogs" }]))}
+      />
 
       <Layout>
-        <main className="min-h-screen bg-surface">
-          {/* Hero Section */}
-          <section className="spotlight relative bg-surface-subtle text-fg pt-20 pb-16 md:pt-28 md:pb-24 border-b border-border">
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center">
-                <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">
-                  Insights
-                </p>
-                <h1 className="text-4xl md:text-6xl font-semibold tracking-[-0.03em] mb-6">
-                  Our Blog
-                </h1>
-                <p className="text-lg md:text-xl text-fg-muted max-w-3xl mx-auto">
-                  Discover insights, trends, and expert perspectives on technology,
-                  business innovation, and digital transformation.
-                </p>
-              </div>
+        <section className="relative isolate overflow-hidden pb-20 pt-14 sm:pb-28 sm:pt-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <div className="max-w-3xl">
+              <p className="rise rise-1 text-[15px] font-semibold text-accent sm:text-[17px]">The DA Orbit blog</p>
+              <h1 className="rise rise-2 mt-3 text-balance text-display font-semibold leading-[1.04] tracking-display text-fg">
+                Notes from the build.
+              </h1>
+              <p className="rise rise-3 mt-5 max-w-2xl text-pretty text-lead leading-normal text-fg-muted">
+                What we learn shipping software — engineering, product and the occasional hard lesson, written up so
+                you don&apos;t have to learn it the hard way.
+              </p>
             </div>
-          </section>
 
-          {/* Blog Posts Section */}
-          <section className="py-16 md:py-24 bg-surface">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <BlogList 
-                posts={posts} 
-              />
+            <div className="rise rise-4 mt-12">
+              <BlogList posts={posts} />
             </div>
-          </section>
-
-        
-        </main>
+          </div>
+        </section>
       </Layout>
     </>
   );

@@ -83,6 +83,7 @@ const mapCmsPageToBlogPost = (page: CmsPage): BlogPost => ({
     avatar: '/favicon.png',
   },
   publishedAt: page.publishedAt ?? page.updatedAt,
+  updatedAt: page.updatedAt ?? page.publishedAt,
   readTime:
     page.readingMinutes ??
     Math.max(1, Math.ceil((page.description?.length ?? 0) / 200)),

@@ -13,7 +13,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ primary, secondary, onNavigate }) =
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => onNavigate(e.currentTarget);
 
   return (
-    <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-10 p-8">
+    <div className="grid grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)] gap-12 px-12 pb-14 pt-8">
       <div>
         <p className="menu-reveal text-[12px] text-fg-faint">{primary.heading}</p>
         <ul className="mt-4 space-y-2.5">

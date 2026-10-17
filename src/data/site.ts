@@ -4,16 +4,43 @@ export const site = {
   url: "https://www.daorbit.in",
   email: "daorbit2k25@gmail.com",
   location: "Delhi, India",
+  googleReviews: "https://share.google/VvkTNJA4KS8LECE1f",
   description:
-    "A senior product studio that designs, builds and runs web platforms, mobile apps and cloud infrastructure — and ships its own products too.",
+    "DA Orbit is a software development company in Delhi, India. We design, build and run web platforms, mobile apps, cloud infrastructure and AI features — and ship our own products too.",
+  title: "DA Orbit — Software Development Company in Delhi, India",
+  ogImage: "/og-image.png",
+  twitter: "@daorbit2k25",
   socials: [
     { label: "X", href: "https://x.com/daorbit2k25" },
     { label: "GitHub", href: "https://github.com/daorbit" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/daorbit" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/da-orbit-6b7ab242a/" },
   ],
 };
 
-export type Tone = "blue" | "green" | "violet" | "amber";
+export const clientWork = {
+  name: "Lots of Trips",
+  href: "https://www.lotsoftrips.in/",
+  host: "lotsoftrips.in",
+  logoLight: "/clients/lotsoftrips-logo.png",
+  logoDark: "/clients/lotsoftrips-logo-on-dark.png",
+  summary:
+    "A travel platform for handcrafted journeys, treks and pilgrimages across Uttarakhand and Himachal Pradesh — designed, built and launched by DA Orbit.",
+  stack: ["Next.js", "React", "Tailwind CSS", "AI"],
+  highlights: ["Trip catalogue and itineraries", "Enquiries over WhatsApp", "SEO-ready, fast pages", "Light and dark themes"],
+  ai: {
+    name: "Tripzy AI",
+    markLight: "/clients/lotsoftrips-tripzy-mark-light.png",
+    markDark: "/clients/lotsoftrips-tripzy-mark-dark.png",
+    body: "An AI trip planner we built into the site. Travellers describe the trip they want and Tripzy helps them plan it.",
+  },
+};
+
+export const orbitAi = {
+  name: "Orbit AI",
+  extension: "https://chromewebstore.google.com/detail/orbit-ai/ilmdbgnbkgjldhelepoadfkmpahelmkg",
+};
+
+export type Tone ="blue" | "green" | "violet" | "amber";
 
 export interface Product {
   id: string;

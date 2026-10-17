@@ -1,0 +1,67 @@
+# DA Orbit
+
+> DA Orbit is a software development company in Delhi, India. We design, build and run web platforms, mobile apps, cloud infrastructure and AI features — and ship our own products too.
+
+DA Orbit is a software development company based in Delhi, India. A small senior team takes products from first call to launch: web platforms on React, Next.js and Node, cross-platform mobile apps in React Native, cloud infrastructure on AWS, Azure and Google Cloud, and AI features such as assistants and retrieval. Work is quoted as a fixed scope with a written estimate, demoed weekly, and supported after launch. Clients own all source code and infrastructure at handover.
+
+Contact: daorbit2k25@gmail.com
+
+## Pages
+
+- [Home](https://www.daorbit.in/): Who we are, what we build, our process, engagement models and how to start a project.
+- [Services](https://www.daorbit.in/services/): Web development, mobile apps, cloud & DevOps, AI integration, UI/UX design and consulting.
+- [Blog](https://www.daorbit.in/blogs/): Engineering and product articles from the DA Orbit team.
+- [About](https://www.daorbit.in/about/): About DA Orbit, a software development company in Delhi, India.
+- [Privacy Policy](https://www.daorbit.in/privacy/): How personal information is collected, used and protected.
+- [Contact form](https://www.daorbit.in/#contact): Start a project or request a free consultation and estimate
+
+## Client work
+
+- [Lots of Trips](https://www.lotsoftrips.in/): A travel platform for handcrafted journeys, treks and pilgrimages across Uttarakhand and Himachal Pradesh — designed, built and launched by DA Orbit.
+
+## Products built and run by DA Orbit
+
+- [Quantalog](https://quantalog.daorbit.in): Privacy-first analytics you can embed anywhere.
+- [QR Studio](https://qr.daorbit.in/): Branded, trackable QR codes with scan analytics.
+- [Da Frame Set](https://da-frame-set.daorbit.in/): Visual builder that exports clean React code.
+- [Da Text Editor](https://da-text-editor.daorbit.in/): A drop-in rich-text editor for React apps.
+- [Orbit AI](https://chromewebstore.google.com/detail/orbit-ai/ilmdbgnbkgjldhelepoadfkmpahelmkg): An AI assistant for Chrome's side panel, built by DA Orbit
+
+## Blog
+
+- [The AI Civil War of 2026](https://www.daorbit.in/blogs/the-ai-civil-war-of-2026/): How Claude and ChatGPT's Battle Went From Benchmarks to Billboards — and Beyond
+- [Instant Navigation: A Guide to Optimizing for Back/Forward Cache (bfcache)](https://www.daorbit.in/blogs/guide-to-bfcache-web-performance/): Boost your site's speed and UX with Back/Forward cache. Learn how bfcache works, how to test your pages, and common reasons why pages are prevented from being cached.
+- [Master the Git Cherry-Pick: A Practical Guide for Developers](https://www.daorbit.in/blogs/git-cherry-pick-guide-examples/): Learn how to use the Git cherry-pick command to move specific commits between branches. Discover best practices, how to handle conflicts, and when to avoid it
+
+## FAQ
+
+### How long does a typical project take?
+
+Most builds run six to twelve weeks from kickoff to launch, depending on scope. We give you a milestone timeline in writing after discovery, before any code is written.
+
+### How do you price work?
+
+Project work is quoted as a fixed scope with a written estimate. Retainers are billed monthly for reserved capacity. Either way you know the number before we start — we don't bill open-ended hours.
+
+### What technologies do you work with?
+
+Primarily the MERN stack — MongoDB, Express, React and Node — plus Next.js, React Native for mobile, and AWS, Azure or Google Cloud for infrastructure. We pick per project rather than forcing one stack onto every problem.
+
+### Do you work with existing codebases?
+
+Yes. A large share of our work is taking over, auditing or extending software someone else built. We start with a codebase review so you get an honest read on what's worth keeping.
+
+### What happens after launch?
+
+Every project includes 30 days of post-launch support. Beyond that, most clients move to a retainer for monitoring, maintenance and ongoing feature work.
+
+### Who owns the code?
+
+You do. Full ownership of the source, the repositories and the infrastructure accounts transfers to you at handover.
+
+## Elsewhere
+
+- [X](https://x.com/daorbit2k25): DA Orbit on X
+- [GitHub](https://github.com/daorbit): DA Orbit on GitHub
+- [LinkedIn](https://www.linkedin.com/in/da-orbit-6b7ab242a/): DA Orbit on LinkedIn
+- [Google reviews](https://share.google/VvkTNJA4KS8LECE1f): Client reviews of DA Orbit on Google

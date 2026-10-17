@@ -1,74 +1,66 @@
-import { BlogPost } from '../../types/blog';
-import BlogCard from './BlogCard';
+import React, { useMemo, useState } from "react";
+import { FileText } from "lucide-react";
+import BlogCard from "./BlogCard";
+import FeaturedPost from "./FeaturedPost";
+import TagFilter from "./TagFilter";
+import Reveal from "../ui/Reveal";
+import type { BlogPost } from "../../types/blog";
 
-interface BlogListProps {
-  posts: BlogPost[];
-  title?: string;
-  description?: string;
-}
+const MAX_TAGS = 8;
 
-export default function BlogList({ 
-  posts, 
-  title,
-  description 
-}: BlogListProps) {
-  // Sort posts by date (most recent first)
-  const sortedPosts = [...posts].sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+const BlogList: React.FC<{ posts: BlogPost[] }> = ({ posts }) => {
+  const [tag, setTag] = useState<string | null>(null);
+
+  const sorted = useMemo(
+    () => [...posts].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()),
+    [posts]
   );
 
-  if (posts.length === 0) {
+  const tags = useMemo(() => {
+    const counts = new Map<string, number>();
+    sorted.forEach((p) => p.tags.forEach((t) => counts.set(t, (counts.get(t) ?? 0) + 1)));
+    return Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, MAX_TAGS)
+      .map(([t]) => t);
+  }, [sorted]);
+
+  if (!sorted.length) {
     return (
-      <div className="text-center py-12">
-        <div className="w-24 h-24 mx-auto mb-4 bg-surface-subtle rounded-full flex items-center justify-center border border-border">
-          <svg
-            className="w-12 h-12 text-fg-faint"
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
-            />
-          </svg>
-        </div>
-        <h3 className="text-lg font-medium text-fg mb-2">No blog posts found</h3>
-        <p className="text-fg-muted">Check back later for new content!</p>
+      <div className="mx-auto max-w-md py-24 text-center">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-surface-subtle text-fg-faint">
+          <FileText className="h-6 w-6" />
+        </span>
+        <h2 className="mt-5 text-[1.25rem] font-semibold text-fg">No articles yet</h2>
+        <p className="mt-2 text-fg-muted">We&apos;re writing the first ones. Check back soon.</p>
       </div>
     );
   }
 
+  const filtered = tag ? sorted.filter((p) => p.tags.includes(tag)) : sorted;
+  const [featured, ...rest] = filtered;
+
   return (
-    <div className="w-full">
-      {/* Header */}
-      {(title || description) && (
-        <div className="text-center mb-12">
-          {title && (
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.025em] text-fg mb-4">
-              {title}
-            </h2>
-          )}
-          {description && (
-            <p className="text-lg text-fg-muted max-w-2xl mx-auto">
-              {description}
-            </p>
-          )}
-        </div>
+    <>
+      {tags.length > 1 && <TagFilter tags={tags} active={tag} onChange={setTag} />}
+
+      {featured && (
+        <Reveal key={featured.id} className="mt-10">
+          <FeaturedPost post={featured} />
+        </Reveal>
       )}
 
-      {/* All Posts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-        {sortedPosts.map((post) => (
-          <BlogCard 
-            key={post.id} 
-            post={post} 
-            variant={post.featured ? "featured" : "default"}
-          />
-        ))}
-      </div>
-    </div>
+      {rest.length > 0 && (
+        <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {rest.map((post, i) => (
+            <Reveal key={post.id} delay={(i % 3) as 0 | 1 | 2}>
+              <BlogCard post={post} />
+            </Reveal>
+          ))}
+        </div>
+      )}
+    </>
   );
-}
+};
+
+export default BlogList;

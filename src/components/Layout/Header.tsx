@@ -10,7 +10,7 @@ import { navEntries } from "./navMenu";
 import { useScrolled } from "../../hooks/useScrolled";
 
 const navLinkClass =
-  "whitespace-nowrap rounded-full px-3.5 py-1.5 text-[13px] font-medium text-fg-muted transition-colors duration-200 hover:bg-surface-subtle hover:text-fg";
+  "whitespace-nowrap px-3.5 py-1.5 text-[13px] text-fg transition-colors duration-200 hover:text-fg-muted";
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
                 <button
                   type="button"
                   aria-haspopup="true"
-                  className="inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-[13px] font-medium text-fg-muted transition-colors duration-200 group-hover:bg-surface-subtle group-hover:text-fg group-focus-within:text-fg"
+                  className="inline-flex items-center gap-1 px-3.5 py-1.5 text-[13px] text-fg transition-colors duration-200 group-hover:text-fg-muted group-focus-within:text-fg-muted"
                 >
                   {entry.label}
                   <ChevronDown

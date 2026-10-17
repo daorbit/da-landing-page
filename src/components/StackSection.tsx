@@ -1,10 +1,19 @@
 import React from "react";
 import Reveal from "./ui/Reveal";
+import Marquee from "./ui/Marquee";
+import BrandMark from "./ui/BrandMark";
+import { platformStack, webStack, type Tech } from "../data/stack";
 
-const rows = [
-  ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "Express", "PostgreSQL", "Redis", "GraphQL", "Tailwind CSS"],
-  ["React Native", "AWS", "Google Cloud", "Azure", "Docker", "Vercel", "Stripe", "Razorpay", "OpenAI", "Claude"],
-];
+const TechChip: React.FC<{ tech: Tech }> = ({ tech }) => (
+  <span className="stack-chip" role="listitem">
+    {tech.brand ? (
+      <BrandMark icon={tech.brand} />
+    ) : (
+      tech.icon && <tech.icon className="h-5 w-5 text-fg-muted" aria-hidden="true" />
+    )}
+    {tech.name}
+  </span>
+);
 
 const StackSection: React.FC = () => (
   <section className="section-y-sm">
@@ -17,20 +26,17 @@ const StackSection: React.FC = () => (
       </p>
     </Reveal>
 
-    <div className="marquee-mask mt-10 space-y-4 overflow-hidden sm:mt-12">
-      {rows.map((row, r) => (
-        <ul
-          key={r}
-          className={`marquee-track flex items-center gap-3 ${r ? "marquee-track--reverse" : ""}`}
-          aria-label={r ? "Mobile, cloud and AI" : "Web stack"}
-        >
-          {[...row, ...row].map((name, i) => (
-            <li key={`${name}-${i}`} aria-hidden={i >= row.length || undefined} className="stack-chip">
-              {name}
-            </li>
-          ))}
-        </ul>
-      ))}
+    <div className="mt-10 space-y-4 sm:mt-12">
+      <Marquee label="Web stack">
+        {webStack.map((tech) => (
+          <TechChip key={tech.name} tech={tech} />
+        ))}
+      </Marquee>
+      <Marquee label="Mobile, cloud and AI" reverse slow>
+        {platformStack.map((tech) => (
+          <TechChip key={tech.name} tech={tech} />
+        ))}
+      </Marquee>
     </div>
   </section>
 );

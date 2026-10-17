@@ -2,6 +2,7 @@ import React from "react";
 import { Clock, Mail, MapPin } from "lucide-react";
 import Reveal from "./ui/Reveal";
 import ContactForm from "./contact/ContactForm";
+import GoogleReviewsLink from "./ui/GoogleReviewsLink";
 import { site } from "../data/site";
 
 const details = [
@@ -46,6 +47,8 @@ const ContactSection: React.FC = () => (
               );
             })}
           </ul>
+
+          <GoogleReviewsLink variant="card" className="mt-3 w-full" />
         </Reveal>
 
         <Reveal delay={1}>

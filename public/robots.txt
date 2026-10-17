@@ -1,12 +1,7 @@
-# *
 User-agent: *
 Allow: /
+Disallow: /404
 Disallow: /_next/
-Disallow: /api/
-Disallow: /admin/
 
-# Host
-Host: https://www.daorbit.in
-
-# Sitemaps
+Host: www.daorbit.in
 Sitemap: https://www.daorbit.in/sitemap.xml

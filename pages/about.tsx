@@ -1,15 +1,17 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
+import Seo from '@/components/Seo'
+import { breadcrumbs, graph } from '@/utils/schema'
 import Layout from '@/components/Layout'
 
 const About: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>About - DA Orbit</title>
-        <meta name="description" content="Learn more about DA Orbit - Innovative software development and digital transformation services" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <Seo
+        title="About Us"
+        description="DA Orbit is a software development company in Delhi, India — a small senior team that designs, builds and runs web platforms, mobile apps and cloud infrastructure."
+        path="/about"
+        jsonLd={graph(breadcrumbs([{ name: "About", path: "/about" }]))}
+      />
       
       <Layout>
         <section className="spotlight relative flex min-h-[80vh] items-center justify-center bg-surface px-6 pt-20 pb-20">

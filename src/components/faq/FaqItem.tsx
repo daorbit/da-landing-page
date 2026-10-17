@@ -1,10 +1,7 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
+import type { Faq } from "../../data/faqs";
 
-export interface Faq {
-  question: string;
-  answer: string;
-}
 
 interface FaqItemProps {
   item: Faq;

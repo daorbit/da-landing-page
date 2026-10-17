@@ -1,27 +1,26 @@
 {
-  "name": "DA Orbit - Innovative Software Solutions",
+  "name": "DA Orbit — Software Development Company",
   "short_name": "DA Orbit",
-  "description": "Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time.",
+  "description": "DA Orbit is a software development company in Delhi, India. We design, build and run web platforms, mobile apps, cloud infrastructure and AI features.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#7c3aed",
-  "orientation": "portrait-primary",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "scope": "/",
-  "lang": "en-US",
+  "lang": "en",
   "categories": ["business", "technology", "productivity"],
   "icons": [
     {
       "src": "/favicon.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

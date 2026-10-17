@@ -1,15 +1,15 @@
 import React from 'react';
-import Head from 'next/head';
+import Seo from '../src/components/Seo';
 import Layout from '../src/components/Layout';
 
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <Head>
-        <title>Privacy Policy - DA Orbit</title>
-        <meta name="description" content="Privacy Policy for DA Orbit - Learn how we collect, use, and protect your personal information." />
-        <meta name="robots" content="index, follow" />
-      </Head>
+      <Seo
+        title="Privacy Policy"
+        description="How DA Orbit collects, uses and protects your personal information."
+        path="/privacy"
+      />
       
       <Layout>
         <div className="min-h-screen bg-white dark:bg-gray-900 py-16 mt-10">

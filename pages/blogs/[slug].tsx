@@ -1,16 +1,29 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import Head from "next/head";
+import Seo from "../../src/components/Seo";
+import { blogPosting, breadcrumbs, graph } from "../../src/utils/schema";
 import { useRouter } from "next/router";
 import Layout from "../../src/components/Layout";
 import BlogContent from "../../src/components/Blog/BlogContent";
+import RelatedPosts from "../../src/components/Blog/RelatedPosts";
 import { BlogPost } from "../../src/types/blog";
 import { getAllPosts, getPostBySlug } from '../../src/data/blogData';
 
 interface BlogPostPageProps {
   post: BlogPost | null;
+  related: BlogPost[];
 }
 
-export default function BlogPostPage({ post }: BlogPostPageProps) {
+const RELATED_COUNT = 3;
+
+const pickRelated = (post: BlogPost, all: BlogPost[]) =>
+  all
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({ p, shared: p.tags.filter((t) => post.tags.includes(t)).length }))
+    .sort((a, b) => b.shared - a.shared)
+    .slice(0, RELATED_COUNT)
+    .map(({ p }) => p);
+
+export default function BlogPostPage({ post, related }: BlogPostPageProps) {
   const router = useRouter();
 
   // Show loading state during static generation
@@ -57,123 +70,25 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
 
   return (
     <>
-      <Head>
-        <title>{post.title} - DA Orbit Blog</title>
-        <meta name="description" content={post.excerpt} />
-        <meta name="keywords" content={post.tags.join(", ")} />
-        <meta name="author" content={post.author.name} />
-        <meta
-          name="robots"
-          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {/* Open Graph */}
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="DA Orbit" />
-        <meta property="og:title" content={`${post.title} - DA Orbit Blog`} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:url"
-          content={`https://daorbit.com/blogs/${post.slug}`}
-        />
-        {post.image && <meta property="og:image" content={post.image} />}
-        {post.image && <meta property="og:image:width" content="1200" />}
-        {post.image && <meta property="og:image:height" content="630" />}
-        {post.image && <meta property="og:image:alt" content={post.title} />}
-
-        {/* Article meta */}
-        <meta property="article:author" content={post.author.name} />
-        <meta
-          property="article:published_time"
-          content={formatDate(post.publishedAt)}
-        />
-        <meta
-          property="article:modified_time"
-          content={formatDate(post.publishedAt)}
-        />
-        <meta property="article:section" content="Technology" />
-        {post.tags.map((tag) => (
-          <meta key={tag} property="article:tag" content={tag} />
-        ))}
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@daorbit" />
-        <meta name="twitter:creator" content="@daorbit" />
-        <meta name="twitter:title" content={`${post.title} - DA Orbit Blog`} />
-        <meta name="twitter:description" content={post.excerpt} />
-        {post.image && <meta name="twitter:image" content={post.image} />}
-        {post.image && <meta name="twitter:image:alt" content={post.title} />}
-
-        {/* Additional SEO meta tags */}
-        <meta name="theme-color" content="#1f2937" />
-        <meta name="format-detection" content="telephone=no" />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href={`https://daorbit.com/blogs/${post.slug}`} />
-
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: post.title,
-              description: post.excerpt,
-              image: post.image || "https://daorbit.com/images/favicon.png",
-              author: {
-                "@type": "Person",
-                name: post.author.name,
-                url: "https://daorbit.com",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "DA Orbit",
-                url: "https://daorbit.com",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://daorbit.com/images/favicon.png",
-                  width: 60,
-                  height: 60,
-                },
-              },
-              datePublished: formatDate(post.publishedAt),
-              dateModified: formatDate(post.publishedAt),
-              mainEntityOfPage: {
-                "@type": "WebPage",
-                "@id": `https://daorbit.com/blogs/${post.slug}`,
-              },
-              keywords: post.tags.join(", "),
-              articleSection: "Technology",
-              inLanguage: "en-US",
-              isPartOf: {
-                "@type": "Blog",
-                "@id": "https://daorbit.com/blogs",
-                name: "DA Orbit Blog",
-              },
-              wordCount: Math.round(post.content.split(" ").length),
-              timeRequired: `PT${post.readTime}M`,
-              about: {
-                "@type": "Thing",
-                name: "Technology and Innovation",
-              },
-            }),
-          }}
-        />
-      </Head>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/blogs/${post.slug}`}
+        image={post.image}
+        type="article"
+        article={{ publishedTime: post.publishedAt, tags: post.tags, author: post.author.name }}
+        jsonLd={graph(
+          blogPosting(post),
+          breadcrumbs([
+            { name: "Blog", path: "/blogs" },
+            { name: post.title, path: `/blogs/${post.slug}` },
+          ])
+        )}
+      />
 
       <Layout>
-        <main className="min-h-screen">
-          {/* Content Section */}
-          <section className="pt-10 sm:pt-14 md:pt-20 pb-8 sm:pb-16 md:pb-24">
-            <div className="max-w-7xl mx-auto">
-              <BlogContent post={post} />
-            </div>
-          </section>
-        </main>
+        <BlogContent post={post} />
+        <RelatedPosts posts={related} />
       </Layout>
     </>
   );
@@ -202,9 +117,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
+  const all = await getAllPosts();
+
   return {
     props: {
       post,
+      related: pickRelated(post, all),
     },
   };
 };

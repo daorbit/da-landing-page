@@ -1,10 +1,9 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
 import Logo from "../ui/Logo";
-import Button from "../ui/Button";
+import GoogleReviewsLink from "../ui/GoogleReviewsLink";
 import SmartLink from "../ui/SmartLink";
 import ThemeToggle from "../ThemeToggle";
-import { products, site } from "../../data/site";
+import { orbitAi, products, site } from "../../data/site";
 
 const columns = [
   {
@@ -18,7 +17,10 @@ const columns = [
   },
   {
     title: "Our products",
-    links: products.map((p) => ({ href: p.href, label: p.name })),
+    links: [
+      ...products.map((p) => ({ href: p.href, label: p.name })),
+      { href: orbitAi.extension, label: orbitAi.name },
+    ],
   },
   {
     title: "Company",
@@ -44,16 +46,6 @@ const legal = [
 const Footer: React.FC = () => (
   <footer className="site-footer">
     <div className="mx-auto max-w-7xl px-5 pt-10 sm:px-6 sm:pt-14 lg:px-10">
-      <div className="mb-12 flex flex-col gap-5 border-b border-border pb-10 sm:mb-16 sm:flex-row sm:items-center sm:justify-between sm:pb-14">
-        <p className="text-balance text-[1.75rem] font-semibold leading-tight tracking-display text-fg sm:text-[2.25rem]">
-          Have an idea? <span className="text-fg-faint">Let&apos;s build it.</span>
-        </p>
-        <Button href="/#contact" size="lg" className="self-start sm:self-auto">
-          Start a project
-          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-        </Button>
-      </div>
-
       <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-6">
         <div className="col-span-2">
           <Logo />
@@ -62,6 +54,7 @@ const Footer: React.FC = () => (
             <span className="live-dot h-1.5 w-1.5 rounded-full bg-emerald-500" />
             Taking new projects
           </p>
+          <GoogleReviewsLink className="mt-3" />
         </div>
 
         {columns.map((col) => (

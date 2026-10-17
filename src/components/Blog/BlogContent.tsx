@@ -1,124 +1,52 @@
-import Link from "next/link";
-import { BlogPost } from "../../types/blog";
+import React, { useRef } from "react";
+import ArticleHeader from "./ArticleHeader";
+import TableOfContents from "./TableOfContents";
+import ReadingProgress from "./ReadingProgress";
+import ShareButtons from "./ShareButtons";
+import { useArticleHeadings } from "../../hooks/useArticleHeadings";
+import type { BlogPost } from "../../types/blog";
 
-interface BlogContentProps {
-  post: BlogPost;
-}
-
-export default function BlogContent({ post }: BlogContentProps) {
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
+const BlogContent: React.FC<{ post: BlogPost }> = ({ post }) => {
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const { headings, activeId } = useArticleHeadings(bodyRef);
 
   return (
-    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Breadcrumb */}
-      <nav className="mb-6 sm:mb-8" aria-label="Breadcrumb">
-        <ol className="flex items-center space-x-2 text-sm text-fg-faint overflow-hidden">
-          <li className="flex-shrink-0">
-            <Link href="/" className="hover:text-accent transition-colors font-medium">
-              Home
-            </Link>
-          </li>
-          <li className="flex items-center flex-shrink-0">
-            <svg
-              className="w-4 h-4 mx-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <Link
-              href="/blogs"
-              className="hover:text-blue-400 transition-colors font-medium min-h-[0px]"
-            >
-              Blog
-            </Link>
-          </li>
-          <li className="flex items-center min-w-0 flex-1">
-            <svg
-              className="w-4 h-4 mx-2 flex-shrink-0"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-            <span className="text-fg truncate font-medium" title={post.title}>
-              {post.title}
-            </span>
-          </li>
-        </ol>
-      </nav>
+    <article className="pb-16 pt-10 sm:pb-24 sm:pt-16">
+      <ReadingProgress />
+      <ArticleHeader post={post} />
 
-      {/* Article Header */}
-      <header className="mb-8">
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 text-xs font-medium bg-accent-soft text-accent border border-accent-border rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-          {post.featured && (
-            <span className="px-3 py-1 text-xs font-medium bg-accent text-accent-fg rounded-full">
-              Featured
-            </span>
-          )}
+      {post.image && (
+        <div className="rise rise-5 mx-auto mt-12 max-w-6xl px-4 sm:mt-16 sm:px-6">
+          <img src={post.image} alt="" className="article-hero" />
+        </div>
+      )}
+
+      <div className="mx-auto mt-12 grid max-w-6xl gap-12 px-4 sm:mt-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-16">
+        <div className="min-w-0">
+          <div ref={bodyRef} className="prose-q mx-auto lg:mx-0" dangerouslySetInnerHTML={{ __html: post.content }} />
+
+          <footer className="mx-auto mt-16 flex max-w-[44rem] flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between lg:mx-0">
+            {post.tags.length > 0 && (
+              <ul className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <li key={tag} className="rounded-full bg-surface-subtle px-3 py-1 text-[13px] text-fg-muted">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <ShareButtons title={post.title} path={`/blogs/${post.slug}`} />
+          </footer>
         </div>
 
-        {/* Title */}
-        <h1 className="text-h2 font-semibold tracking-display text-fg mb-6 leading-tight">
-          {post.title}
-        </h1>
-
-        {/* Excerpt */}
-        <p className="text-lead text-fg-muted mb-8 leading-relaxed">
-          {post.excerpt}
-        </p>
-
-        {/* Author and Meta Info */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-border gap-4">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-accent-soft border border-accent-border rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
-              <img
-                src={post.author.avatar}
-                alt={post.author.name}
-                className="w-12 h-12 rounded-full object-cover"
-              />
-            </div>
-            <div className="min-w-0">
-              <p className="font-medium text-fg">{post.author.name}</p>
-              <p className="text-sm text-fg-subtle">
-                {formatDate(post.publishedAt)}
-              </p>
-            </div>
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <TableOfContents headings={headings} activeId={activeId} />
           </div>
-
-          <div className="text-sm text-fg-subtle sm:flex-shrink-0">
-            {post.readTime} min read
-          </div>
-        </div>
-      </header>
-
-      {/* Article Content */}
-      <div className="prose-q">
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </aside>
       </div>
     </article>
   );
-}
+};
+
+export default BlogContent;

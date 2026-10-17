@@ -1,4 +1,4 @@
-import { products, site } from "../../data/site";
+import { orbitAi, products, site } from "../../data/site";
 
 export interface MenuLink {
   label: string;
@@ -68,6 +68,7 @@ export const navEntries: NavEntry[] = [
       {
         heading: "Explore",
         links: [
+          { label: `${orbitAi.name} for Chrome`, href: "/#orbit-ai" },
           { label: "All products", href: "/#products" },
           { label: "Free developer tools", href: "/#products" },
         ],

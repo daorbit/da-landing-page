@@ -1,7 +1,8 @@
 import React from "react";
-import { BarChart3, Cloud, Code, CreditCard, Gauge, Globe, LifeBuoy, Lock, Plug, Search, Smartphone, Sparkles } from "lucide-react";
+import { BarChart3, BrainCircuit, Cloud, Code, CreditCard, Gauge, Globe, LifeBuoy, Lock, Plug, Search, Smartphone } from "lucide-react";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
+import Marquee from "./ui/Marquee";
 import ServiceTile, { type Service } from "./services/ServiceTile";
 import { CodeVisual, UptimeVisual } from "./services/ServiceVisuals";
 
@@ -30,11 +31,11 @@ const services: Service[] = [
     fx: "fx-bob",
   },
   {
-    icon: Sparkles,
+    icon: BrainCircuit,
     title: "AI features",
     body: "Retrieval, agents and assistants wired into the product you already have.",
     tone: "tone-amber",
-    fx: "fx-spin",
+    fx: "fx-pulse",
   },
   {
     icon: Search,
@@ -89,16 +90,14 @@ const FeaturesSection: React.FC = () => (
       ))}
     </div>
 
-    <div className="marquee-mask mx-auto mt-10 max-w-7xl overflow-hidden">
-      <ul className="marquee-track flex gap-3" aria-label="Also included">
-        {[...capabilities, ...capabilities].map(({ icon: Icon, label }, i) => (
-          <li key={`${label}-${i}`} aria-hidden={i >= capabilities.length || undefined} className="stack-chip">
-            <Icon className="h-4 w-4 text-accent" />
-            {label}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Marquee label="Also included" className="mx-auto mt-10 max-w-7xl">
+      {capabilities.map(({ icon: Icon, label }) => (
+        <span key={label} className="stack-chip" role="listitem">
+          <Icon className="h-4 w-4 text-accent" aria-hidden="true" />
+          {label}
+        </span>
+      ))}
+    </Marquee>
   </section>
 );
 

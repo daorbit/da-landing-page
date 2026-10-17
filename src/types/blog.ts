@@ -10,6 +10,7 @@ export interface BlogPost {
     avatar?: string;
   };
   publishedAt: string;
+  updatedAt: string;
   readTime: number; // in minutes
   tags: string[];
   featured: boolean;

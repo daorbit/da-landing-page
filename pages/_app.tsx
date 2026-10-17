@@ -30,66 +30,13 @@ export default function App({ Component, pageProps }: AppProps) {
           media="(prefers-color-scheme: dark)"
           content="#000000"
         />
-        <meta name="robots" content="index, follow" />
-        <meta name="language" content="English" />
         <meta name="author" content="DA Orbit" />
 
         <link rel="icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-          <script
-        src="https://real-ana-be.vercel.app/tracker.js"
-        data-site="UUuaEUIA0gJpWKvi"
-        // strategy="afterInteractive"
-      />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "DA Orbit",
-              url: "https://www.daorbit.in",
-              logo: "https://www.daorbit.in/favicon.png",
-              description:
-                "Revolutionizing software development with cutting-edge solutions. We build the future, one orbit at a time.",
-              foundingDate: "2025",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Delhi",
-                addressCountry: "India",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                email: "daorbit2k25@gmail.com",
-                contactType: "customer service",
-              },
-              sameAs: [
-                "https://github.com/daorbit",
-                "https://linkedin.com/company/daorbit",
-              ],
-            }),
-          }}
-        />
-
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-            /* Prevent flash of unstyled content */
-            .min-h-screen {
-              min-height: 100vh;
-            }
-          `,
-          }}
-        />
+        <script async src="https://real-ana-be.vercel.app/tracker.js" data-site="UUuaEUIA0gJpWKvi" />
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2SL9F9Y2D"></script>
         <script

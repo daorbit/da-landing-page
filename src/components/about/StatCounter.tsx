@@ -12,11 +12,11 @@ const StatCounter: React.FC<{ stat: Stat; active: boolean }> = ({ stat, active }
 
   return (
     <li>
-      <p className="text-[3rem] font-semibold leading-none tracking-[-0.05em] tabular-nums text-fg sm:text-[4.5rem]">
+      <p className="text-[2.25rem] font-semibold leading-none tracking-[-0.04em] tabular-nums text-fg sm:text-[2.75rem]">
         {value}
-        {stat.suffix && <span className="text-brand-gradient">{stat.suffix}</span>}
+        {stat.suffix && <span className="text-fg-faint">{stat.suffix}</span>}
       </p>
-      <p className="mt-3 text-[14px] text-fg-muted sm:text-[15px]">{stat.label}</p>
+      <p className="mt-2 text-[14px] text-fg-muted">{stat.label}</p>
     </li>
   );
 };
