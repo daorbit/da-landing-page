@@ -1,104 +1,105 @@
-'use client'
-import React from 'react'
-import {
-  BarChart3,
-  Cloud,
-  Code,
-  CreditCard,
-  Gauge,
-  Globe,
-  LifeBuoy,
-  Lock,
-  Plug,
-  Search,
-  Smartphone,
-  Sparkles,
-  type LucideIcon,
-} from 'lucide-react'
+import React from "react";
+import { BarChart3, Cloud, Code, CreditCard, Gauge, Globe, LifeBuoy, Lock, Plug, Search, Smartphone, Sparkles } from "lucide-react";
+import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
+import ServiceTile, { type Service } from "./services/ServiceTile";
+import { CodeVisual, UptimeVisual } from "./services/ServiceVisuals";
 
-interface Feature {
-  icon: LucideIcon
-  title: string
-  description: string
-  /** Icon tint, so the row reads as a set of distinct marks rather than one colour. */
-  tone: string
-}
+const services: Service[] = [
+  {
+    icon: Code,
+    title: "Web platforms",
+    body: "Full-stack products on React, Next.js and Node — typed end to end, fast on day one and easy to extend on day 500.",
+    tone: "tone-indigo",
+    fx: "fx-nudge",
+    span: "wide",
+    visual: <CodeVisual />,
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile apps",
+    body: "One React Native codebase, shipped to both app stores.",
+    tone: "tone-pink",
+    fx: "fx-bob",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & DevOps",
+    body: "AWS, Azure and GCP with infrastructure as code and CI from the first commit.",
+    tone: "tone-sky",
+    fx: "fx-bob",
+  },
+  {
+    icon: Sparkles,
+    title: "AI features",
+    body: "Retrieval, agents and assistants wired into the product you already have.",
+    tone: "tone-amber",
+    fx: "fx-spin",
+  },
+  {
+    icon: Search,
+    title: "SEO & performance",
+    body: "Technical audits and Core Web Vitals work that survives real traffic.",
+    tone: "tone-emerald",
+    fx: "fx-pulse",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Support that stays",
+    body: "Monitoring, maintenance and on-call after you ship — the same team that built it, not a ticket queue.",
+    tone: "tone-violet",
+    fx: "fx-spin",
+    span: "full",
+    visual: <UptimeVisual />,
+  },
+];
 
-const rowOne: Feature[] = [
-  { icon: Code, title: 'MERN Development', description: 'Full-stack apps on Mongo, Express, React, and Node.', tone: 'text-indigo-500' },
-  { icon: Smartphone, title: 'Mobile Apps', description: 'One React Native codebase, both app stores.', tone: 'text-pink-500' },
-  { icon: Cloud, title: 'Cloud Infrastructure', description: 'AWS, Azure, and GCP with infrastructure as code.', tone: 'text-sky-500' },
-  { icon: Sparkles, title: 'AI Features', description: 'Retrieval and agents wired into your product.', tone: 'text-amber-500' },
-  { icon: Search, title: 'SEO Solutions', description: 'Technical audits and content architecture.', tone: 'text-emerald-500' },
-  { icon: Globe, title: 'Web Performance', description: 'Core Web Vitals work that survives real traffic.', tone: 'text-violet-500' },
-]
+const capabilities = [
+  { icon: Gauge, label: "Performance" },
+  { icon: Lock, label: "Security" },
+  { icon: Plug, label: "Integrations" },
+  { icon: CreditCard, label: "Payments" },
+  { icon: BarChart3, label: "Analytics" },
+  { icon: Globe, label: "Internationalisation" },
+];
 
-const rowTwo: Feature[] = [
-  { icon: Gauge, title: 'Performance', description: 'Apps tuned for speed under real-world load.', tone: 'text-orange-500' },
-  { icon: Lock, title: 'Security', description: 'Auth, encryption, and dependency hygiene by default.', tone: 'text-rose-500' },
-  { icon: Plug, title: 'Integrations', description: 'Seamless links to the tools you already run.', tone: 'text-teal-500' },
-  { icon: CreditCard, title: 'Payments', description: 'Stripe and Razorpay billing, subscriptions included.', tone: 'text-lime-600' },
-  { icon: BarChart3, title: 'Analytics', description: 'Product analytics you can actually act on.', tone: 'text-cyan-500' },
-  { icon: LifeBuoy, title: '24/7 Support', description: 'Monitoring and maintenance after you ship.', tone: 'text-fuchsia-500' },
-]
+const FeaturesSection: React.FC = () => (
+  <section id="services" className="section-y">
+    <SectionHeading
+      eyebrow="Services"
+      title={
+        <>
+          Everything you need
+          <br className="hidden sm:block" /> to ship and scale.
+        </>
+      }
+      body="One senior team across the whole stack. No handoffs, no gaps, no juggling four vendors to get one product live."
+      className="px-4"
+    />
 
-const Card: React.FC<{ feature: Feature }> = ({ feature }) => (
-  <div className="w-[19rem] shrink-0 rounded-2xl border border-border bg-surface-elevated p-6 shadow-[var(--shadow-soft)]">
-    <feature.icon className={`h-6 w-6 ${feature.tone}`} />
-    <h3 className="mt-5 text-base font-semibold text-fg">{feature.title}</h3>
-    <p className="mt-2 text-sm leading-relaxed text-fg-subtle">
-      {feature.description}
-    </p>
-  </div>
-)
-
-/**
- * Two ribbons of feature cards drifting in opposite directions. Each row's
- * children are duplicated so the -50% translate loops seamlessly.
- */
-const Row: React.FC<{ features: Feature[]; reverse?: boolean }> = ({
-  features,
-  reverse,
-}) => (
-  <div className="marquee-mask overflow-hidden">
-    <div
-      className="marquee-track flex gap-6"
-      style={reverse ? { animationDirection: 'reverse' } : undefined}
-    >
-      {[...features, ...features].map((feature, index) => (
-        <Card key={`${feature.title}-${index}`} feature={feature} />
+    <div className="mx-auto mt-10 grid max-w-7xl gap-3 px-3 sm:mt-16 sm:px-4 lg:grid-cols-3">
+      {services.map((service, i) => (
+        <Reveal
+          key={service.title}
+          delay={(i % 3) as 0 | 1 | 2}
+          className={service.span === "wide" ? "lg:col-span-2" : service.span === "full" ? "lg:col-span-3" : ""}
+        >
+          <ServiceTile service={service} />
+        </Reveal>
       ))}
     </div>
-  </div>
-)
 
-const FeaturesSection: React.FC = () => {
-  return (
-    <section
-      className="py-16 sm:py-20 md:py-28 bg-surface-subtle/60 border-t border-border"
-      id="features"
-    >
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-        <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-eyebrow text-accent">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Capabilities
-        </p>
-        <h2 className="mt-4 text-h2 font-semibold tracking-display text-fg">
-          Everything you need
-          <br className="hidden sm:block" /> to ship and scale
-        </h2>
-        <p className="mt-4 text-lead text-fg-muted">
-          One senior team across the whole stack. No handoffs, no gaps, no
-          juggling four vendors to get one product live.
-        </p>
-      </div>
+    <div className="marquee-mask mx-auto mt-10 max-w-7xl overflow-hidden">
+      <ul className="marquee-track flex gap-3" aria-label="Also included">
+        {[...capabilities, ...capabilities].map(({ icon: Icon, label }, i) => (
+          <li key={`${label}-${i}`} aria-hidden={i >= capabilities.length || undefined} className="stack-chip">
+            <Icon className="h-4 w-4 text-accent" />
+            {label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
 
-      <div className="mt-14 space-y-6">
-        <Row features={rowOne} />
-        <Row features={rowTwo} reverse />
-      </div>
-    </section>
-  )
-}
-
-export default FeaturesSection
+export default FeaturesSection;

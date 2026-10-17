@@ -168,7 +168,7 @@ export default function BlogPostPage({ post }: BlogPostPageProps) {
       <Layout>
         <main className="min-h-screen">
           {/* Content Section */}
-          <section className="pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-16 md:pb-24">
+          <section className="pt-10 sm:pt-14 md:pt-20 pb-8 sm:pb-16 md:pb-24">
             <div className="max-w-7xl mx-auto">
               <BlogContent post={post} />
             </div>

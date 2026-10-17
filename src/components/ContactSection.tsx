@@ -1,126 +1,59 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { Mail, MapPin } from 'lucide-react'
+import React from "react";
+import { Clock, Mail, MapPin } from "lucide-react";
+import Reveal from "./ui/Reveal";
+import ContactForm from "./contact/ContactForm";
+import { site } from "../data/site";
 
-const ContactSection: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
+const details = [
+  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
+  { icon: MapPin, label: "Studio", value: site.location },
+  { icon: Clock, label: "Reply time", value: "Within one working day" },
+];
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-      content: 'daorbit2k25@gmail.com',
-      link: 'mailto:daorbit2k25@gmail.com'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      content: 'Delhi, India',
-      link: '#'
-    }
-  ]
+const ContactSection: React.FC = () => (
+  <section id="contact" className="px-3 pb-16 sm:px-6 sm:pb-24">
+    <div className="stage mx-auto max-w-7xl px-4 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+      <div className="stage__glow" aria-hidden="true" />
+      <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <Reveal className="lg:pt-6">
+          <h2 className="text-balance text-h2 font-semibold leading-[1.06] tracking-display text-fg">
+            Your next product is one message away.
+          </h2>
+          <p className="mt-5 max-w-md text-pretty text-lead leading-normal text-fg-muted">
+            Tell us what you&apos;re building. You&apos;ll get a free consultation, a written estimate, and a
+            straight answer on what it takes.
+          </p>
 
-  const reasons = [
-    'Free consultation & project estimate',
-    'Agile development process',
-    'Post-launch support & maintenance',
-    'Dedicated project manager'
-  ]
+          <ul className="mt-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {details.map(({ icon: Icon, label, value, href }) => {
+              const body = (
+                <>
+                  <Icon className="h-4 w-4 text-accent" aria-hidden="true" />
+                  <span className="mt-3 block text-[12px] text-fg-faint">{label}</span>
+                  <span className="mt-0.5 block truncate text-[14px] font-medium text-fg">{value}</span>
+                </>
+              );
+              return (
+                <li key={label}>
+                  {href ? (
+                    <a href={href} className="contact-chip">
+                      {body}
+                    </a>
+                  ) : (
+                    <div className="contact-chip">{body}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </Reveal>
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  }
-
-  return (
-    <section
-      className="spotlight relative py-16 sm:py-20 md:py-28 bg-surface-subtle/60 border-t border-border"
-      id="contact"
-    >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-h2 font-semibold tracking-display text-fg mb-4"
-          >
-            Ready to start your journey?
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-lead text-fg-muted max-w-2xl mx-auto"
-          >
-            Let's discuss how we can help transform your business with innovative technology solutions
-          </motion.p>
-        </motion.div>
-
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  className="glass edge-lit flex items-center space-x-4 p-4 rounded-2xl hover:border-border-strong hover:shadow-[var(--shadow-card)] transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent-soft border border-accent-border rounded-xl flex items-center justify-center">
-                    <info.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-fg group-hover:text-accent transition-colors duration-300">
-                      {info.title}
-                    </h4>
-                    <p className="text-fg-muted text-sm">
-                      {info.content}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            <div className="glass edge-lit rounded-2xl p-6 shadow-[var(--shadow-soft)]">
-              <h4 className="font-semibold text-fg mb-3">Why choose DA Orbit?</h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-fg-muted text-sm">
-                {reasons.map((reason) => (
-                  <li key={reason} className="flex items-center space-x-2">
-                    <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                    <span>{reason}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        </div>
+        <Reveal delay={1}>
+          <ContactForm />
+        </Reveal>
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+);
 
-export default ContactSection
+export default ContactSection;

@@ -1,71 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import Header from './Layout/Header'
-import Footer from './Layout/Footer'
-import MobileDrawer from './MobileDrawer'
-import DrawerBackdrop from './DrawerBackdrop'
+import React from "react";
+import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 
-interface LayoutProps {
-  children: React.ReactNode
-}
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="flex min-h-screen flex-col bg-surface text-fg">
+    <a
+      href="#main"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-fg"
+    >
+      Skip to content
+    </a>
+    <Header />
+    <main id="main" className="relative flex-1">
+      {children}
+    </main>
+    <Footer />
+  </div>
+);
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
-
-  // Prevent body scroll when drawer is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    // Cleanup function to restore scroll when component unmounts
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
-  };
-
- 
-  const handleNavigation = (item: { label: string; id?: string; href?: string }) => {
-    if (item.id) {
-      if (router.pathname === '/') {
-        scrollToSection(item.id);
-      } else {
-        router.push(`/#${item.id}`);
-      }
-    }
-    setIsMenuOpen(false);
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden bg-surface text-fg">
-      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-
-      <main className="flex-1 relative">
-        {children}
-      </main>
-
-      <Footer />
-
-      {/* Mobile Drawer Components */}
-      <DrawerBackdrop isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-      <MobileDrawer
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        onNavigate={handleNavigation}
-      />
-    </div>
-  )
-}
-
-export default Layout
+export default Layout;

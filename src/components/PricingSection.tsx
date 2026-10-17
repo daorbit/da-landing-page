@@ -1,19 +1,14 @@
-"use client";
 import React from "react";
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
+import Button from "./ui/Button";
 
-/**
- * Engagement models rather than fixed prices — the work is scoped per project,
- * so quoting a number here would be fiction. Each tier ends in the same
- * consultation CTA.
- */
 const tiers = [
   {
     name: "Project",
     price: "Fixed scope",
-    description:
-      "A defined build with a written estimate and an agreed delivery date.",
+    description: "A defined build with a written estimate and an agreed delivery date.",
     features: [
       "Discovery and technical scoping",
       "Fixed-price written estimate",
@@ -26,8 +21,7 @@ const tiers = [
   {
     name: "Retainer",
     price: "Monthly",
-    description:
-      "An ongoing senior team for products that keep evolving after launch.",
+    description: "An ongoing senior team for products that keep evolving after launch.",
     features: [
       "Dedicated project manager",
       "Reserved engineering capacity",
@@ -41,8 +35,7 @@ const tiers = [
   {
     name: "Consulting",
     price: "Advisory",
-    description:
-      "Architecture reviews, code audits, and technical direction for your own team.",
+    description: "Architecture reviews, code audits and technical direction for your own team.",
     features: [
       "Codebase and architecture audit",
       "Performance and cost review",
@@ -54,85 +47,47 @@ const tiers = [
   },
 ];
 
-const PricingSection: React.FC = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+const PricingSection: React.FC = () => (
+  <section id="pricing" className="section-y">
+    <SectionHeading
+      eyebrow="Engagement models"
+      title="Work with us the way that fits."
+      body="Every engagement starts with a free consultation and a written estimate. No hourly surprises."
+      className="px-4"
+    />
 
-  return (
-    <section
-      id="pricing"
-      className="spotlight relative py-16 sm:py-20 md:py-28 border-t border-border"
-    >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[11px] font-semibold uppercase tracking-eyebrow text-accent mb-4">
-            Engagement models
-          </p>
-          <h2 className="text-h2 font-semibold tracking-display text-fg mb-4">
-            Work with us the way that fits
-          </h2>
-          <p className="text-lead text-fg-muted max-w-2xl mx-auto">
-            Every engagement starts with a free consultation and a written
-            estimate. No hourly surprises.
-          </p>
-        </div>
+    <div className="mx-auto mt-10 grid max-w-6xl gap-3 px-3 sm:mt-16 sm:px-4 md:grid-cols-3">
+      {tiers.map((tier, i) => (
+        <Reveal key={tier.name} delay={i as 0 | 1 | 2}>
+          <article className={`tile tile--static flex h-full flex-col p-7 sm:p-8 ${tier.featured ? "tile--featured" : ""}`}>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-[15px] font-semibold text-fg-muted">{tier.name}</h3>
+              {tier.featured && <span className="pill-badge">Most popular</span>}
+            </div>
+            <p className="mt-2 text-[2rem] font-semibold leading-tight tracking-display text-fg">{tier.price}</p>
+            <p className="mt-3 text-pretty text-[15px] leading-relaxed text-fg-muted">{tier.description}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {tiers.map((tier, index) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className={`glass edge-lit relative flex h-full flex-col rounded-2xl p-6 sm:p-8 ${
-                tier.featured
-                  ? "border-accent-border shadow-[var(--shadow-lift)]"
-                  : "shadow-[var(--shadow-soft)]"
-              }`}
+            <ul className="mt-7 flex-grow space-y-3 border-t border-border pt-7">
+              {tier.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-3 text-[14px] text-fg">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <Button
+              href="/#contact"
+              variant={tier.featured ? "primary" : "secondary"}
+              className="mt-8 w-full"
             >
-              {tier.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-accent-fg">
-                  Most popular
-                </span>
-              )}
-
-              <h3 className="text-lg font-semibold text-fg">{tier.name}</h3>
-              <p className="mt-1 text-2xl font-semibold tracking-display text-accent">
-                {tier.price}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-                {tier.description}
-              </p>
-
-              <ul className="mt-6 flex-grow space-y-3">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-accent-border bg-accent-soft">
-                      <Check className="h-3 w-3 text-accent" />
-                    </span>
-                    <span className="text-sm text-fg-muted">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                onClick={scrollToContact}
-                className={`mt-8 inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-medium transition-colors duration-200 ${
-                  tier.featured
-                    ? "bg-cta text-cta-fg hover:bg-cta-hover shadow-[var(--shadow-card)]"
-                    : "border border-border bg-surface-elevated text-fg hover:border-border-strong"
-                }`}
-              >
-                {tier.cta}
-              </button>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+              {tier.cta}
+            </Button>
+          </article>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+);
 
 export default PricingSection;

@@ -12,7 +12,7 @@ const About: NextPage = () => {
       </Head>
       
       <Layout>
-        <section className="spotlight relative flex min-h-[80vh] items-center justify-center bg-surface px-6 pt-32 pb-20">
+        <section className="spotlight relative flex min-h-[80vh] items-center justify-center bg-surface px-6 pt-20 pb-20">
           <div className="relative mx-auto max-w-2xl text-center">
             <h1 className="text-4xl sm:text-5xl font-semibold tracking-[-0.03em] text-fg mb-8">
               About Us

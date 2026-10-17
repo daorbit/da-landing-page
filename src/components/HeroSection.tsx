@@ -1,61 +1,52 @@
-"use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Words from "./Words";
+import Button from "./ui/Button";
+import AnnouncementPill from "./ui/AnnouncementPill";
+import HeroOrbit from "./hero/HeroOrbit";
 
-const HeroSection: React.FC = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+const promises = ["Fixed-scope estimates", "Weekly demo builds", "You own the code", "Support after launch"];
 
-  return (
-    <section
-      id="hero"
-      className="hero-wash relative overflow-hidden pt-36 pb-32 sm:pt-44 sm:pb-44"
-    >
-      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-        <h1 className="word-rise text-display font-semibold tracking-display leading-[1.08] text-fg">
-          <Words text="Turn Your Idea Into" />
-          <br className="hidden sm:block" />{" "}
-          <Words text="Shipped Software" offset={4} />
-        </h1>
+const HeroSection: React.FC = () => (
+  <section id="hero" className="hero relative isolate overflow-hidden">
+    <div className="hero__glow" aria-hidden="true" />
+    <HeroOrbit />
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="mt-6 text-lead text-fg-muted max-w-2xl mx-auto leading-relaxed"
-        >
-          DA Orbit designs, builds, and runs web platforms, mobile apps, and
-          cloud infrastructure — so you launch fast and scale later without a
-          rewrite.
-        </motion.p>
+    <div className="relative z-10 mx-auto flex min-h-[40rem] max-w-4xl flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[52rem] sm:px-6">
+      <AnnouncementPill href="/#contact" label="Open" className="rise rise-1">
+        Now taking new projects
+      </AnnouncementPill>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-9 flex flex-col sm:flex-row gap-3 justify-center"
-        >
-          <button
-            onClick={() => scrollToSection("features")}
-            className="inline-flex items-center justify-center rounded-full border border-border bg-surface-elevated px-7 py-3 text-[15px] font-medium text-fg shadow-[var(--shadow-soft)] hover:border-border-strong transition-colors duration-200"
-          >
-            See what we build
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 text-[15px] font-medium text-accent-fg shadow-[var(--shadow-card)] hover:bg-accent-hover transition-colors duration-200"
-          >
-            Book A Consultation
-          </button>
-        </motion.div>
+      <h1 className="word-rise mt-7 text-balance text-hero font-semibold leading-[1.02] tracking-hero text-fg">
+        <Words text="We build software" />{" "}
+        <Words text="that ships." offset={3} className="text-brand-gradient" />
+      </h1>
+
+      <p className="rise rise-3 mx-auto mt-6 max-w-2xl text-pretty text-lead leading-[1.55] text-fg-muted">
+        DA Orbit is a software development company. We design, build and run web platforms, mobile apps and
+        cloud infrastructure — so you launch fast and scale without a rewrite.
+      </p>
+
+      <div className="rise rise-4 mt-9 flex flex-wrap items-center justify-center gap-3">
+        <Button href="/#contact" size="lg">
+          Start a project
+          <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+        </Button>
+        <Button href="/#services" variant="secondary" size="lg">
+          Explore services
+        </Button>
       </div>
-    </section>
-  );
-};
+
+      <ul className="rise rise-5 mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[13px] text-fg-faint">
+        {promises.map((label, i) => (
+          <li key={label} className="flex items-center gap-3">
+            {i > 0 && <span className="h-[3px] w-[3px] rounded-full bg-border-strong" aria-hidden="true" />}
+            {label}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
 
 export default HeroSection;

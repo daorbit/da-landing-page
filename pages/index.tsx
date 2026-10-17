@@ -2,15 +2,15 @@ import { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import Layout from "../src/components/Layout";
 import HeroSection from "../src/components/HeroSection";
+import StackSection from "../src/components/StackSection";
+import ManifestoSection from "../src/components/ManifestoSection";
 import ShowcaseSection from "../src/components/ShowcaseSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import AboutSection from "../src/components/AboutSection";
 import ProcessSection from "../src/components/ProcessSection";
-import TestimonialsSection from "../src/components/TestimonialsSection";
 import PricingSection from "../src/components/PricingSection";
 import BlogCarousel from "../src/components/BlogCarousel";
 import FaqSection from "../src/components/FaqSection";
-import CtaSection from "../src/components/CtaSection";
 import ContactSection from "../src/components/ContactSection";
 import { BlogPost } from "../src/types/blog";
 import { getAllPosts } from "../src/data/blogData";
@@ -214,15 +214,15 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 
       <Layout>
         <HeroSection />
-        <ShowcaseSection />
+        <StackSection />
         <FeaturesSection />
-        <AboutSection />
+        <ManifestoSection />
         <ProcessSection />
-        <TestimonialsSection />
+        <AboutSection />
+        <ShowcaseSection />
         <PricingSection />
         <BlogCarousel posts={posts} />
         <FaqSection />
-        <CtaSection />
         <ContactSection />
       </Layout>
     </>

@@ -1,41 +1,40 @@
-"use client";
 import React from "react";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import { useTheme, type Theme } from "./ThemeProvider";
 
-interface ThemeToggleProps {
-  className?: string;
-}
+const options: { key: Theme; label: string; Icon: typeof Sun }[] = [
+  { key: "light", label: "Light", Icon: Sun },
+  { key: "dark", label: "Dark", Icon: Moon },
+];
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
-  const { theme, mounted, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
+const ThemeToggle: React.FC = () => {
+  const { theme, mounted, setTheme } = useTheme();
 
   return (
-    <button
-      type="button"
-      onClick={toggleTheme}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className={`relative inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg-subtle transition-colors duration-200 hover:border-accent-border hover:text-accent cursor-pointer ${className}`}
+    <div
+      className="theme-toggle"
+      role="radiogroup"
+      aria-label="Color theme"
+      data-theme={mounted ? theme : undefined}
     >
-      {/* Both icons render; opacity swaps so there is no layout shift.
-          Before mount neither is shown, keeping SSR and client markup equal. */}
-      <Sun
-        className={`absolute h-[18px] w-[18px] transition-all duration-300 ${
-          mounted && !isDark
-            ? "rotate-0 scale-100 opacity-100"
-            : "-rotate-90 scale-50 opacity-0"
-        }`}
-      />
-      <Moon
-        className={`absolute h-[18px] w-[18px] transition-all duration-300 ${
-          mounted && isDark
-            ? "rotate-0 scale-100 opacity-100"
-            : "rotate-90 scale-50 opacity-0"
-        }`}
-      />
-    </button>
+      {mounted && <span className="theme-toggle__thumb" aria-hidden="true" />}
+      {options.map(({ key, label, Icon }) => {
+        const active = mounted && theme === key;
+        return (
+          <button
+            key={key}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            aria-label={label}
+            onClick={() => setTheme(key)}
+            className={`theme-toggle__btn ${active ? "text-accent" : "text-fg-faint hover:text-fg-muted"}`}
+          >
+            <Icon className="h-3.5 w-3.5" />
+          </button>
+        );
+      })}
+    </div>
   );
 };
 

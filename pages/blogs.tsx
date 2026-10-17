@@ -98,7 +98,7 @@ export default function BlogsPage({ posts }: BlogsPageProps) {
       <Layout>
         <main className="min-h-screen bg-surface">
           {/* Hero Section */}
-          <section className="spotlight relative bg-surface-subtle text-fg pt-32 pb-16 md:pt-40 md:pb-24 border-b border-border">
+          <section className="spotlight relative bg-surface-subtle text-fg pt-20 pb-16 md:pt-28 md:pb-24 border-b border-border">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <p className="text-xs font-medium uppercase tracking-[0.14em] text-accent mb-4">

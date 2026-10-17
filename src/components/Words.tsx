@@ -1,18 +1,21 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-const Words: React.FC<{ text: string; offset?: number }> = ({ text, offset = 0 }) => {
-  const words = text.split(" ");
+const Words: React.FC<{ text: string; offset?: number; className?: string }> = ({
+  text,
+  offset = 0,
+  className = "",
+}) => {
+  const words = text.split(" ").filter(Boolean);
+
   return (
     <>
       {words.map((word, i) => (
-        <span
-          key={i}
-          className="word-rise"
-          style={{ ["--i" as string]: offset + i }}
-        >
-          {word}
-          {i < words.length - 1 ? " " : ""}
-        </span>
+        <Fragment key={`${word}-${i}`}>
+          <span className={className} style={{ ["--i" as string]: offset + i }}>
+            {word}
+          </span>
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </>
   );

@@ -52,7 +52,7 @@ const Services: NextPage = () => {
 
       <Layout>
         {/* Hero Section */}
-        <section className="spotlight relative bg-surface-subtle text-fg pt-32 pb-20 border-b border-border">
+        <section className="spotlight relative bg-surface-subtle text-fg pt-20 pb-20 border-b border-border">
           <div className="relative max-w-6xl mx-auto px-8 text-center">
             <h1 className="text-4xl md:text-6xl font-semibold tracking-[-0.03em] mb-6">
               Our <span className="text-gradient">Services</span>

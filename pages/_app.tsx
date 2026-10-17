@@ -1,10 +1,18 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import CookieConsentBanner from "../src/components/CookieConsentBanner";
 import { ThemeProvider } from "../src/components/ThemeProvider";
 import "../src/styles/globals.css";
+
+const sans = localFont({
+  src: "../src/fonts/GoogleSansFlex-latin.woff2",
+  weight: "400 700",
+  display: "swap",
+  fallback: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta
           name="theme-color"
           media="(prefers-color-scheme: dark)"
-          content="#0a0d14"
+          content="#000000"
         />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
@@ -110,8 +118,10 @@ export default function App({ Component, pageProps }: AppProps) {
           }}
         />
       </Head>
-      <Component {...pageProps} />
-      <CookieConsentBanner />
+      <div className={sans.className}>
+        <Component {...pageProps} />
+        <CookieConsentBanner />
+      </div>
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>
