@@ -12,7 +12,6 @@ export const site = {
   twitter: "@daorbit2k25",
   socials: [
     { label: "X", href: "https://x.com/daorbit2k25" },
-    { label: "GitHub", href: "https://github.com/daorbit" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/da-orbit-6b7ab242a/" },
   ],
 };
