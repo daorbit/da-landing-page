@@ -686,6 +686,7 @@ section {
 .tone-green { --tone: #10b981; }
 .tone-violet { --tone: #8b5cf6; }
 .tone-amber { --tone: #f59e0b; }
+.tone-lime { --tone: #84cc16; }
 
 .tile {
   border-radius: var(--radius-tile);

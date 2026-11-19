@@ -39,7 +39,7 @@ export const orbitAi = {
   extension: "https://chromewebstore.google.com/detail/orbit-ai/ilmdbgnbkgjldhelepoadfkmpahelmkg",
 };
 
-export type Tone ="blue" | "green" | "violet" | "amber";
+export type Tone = "blue" | "green" | "violet" | "amber" | "lime";
 
 export interface Product {
   id: string;
@@ -67,6 +67,19 @@ export const products: Product[] = [
     tagline: "Privacy-first analytics you can embed anywhere.",
     title: "Analytics without the cookie banner.",
     body: "Real-time dashboards, SEO audits and a multi-tenant API you can ship to your own users.",
+  },
+  {
+    id: "pexlora",
+    name: "Pexlora",
+    logo: "/products/pexlora.png",
+    shot: "/products-showcase/pexlora.png",
+    href: "https://pexlora.daorbit.in/",
+    host: "pexlora.daorbit.in",
+    tone: "lime",
+    tagline: "Free file tools that strip hidden metadata.",
+    title: "Share the photo. Not the location.",
+    body: "Remove GPS, camera and AI tags from photos, PDFs and documents, plus 40+ free tools to compress, convert and resize. No sign-up.",
+    free: true,
   },
   {
     id: "qr-studio",

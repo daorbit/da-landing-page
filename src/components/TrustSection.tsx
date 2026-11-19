@@ -4,6 +4,7 @@ const products = [
   { name: "Snappixy", href: "https://snappixy.daorbit.in/" },
   { name: "The Techodio", href: "https://techodio.daorbit.in/" },
   { name: "Quantalog", href: "https://quantalog.daorbit.in" },
+  { name: "Pexlora", href: "https://pexlora.daorbit.in/" },
   { name: "Da Text Editor", href: "https://da-text-editor.daorbit.in/" },
   { name: "Da Frame Set", href: "https://da-frame-set.daorbit.in/" },
 ];

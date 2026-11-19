@@ -14,11 +14,14 @@ const ShowcaseSection: React.FC = () => (
     />
 
     <div className="mx-auto mt-10 grid max-w-[90rem] gap-3 px-3 sm:mt-16 sm:px-4 lg:grid-cols-2">
-      {products.map((product, i) => (
-        <Reveal key={product.id} delay={(i % 2) as 0 | 1}>
-          <ProductTile product={product} />
-        </Reveal>
-      ))}
+      {products.map((product, i) => {
+        const spansRow = products.length % 2 === 1 && i === products.length - 1;
+        return (
+          <Reveal key={product.id} delay={(i % 2) as 0 | 1} className={spansRow ? "lg:col-span-2" : undefined}>
+            <ProductTile product={product} />
+          </Reveal>
+        );
+      })}
     </div>
   </section>
 );
